@@ -65,3 +65,41 @@ export default function Home() {
     </main>
   );
 }
+<section className="bg-[#121621] py-20 px-6 text-center">
+  <h2 className="text-2xl font-bold text-white mb-10">What Our Traders Say</h2>
+  <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left text-gray-300">
+    <div className="bg-[#1A1E29] p-6 rounded-lg">
+      <p>“Quantum Apex V4.0 turned my sideways months into steady 10% weeks. Execution is flawless.”</p>
+      <p className="mt-4 text-[#FACC15] font-semibold">– Alex T., XAUUSD trader</p>
+    </div>
+    <div className="bg-[#1A1E29] p-6 rounded-lg">
+      <p>“I stopped tweaking SLs. The dynamic logic just works. Simple, powerful, adaptive.”</p>
+      <p className="mt-4 text-[#FACC15] font-semibold">– Priya M., Cent Account user</p>
+    </div>
+    <div className="bg-[#1A1E29] p-6 rounded-lg">
+      <p>“Broker issues used to kill my strategies. Not with this one. It adjusts like magic.”</p>
+      <p className="mt-4 text-[#FACC15] font-semibold">– Somchai W., ECN trader</p>
+    </div>
+  </div>
+</section>
+<section className="bg-[#0A0D14] py-20 px-6 text-white">
+  <h2 className="text-2xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+  <div className="max-w-3xl mx-auto space-y-6">
+    <div>
+      <h3 className="text-[#FACC15] font-semibold">Q: ใช้กับบัญชีอะไรได้บ้าง?</h3>
+      <p className="text-gray-400">A: รองรับ ECN Cent, ECN, Standard — พร้อมปรับค่าพิเศษตามโบรกแต่ละที่</p>
+    </div>
+    <div>
+      <h3 className="text-[#FACC15] font-semibold">Q: ตั้งเป้า Drawdown ไว้เท่าไหร่?</h3>
+      <p className="text-gray-400">A: ระบบออกแบบให้ไม่เกิน 25% พร้อมจูน TP/SL แบบเรียลไทม์</p>
+    </div>
+    <div>
+      <h3 className="text-[#FACC15] font-semibold">Q: รองรับทองคำอย่างเดียวหรือ?</h3>
+      <p className="text-gray-400">A: ปัจจุบันปรับจูนเฉพาะ XAUUSD แต่เรากำลังขยายไปยังคู่เงินเร็ว ๆ นี้</p>
+    </div>
+  </div>
+</section>
+<footer className="bg-[#121621] py-10 text-center text-gray-500 text-sm">
+  <p>© {new Date().getFullYear()} MomentumXLab. All rights reserved.</p>
+  <p className="mt-2">Designed with precision by traders, for traders.</p>
+</footer>
