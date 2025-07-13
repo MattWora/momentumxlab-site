@@ -1,3 +1,11 @@
+/* === GENERAL === */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(to bottom right, #0d0d0d, #1a1a1a); /* ✅ ดำเมทัลลิก */
+  color: #eee;
+}
+
 /* === MAIN LAYOUT === */
 .pro4-section {
   display: flex;
@@ -21,10 +29,13 @@
   align-items: flex-start;
 }
 
-/* === HEADING & TEXT === */
+/* === TEXT STYLE === */
 h2, h3 {
   color: #00c98d;
   margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .feature-list {
@@ -39,16 +50,17 @@ h2, h3 {
   margin-bottom: 12px;
 }
 
-/* === IMAGE MOCKUP === */
+/* === IMAGE MOCKUP (Expanded 20%) === */
 .mockup-wrapper img {
   width: 100%;
-  max-width: 360px;
+  max-width: 432px; /* ✅ เดิม ~360px +20% */
   height: auto;
   border-radius: 8px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  margin-top: 0;
 }
 
-/* === TABLE === */
+/* === TABLE STYLE === */
 .info-table {
   width: 100%;
   border-collapse: collapse;
@@ -64,6 +76,7 @@ h2, h3 {
   padding: 10px;
   text-align: center;
   font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .info-table td {
@@ -90,13 +103,21 @@ h2, h3 {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .cta-btn:hover {
   background-color: #00b27c;
 }
 
-/* === FOOTER === */
+.roi-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #ccc;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* === FOOTER STYLE === */
 .footer-section {
   background-color: #fff;
   color: #000;
@@ -109,7 +130,7 @@ h2, h3 {
 }
 
 .footer-logo-left img {
-  width: 80px; /* ✅ โลโก้เล็กลง */
+  width: 80px;
   opacity: 0.9;
 }
 
@@ -122,9 +143,15 @@ h2, h3 {
 .footer-text p {
   margin: 4px 0;
   color: #333;
+  font-family: 'Orbitron', sans-serif;
 }
 
-/* === RESPONSIVE === */
+.footer-text p:first-child {
+  font-size: 15px; /* ✅ ขยายข้อความ disclaimer เล็กน้อย */
+  font-weight: 500;
+}
+
+/* === RESPONSIVE VIEW === */
 @media screen and (max-width: 768px) {
   .pro4-section {
     flex-direction: column;
