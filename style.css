@@ -1,4 +1,4 @@
-/* ===== GENERAL FONT ===== */
+/* ===== GENERAL ===== */
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -6,10 +6,11 @@ body {
   color: #eee;
 }
 
-/* ===== MAIN SECTION ===== */
+/* ===== PRO-4 SECTION ===== */
 .pro4-section {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   padding: 100px 40px 60px;
   gap: 40px;
 }
@@ -17,11 +18,12 @@ body {
 .left-content, .right-content {
   flex: 1 1 50%;
   max-width: 50%;
+  min-width: 280px;
 }
 
-/* ===== IMAGE MOCKUP ===== */
+/* ===== MOCKUP IMAGE ===== */
 .mockup-wrapper img {
-  max-width: 40%;  /* ปรับลดลงอีกครึ่งจากเดิม */
+  max-width: 30%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.6);
@@ -41,7 +43,7 @@ body {
   line-height: 1.5;
 }
 
-/* ===== TABLE STYLE ===== */
+/* ===== INFO TABLE ===== */
 .info-table {
   width: 100%;
   border-collapse: collapse;
@@ -57,7 +59,7 @@ body {
   border: 1px solid #444;
 }
 
-/* ===== CTA BUTTONS ===== */
+/* ===== BUTTONS ===== */
 .btn-group {
   margin: 40px 0;
   display: flex;
@@ -80,18 +82,17 @@ body {
   background-color: #00b27c;
 }
 
-/* ===== ROI NOTE ===== */
 .roi-note {
   margin-top: 12px;
   font-size: 13px;
   color: #ccc;
 }
 
-/* ===== FOOTER SECTION ===== */
+/* ===== FOOTER ===== */
 .footer-section {
   background-color: #fff;
   color: #000;
-  padding: 15px 20px; /* ลดความสูงลงครึ่งนึง */
+  padding: 15px 20px;
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -101,21 +102,4 @@ body {
 }
 
 .footer-logo-left img {
-  width: 140px;
-  opacity: 0.95;
-}
-
-.footer-text {
-  flex: 1;
-  max-width: 800px;
-  text-align: left;
-}
-
-.footer-text p {
-  margin: 4px 0;
-}
-
-.footer-section .copyright {
-  font-size: 12px;
-  color: #333;
-}
+  width: 
