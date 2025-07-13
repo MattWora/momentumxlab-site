@@ -235,3 +235,102 @@ h2, h3 {
   font-size: 14px;
   color: #ccc;
 }
+/* === Header Logo === */
+.top-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.logo-img {
+  max-width: 180px;
+  height: auto;
+  opacity: 0.95;
+}
+
+/* === EA Grid Section === */
+.ea-grid-section {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.ea-grid-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00c98d;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.intro-text {
+  font-size: 15px;
+  color: #ccc;
+  margin-bottom: 40px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* === EA Boxes === */
+.ea-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.ea-box {
+  background-color: #1a1a1a;
+  color: #eee;
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ea-box img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 14px;
+  border-radius: 6px;
+}
+
+.ea-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+.ea-box h3 {
+  font-size: 18px;
+  color: #00c98d;
+  margin: 10px 0 6px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.ea-box p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* === Candlestick Background === */
+.candlestick-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('candlestick-bg.svg');
+  background-repeat: repeat;
+  background-size: 600px;
+  opacity: 0.035;
+  z-index: 0;
+  pointer-events: none;
+  animation: flickerMove 20s linear infinite;
+}
+
+@keyframes flickerMove {
+  0% { background-position: 0 0; }
+  100% { background-position: -200px 100px; }
+}
