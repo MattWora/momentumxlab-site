@@ -1,157 +1,57 @@
-/* === GENERAL === */
-body {
-  margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background-color: #0f0f0f;
-  color: #eee;
-}
-
-/* === LAYOUT MAIN SECTION === */
+/* === MAIN LAYOUT === */
 .pro4-section {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 80px 40px;
+  padding: 60px 40px;
   gap: 40px;
 }
 
 .left-content {
-  flex: 1 1 60%;
-  max-width: 60%;
+  flex: 1 1 55%;
+  max-width: 55%;
 }
 
 .right-content {
-  flex: 1 1 40%;
-  max-width: 40%;
+  flex: 1 1 45%;
+  max-width: 45%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
-/* === IMAGE MOCKUP === */
+/* === MOCKUP IMAGE === */
 .mockup-wrapper img {
   width: 100%;
-  max-width: 320px;
+  max-width: 360px; /* ✅ ขยายรูปเพิ่มขึ้น */
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
   margin-top: 0;
 }
 
-/* === FEATURE LIST === */
-.feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0 40px;
-}
-
-.feature-list li {
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-
-/* === TABLE === */
+/* === TABLE ADJUSTMENTS === */
 .info-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 30px 0;
-  font-size: 15px;
-  background-color: #1a1a1a;
+  margin: 20px 0;
+  font-size: 14px; /* ✅ ย่อตัวอักษรลงเล็กน้อย */
+  background-color: #181818;
   border: 1px solid #444;
 }
 
 .info-table th {
   background-color: #222;
   color: #00c98d;
-  padding: 12px;
+  padding: 10px; /* ✅ ลด padding */
   font-weight: 600;
   text-align: center;
 }
 
 .info-table td {
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   color: #ddd;
   border-top: 1px solid #333;
-}
-
-/* === CTA BUTTONS === */
-.btn-group {
-  margin: 40px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.cta-btn {
-  background-color: #00c98d;
-  color: #0f0f0f;
-  font-weight: bold;
-  padding: 10px 24px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.cta-btn:hover {
-  background-color: #00b27c;
-}
-
-.roi-note {
-  margin-top: 16px;
-  font-size: 13px;
-  color: #ccc;
-}
-
-/* === FOOTER === */
-.footer-section {
-  background-color: #fff;
-  color: #000;
-  padding: 10px 20px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  border-top: 1px solid #ccc;
-}
-
-.footer-logo-left img {
-  width: 90px;
-  opacity: 0.9;
-}
-
-.footer-text {
-  flex: 1;
-  max-width: 800px;
-  text-align: left;
-}
-
-.footer-text p {
-  margin: 4px 0;
-  color: #333;
-}
-
-.footer-section .copyright {
-  font-size: 12px;
-  color: #555;
-}
-
-/* === RESPONSIVE VIEW === */
-@media screen and (max-width: 768px) {
-  .pro4-section {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .left-content, .right-content {
-    max-width: 100%;
-  }
-
-  .mockup-wrapper img {
-    max-width: 80%;
-    margin-top: 20px;
-  }
 }
