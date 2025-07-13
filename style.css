@@ -1,18 +1,10 @@
-/* ===== GENERAL ===== */
-body {
-  margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background-color: #0f0f0f;
-  color: #eee;
-}
-
 /* ===== PRO-4 SECTION ===== */
 .pro4-section {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding: 100px 40px 60px;
-  gap: 40px;
+  padding: 80px 40px 60px;
+  gap: 60px;
 }
 
 .left-content, .right-content {
@@ -23,76 +15,21 @@ body {
 
 /* ===== MOCKUP IMAGE ===== */
 .mockup-wrapper img {
-  max-width: 30%;
+  max-width: 55%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  margin-top: 0; /* ✅ ยกขึ้นเท่ากับฝั่งซ้าย */
   display: block;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ===== FEATURE LIST ===== */
-.feature-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px 0 40px;
-}
-
-.feature-list li {
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-
-/* ===== INFO TABLE ===== */
-.info-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 30px 0;
-  font-size: 14px;
-}
-
-.info-table th,
-.info-table td {
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  border: 1px solid #444;
-}
-
-/* ===== BUTTONS ===== */
-.btn-group {
-  margin: 40px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.cta-btn {
-  background-color: #00c98d;
-  color: #0f0f0f;
-  font-weight: bold;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.cta-btn:hover {
-  background-color: #00b27c;
-}
-
-.roi-note {
-  margin-top: 12px;
-  font-size: 13px;
-  color: #ccc;
-}
-
-/* ===== FOOTER ===== */
+/* ===== FOOTER SECTION ===== */
 .footer-section {
   background-color: #fff;
   color: #000;
-  padding: 15px 20px;
+  padding: 10px 20px; /* ✅ ลดความสูงลงอีก */
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -102,4 +39,21 @@ body {
 }
 
 .footer-logo-left img {
-  width: 
+  width: 100px; /* ✅ โลโก้เล็กลงจากเดิม 140px */
+  opacity: 0.9;
+}
+
+.footer-text {
+  flex: 1;
+  max-width: 800px;
+  text-align: left;
+}
+
+.footer-text p {
+  margin: 4px 0;
+}
+
+.footer-section .copyright {
+  font-size: 12px;
+  color: #333;
+}
