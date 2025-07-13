@@ -167,3 +167,58 @@ h2, h3 {
     margin: 0 auto;
   }
 }
+.ea-grid-section {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.ea-grid-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00c98d;
+  margin-bottom: 40px;
+}
+
+.ea-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* ✅ จัดแถวอัตโนมัติ */
+  gap: 30px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.ea-box {
+  background-color: #1a1a1a;
+  color: #eee;
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ea-box img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 14px;
+  border-radius: 6px;
+}
+
+.ea-box:hover {
+  transform: translateY(-6px);
+}
+
+.ea-box h3 {
+  font-size: 18px;
+  color: #00c98d;
+  margin: 10px 0 6px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.ea-box p {
+  font-size: 14px;
+  color: #ccc;
+}
