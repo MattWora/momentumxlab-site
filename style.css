@@ -1,4 +1,12 @@
-/* ===== PRO-4 SECTION ===== */
+/* === GENERAL SETUP === */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0f0f0f;
+  color: #eee;
+}
+
+/* === LAYOUT === */
 .pro4-section {
   display: flex;
   flex-wrap: wrap;
@@ -13,23 +21,88 @@
   min-width: 280px;
 }
 
-/* ===== MOCKUP IMAGE ===== */
+/* === IMAGE (Mockup) === */
 .mockup-wrapper img {
   max-width: 55%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-  margin-top: 0; /* ✅ ยกขึ้นเท่ากับฝั่งซ้าย */
+  margin-top: 0;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* ===== FOOTER SECTION ===== */
+/* === FEATURE LIST === */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 40px;
+}
+
+.feature-list li {
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* === TABLE === */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  font-size: 15px;
+  background-color: #191919;
+  border: 1px solid #444;
+}
+
+.info-table th {
+  background-color: #222;
+  color: #00c98d;
+  padding: 12px;
+  font-weight: 600;
+}
+
+.info-table td {
+  padding: 12px;
+  text-align: center;
+  color: #ddd;
+  border-top: 1px solid #333;
+}
+
+/* === CTA BUTTONS === */
+.btn-group {
+  margin: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.cta-btn {
+  background-color: #00c98d;
+  color: #0f0f0f;
+  font-weight: bold;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #00b27c;
+}
+
+.roi-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+/* === FOOTER === */
 .footer-section {
   background-color: #fff;
   color: #000;
-  padding: 10px 20px; /* ✅ ลดความสูงลงอีก */
+  padding: 10px 20px;
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -39,7 +112,7 @@
 }
 
 .footer-logo-left img {
-  width: 100px; /* ✅ โลโก้เล็กลงจากเดิม 140px */
+  width: 100px;
   opacity: 0.9;
 }
 
@@ -51,9 +124,27 @@
 
 .footer-text p {
   margin: 4px 0;
+  color: #333;
 }
 
 .footer-section .copyright {
   font-size: 12px;
-  color: #333;
+  color: #555;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .pro4-section {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .left-content, .right-content {
+    max-width: 100%;
+  }
+
+  .mockup-wrapper img {
+    max-width: 80%;
+    margin-top: 20px;
+  }
 }
