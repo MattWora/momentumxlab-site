@@ -9,34 +9,51 @@
 }
 
 .left-content {
-  flex: 1 1 55%;
-  max-width: 55%;
+  flex: 1 1 60%;
+  max-width: 60%;
 }
 
 .right-content {
-  flex: 1 1 45%;
-  max-width: 45%;
+  flex: 1 1 40%;
+  max-width: 40%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
-/* === MOCKUP IMAGE === */
+/* === HEADING & TEXT === */
+h2, h3 {
+  color: #00c98d;
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #eee;
+}
+
+.feature-list li {
+  margin-bottom: 12px;
+}
+
+/* === IMAGE MOCKUP === */
 .mockup-wrapper img {
   width: 100%;
-  max-width: 360px; /* ✅ ขยายรูปเพิ่มขึ้น */
+  max-width: 360px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.5);
-  margin-top: 0;
 }
 
-/* === TABLE ADJUSTMENTS === */
+/* === TABLE === */
 .info-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 14px; /* ✅ ย่อตัวอักษรลงเล็กน้อย */
+  margin: 24px 0;
+  font-size: 14px;
   background-color: #181818;
   border: 1px solid #444;
 }
@@ -44,9 +61,9 @@
 .info-table th {
   background-color: #222;
   color: #00c98d;
-  padding: 10px; /* ✅ ลด padding */
-  font-weight: 600;
+  padding: 10px;
   text-align: center;
+  font-weight: 600;
 }
 
 .info-table td {
@@ -54,4 +71,72 @@
   text-align: center;
   color: #ddd;
   border-top: 1px solid #333;
+}
+
+/* === CTA BUTTONS === */
+.btn-group {
+  margin: 32px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.cta-btn {
+  background-color: #00c98d;
+  color: #0f0f0f;
+  font-weight: bold;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #00b27c;
+}
+
+/* === FOOTER === */
+.footer-section {
+  background-color: #fff;
+  color: #000;
+  padding: 8px 20px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ccc;
+}
+
+.footer-logo-left img {
+  width: 80px; /* ✅ โลโก้เล็กลง */
+  opacity: 0.9;
+}
+
+.footer-text {
+  flex: 1;
+  max-width: 800px;
+  text-align: left;
+}
+
+.footer-text p {
+  margin: 4px 0;
+  color: #333;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .pro4-section {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .left-content, .right-content {
+    max-width: 100%;
+  }
+
+  .mockup-wrapper img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
 }
