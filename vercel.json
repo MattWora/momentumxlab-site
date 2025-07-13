@@ -2,8 +2,7 @@
   "version": 2,
   "name": "momentumxlab",
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "pro4.html", "use": "@vercel/static" }
+    { "src": "*", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/", "dest": "/index.html" },
