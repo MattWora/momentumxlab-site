@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>MomentumXLab – Landing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
       font-family: 'Outfit', sans-serif;
       background: #fdfdfd;
       overflow: hidden;
-    }
-    .scaled-content {
-      transform: scale(0.85);
-      transform-origin: top center;
-      width: 100%;
+      color: #333;
     }
     .svg-bg {
       position: fixed;
@@ -25,41 +21,86 @@
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      opacity: 0.1;
       pointer-events: none;
+      opacity: 0.06;
     }
-    .header, .intro, .gallery, .cta, .footer {
+    .page-content {
+      transform: scale(0.85);
+      transform-origin: top center;
+      width: 100%;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1rem 1.5rem;
+      flex-wrap: wrap;
+    }
+    .header img {
+      height: 100px;
+    }
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+    .header-text h1 {
+      font-size: 1.2rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    .header-text p {
+      font-size: 0.8rem;
+      margin: 0.4rem 0;
+      max-width: 340px;
+      color: #555;
+    }
+    .nav-buttons a {
+      margin: 0.2rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .signup { background: #0072e5; }
+    .login { background: #C08C1B; }
+    .dashboard { background: #333; }
+    .intro {
       text-align: center;
       padding: 1rem;
     }
-    .header h1 {
-      font-size: 1.2rem;
-      margin-bottom: 0.3rem;
+    .intro h2 {
+      font-size: 1.4rem;
+      margin: 0;
     }
-    .nav-buttons a {
-      margin: 0.3rem;
-      padding: 0.5rem 1rem;
-      background: #0072e5;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      font-weight: bold;
+    .intro p {
+      font-size: 0.85rem;
+      margin: 0.4rem auto;
+      color: #444;
+      max-width: 560px;
     }
     .gallery {
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
+      padding: 1rem;
+      max-width: 960px;
+      margin: auto;
     }
     .mockup-card {
-      max-width: 200px;
+      max-width: 220px;
       background: #fff;
       border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
       padding: 0.8rem;
-      cursor: pointer;
+      text-align: center;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
     .mockup-card:hover {
       transform: translateY(-2px);
@@ -70,69 +111,94 @@
     }
     .mockup-card h3 {
       font-size: 0.95rem;
-      margin: 0.5rem 0 0.2rem;
+      margin-bottom: 0.2rem;
     }
     .mockup-card p {
       font-size: 0.75rem;
-      margin: 0.2rem 0;
+      margin: 0.15rem 0;
     }
-    .cta a {
+    .edition.pro4 { color: #C08C1B; font-weight: 600; }
+    .edition.pro5 { color: #0072e5; font-weight: 600; }
+    .edition.corex { color: #673ab7; font-weight: 600; }
+    .cta {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(to right, #e6f3ff, #fef9f1);
+      border-top: 1px solid #ddd;
+    }
+    .cta h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+    .cta p {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      color: #555;
+    }
+    .cta-buttons a {
       margin: 0.3rem;
       padding: 0.5rem 1rem;
-      background: #C08C1B;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
+      border-radius: 6px;
       font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
     }
+    .cta-buttons .primary { background-color: #0072e5; }
+    .cta-buttons .secondary { background-color: #C08C1B; }
+    .cta-buttons .dark { background-color: #333; }
     .footer {
+      text-align: left;
+      padding: 0.5rem 1rem;
       font-size: 0.75rem;
       color: #666;
-      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎞️ Inline SVG Animated Background -->
+  <!-- 🪩 Inline Candlestick Background -->
   <div class="svg-bg">
     <svg width="100%" height="100%" viewBox="0 0 2400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
       <defs>
         <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#d4af37" stop-opacity="0.2" />
-          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.6" />
-          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.2" />
+          <stop offset="0%" stop-color="#d4af37" stop-opacity="0.2"/>
+          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.2"/>
         </linearGradient>
       </defs>
       <g>
-        <!-- Sample animated gold bars -->
-        <rect x="20" y="50" width="6" height="60" fill="url(#goldGradient)">
-          <animate attributeName="y" values="70;50;70" dur="6s" repeatCount="indefinite"/>
-          <animate attributeName="height" values="40;60;40" dur="6s" repeatCount="indefinite"/>
+        <!-- Repeating animated bars -->
+        <rect x="20" y="40" width="6" height="80" fill="url(#goldGradient)">
+          <animate attributeName="height" values="60;80;60" dur="6s" repeatCount="indefinite" />
+          <animate attributeName="y" values="60;40;60" dur="6s" repeatCount="indefinite" />
         </rect>
-        <rect x="40" y="80" width="6" height="30" fill="url(#goldGradient)">
-          <animate attributeName="y" values="70;90;70" dur="5s" repeatCount="indefinite"/>
-          <animate attributeName="height" values="50;30;50" dur="5s" repeatCount="indefinite"/>
+        <rect x="40" y="80" width="6" height="40" fill="url(#goldGradient)">
+          <animate attributeName="height" values="40;60;40" dur="5s" repeatCount="indefinite" />
+          <animate attributeName="y" values="80;60;80" dur="5s" repeatCount="indefinite" />
         </rect>
-        <rect x="60" y="40" width="6" height="80" fill="url(#goldGradient)">
-          <animate attributeName="y" values="60;40;60" dur="7s" repeatCount="indefinite"/>
-          <animate attributeName="height" values="60;80;60" dur="7s" repeatCount="indefinite"/>
+        <rect x="60" y="30" width="6" height="100" fill="url(#goldGradient)">
+          <animate attributeName="height" values="70;100;70" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="y" values="60;30;60" dur="7s" repeatCount="indefinite" />
         </rect>
-        <!-- เพิ่มแท่งกราฟตามต้องการ -->
+        <!-- เพิ่มแท่งกราฟได้ตามความต้องการ -->
       </g>
     </svg>
   </div>
 
-  <div class="scaled-content">
+  <div class="page-content">
     <div class="header">
-      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" style="height:100px;">
-      <h1>Adaptive Intelligence. Creative Precision.</h1>
-      <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
-      <div class="nav-buttons">
-        <a href="signup.html">Sign Up</a>
-        <a href="login.html">Login</a>
-        <a href="dashboard.html">Dashboard</a>
+      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
+      <div class="header-right">
+        <div class="header-text">
+          <h1>Adaptive Intelligence. Creative Precision.</h1>
+          <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
+        </div>
+        <div class="nav-buttons">
+          <a href="signup.html" class="signup">Sign Up</a>
+          <a href="login.html" class="login">Login</a>
+          <a href="dashboard.html" class="dashboard">Dashboard</a>
+        </div>
       </div>
     </div>
 
@@ -143,36 +209,12 @@
 
     <div class="gallery">
       <div class="mockup-card" onclick="location.href='pro4.html'">
-        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4">
+        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4" />
         <h3>Pro-4</h3>
         <p>Precision-Engineered Gold Automation</p>
-        <p class="edition pro4"><strong>Free trial for 15 days</strong></p>
+        <p class="edition pro4"><strong>Free trial available for 15 days</strong></p>
       </div>
       <div class="mockup-card" onclick="location.href='pro5.html'">
-        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5">
+        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro-5" />
         <h3>Pro-5</h3>
-        <p>Adaptive Risk Management</p>
-        <p class="edition pro5"><strong>Launching this September</strong></p>
-      </div>
-      <div class="mockup-card" onclick="location.href='corex.html'">
-        <img src="CoreX_PerformanceEdition_whiteBG.png" alt="CoreX">
-        <h3>Core-X</h3>
-        <p>Modular Expansions & Filters</p>
-        <p class="edition corex"><strong>Currently calibrating</strong></p>
-      </div>
-    </div>
-
-    <div class="cta">
-      <h2>Ready to Experience ApexXAU?</h2>
-      <p>Start your journey with MomentumXLab today.</p>
-      <a href="signup.html">Start Free Trial</a>
-      <a href="login.html">Login</a>
-      <a href="dashboard.html">Dashboard</a>
-    </div>
-
-    <div class="footer">
-      <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
-    </div>
-  </div>
-</body>
-</html>
+        <p>Adaptive
