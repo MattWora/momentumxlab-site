@@ -4,78 +4,102 @@
   <meta charset="UTF-8" />
   <title>MomentumXLab – Landing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Outfit', sans-serif;
-      background: #fdfdfd;
-      overflow-x: hidden;
-      color: #333;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom right, #0d0d0d, #1a1a1a);
+      color: #eee;
     }
+
     .svg-bg {
-      position: fixed;
-      top: 0;
+      position: absolute;
+      bottom: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
+      width: 100%;
+      height: 220px;
+      z-index: 0;
+      opacity: 0.2;
       pointer-events: none;
-      opacity: 0.08;
     }
+
     .page-content {
+      position: relative;
+      z-index: 1;
       transform: scale(0.85);
       transform-origin: top center;
-      width: 100%;
+      max-width: 100%;
       max-height: 100vh;
     }
+
     .header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 1rem 1.5rem;
+      padding: 40px 40px 20px;
       flex-wrap: wrap;
     }
+
     .header img {
       height: 140px;
       object-fit: contain;
       max-width: 100%;
     }
+
     .header-right {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
     }
+
     .header-text h1 {
       font-size: 1.2rem;
       margin: 0;
-      font-weight: 700;
+      font-weight: 600;
+      color: #00c98d;
     }
+
     .header-text p {
       font-size: 0.8rem;
       margin: 0.4rem 0;
       max-width: 340px;
-      color: #555;
+      color: #ccc;
     }
+
     .nav-buttons a {
       margin: 0.2rem;
       padding: 0.5rem 1rem;
       border-radius: 6px;
       font-size: 0.75rem;
       font-weight: bold;
-      color: #fff;
+      color: #0f0f0f;
+      background-color: #00c98d;
       text-decoration: none;
-      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      transition: background 0.3s;
     }
-    .signup { background: #0072e5; }
-    .login { background: #C08C1B; }
-    .dashboard { background: #333; }
-    .intro, .cta, .footer {
+
+    .nav-buttons a:hover {
+      background-color: #00b27c;
+    }
+
+    .intro {
       text-align: center;
       padding: 1rem;
     }
+
+    .intro h2 {
+      color: #00c98d;
+      font-weight: 600;
+    }
+
+    .intro p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
     .gallery {
       display: flex;
       justify-content: center;
@@ -85,34 +109,53 @@
       max-width: 960px;
       margin: auto;
     }
+
     .mockup-card {
       max-width: 220px;
-      background: #fff;
+      background: #181818;
       border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
       padding: 0.8rem;
       text-align: center;
       transition: transform 0.3s ease;
       cursor: pointer;
     }
+
     .mockup-card:hover {
       transform: translateY(-2px);
     }
+
     .mockup-card img {
       width: 100%;
       border-radius: 8px;
     }
+
     .mockup-card h3 {
       font-size: 0.95rem;
       margin-bottom: 0.2rem;
+      color: #00c98d;
     }
+
     .mockup-card p {
       font-size: 0.75rem;
       margin: 0.15rem 0;
+      color: #eee;
     }
-    .edition.pro4 { color: #C08C1B; font-weight: 600; }
-    .edition.pro5 { color: #0072e5; font-weight: 600; }
-    .edition.corex { color: #673ab7; font-weight: 600; }
+
+    .cta {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .cta h2 {
+      color: #00c98d;
+    }
+
+    .cta p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
     .cta-buttons a {
       margin: 0.3rem;
       padding: 0.5rem 1rem;
@@ -120,47 +163,34 @@
       font-size: 0.85rem;
       font-weight: 600;
       text-decoration: none;
-      color: #fff;
+      color: #0f0f0f;
+      background-color: #00c98d;
+      font-family: 'Orbitron', sans-serif;
+      transition: background 0.3s;
     }
-    .primary { background-color: #0072e5; }
-    .secondary { background-color: #C08C1B; }
-    .dark { background-color: #333; }
+
+    .cta-buttons a:hover {
+      background-color: #00b27c;
+    }
+
+    .footer {
+      background-color: #fff;
+      color: #000;
+      padding: 8px 20px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #ccc;
+    }
+
     .footer p {
-      font-size: 0.75rem;
-      color: #666;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
     }
   </style>
 </head>
 <body>
-  <div class="svg-bg" style="position:absolute;top:0;left:0;width:100%;height:200px;z-index:0;opacity:0.3;">
-  <svg width="100%" height="100%" viewBox="0 0 2400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#ffd700" stop-opacity="0.4" />
-        <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9" />
-        <stop offset="100%" stop-color="#d4af37" stop-opacity="0.4" />
-      </linearGradient>
-    </defs>
-    <g>
-      <rect x="20" y="60" width="6" height="60" fill="url(#goldGradient)">
-        <animate attributeName="y" values="60;40;60" dur="3.5s" repeatCount="indefinite" />
-        <animate attributeName="height" values="60;80;60" dur="3.5s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.4;0.9;0.4" dur="3.5s" repeatCount="indefinite" />
-      </rect>
-      <rect x="40" y="80" width="6" height="40" fill="url(#goldGradient)">
-        <animate attributeName="y" values="80;60;80" dur="3s" repeatCount="indefinite" />
-        <animate attributeName="height" values="40;60;40" dur="3s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite" />
-      </rect>
-      <rect x="60" y="30" width="6" height="100" fill="url(#goldGradient)">
-        <animate attributeName="y" values="60;30;60" dur="4s" repeatCount="indefinite" />
-        <animate attributeName="height" values="70;100;70" dur="4s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite" />
-      </rect>
-    </g>
-  </svg>
-</div>
-
   <div class="page-content">
     <div class="header">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
@@ -170,9 +200,9 @@
           <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
         </div>
         <div class="nav-buttons">
-          <a href="signup.html" class="signup">Sign Up</a>
-          <a href="login.html" class="login">Login</a>
-          <a href="dashboard.html" class="dashboard">Dashboard</a>
+          <a href="signup.html">Sign Up</a>
+          <a href="login.html">Login</a>
+          <a href="dashboard.html">Dashboard</a>
         </div>
       </div>
     </div>
@@ -187,21 +217,21 @@
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4" />
         <h3>Pro-4</h3>
         <p>Precision-Engineered Gold Automation</p>
-        <p class="edition pro4"><strong>Free trial available for 15 days</strong></p>
+        <p><strong>Free trial available for 15 days</strong></p>
       </div>
 
       <div class="mockup-card" onclick="location.href='pro5.html'">
         <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro-5" />
         <h3>Pro-5</h3>
         <p>Adaptive Risk Management</p>
-        <p class="edition pro5"><strong>Launching this September</strong></p>
+        <p><strong>Launching this September</strong></p>
       </div>
 
       <div class="mockup-card" onclick="location.href='corex.html'">
         <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
         <h3>Core-X</h3>
         <p>Modular Expansions & AI Filters</p>
-        <p class="edition corex"><strong>Currently in calibration</strong></p>
+        <p><strong>Currently in calibration</strong></p>
       </div>
     </div>
 
@@ -209,15 +239,45 @@
       <h2>Ready to Experience ApexXAU?</h2>
       <p>Start your journey with MomentumXLab today.</p>
       <div class="cta-buttons">
-        <a href="signup.html" class="primary">Start Free Trial</a>
-        <a href="login.html" class="secondary">Member Login</a>
-        <a href="dashboard.html" class="dark">Go to Dashboard</a>
+        <a href="signup.html">Start Free Trial</a>
+        <a href="login.html">Member Login</a>
+        <a href="dashboard.html">Go to Dashboard</a>
       </div>
     </div>
 
     <div class="footer">
       <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
     </div>
+  </div>
+
+  <!-- ✅ SVG Background อยู่ตำแหน่งล่างสุดของ body -->
+  <div class="svg-bg">
+    <svg width="100%" height="100%" viewBox="0 0 2400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.4" />
+          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.4" />
+        </linearGradient>
+      </defs>
+      <g>
+        <rect x="20" y="60" width="6" height="60" fill="url(#goldGradient)">
+          <animate attributeName="y" values="60;40;60" dur="3.5s" repeatCount="indefinite" />
+          <animate attributeName="height" values="60;80;60" dur="3.5s" repeatCount="indefinite" />
+          <animate attributeName="fill-opacity" values="0.4;0.9;0.4" dur="3.5s" repeatCount="indefinite" />
+        </rect>
+        <rect x="40" y="80" width="6" height="40" fill="url(#goldGradient)">
+          <animate attributeName="y" values="80;60;80" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="height" values="40;60;40" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="fill-opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite" />
+        </rect>
+        <rect x="60" y="30" width="6" height="100" fill="url(#goldGradient)">
+          <animate attributeName="y" values="60;30;60" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="height" values="70;100;70" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="fill-opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite" />
+        </rect>
+      </g>
+    </svg>
   </div>
 </body>
 </html>
