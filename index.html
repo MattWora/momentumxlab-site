@@ -116,15 +116,16 @@
         <h1>Adaptive Intelligence. Creative Precision.</h1>
         <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
         <div class="nav-buttons">
-  <a href="https://mattwora.github.io/momentumxlab-auth-system/signup.html" target="_blank">
+  <a id="nav-signup" href="https://mattwora.github.io/momentumxlab-auth-system/signup.html" target="_blank">
     Sign Up
   </a>
-  <a href="https://mattwora.github.io/momentumxlab-auth-system/login.html" target="_blank">
+  <a id="nav-login" href="https://mattwora.github.io/momentumxlab-auth-system/login.html" target="_blank">
     Login
   </a>
-  <a href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html" target="_blank">
+  <a id="nav-dashboard" href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html" target="_blank">
     Dashboard
   </a>
+  <a id="nav-logout" href="#">Logout</a>
 </div>
       </div>
     </div>
@@ -235,3 +236,47 @@
   </script>
 </body>
 </html>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+  // 🔧 config Firebase (ถ้ายังไม่ได้ตั้ง)
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    // ...อื่นๆตามที่ได้จาก Firebase Console
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  // 🧠 ควบคุมปุ่มตามสถานะผู้ใช้
+  auth.onAuthStateChanged(user => {
+    const btnSignUp  = document.getElementById("nav-signup");
+    const btnLogin   = document.getElementById("nav-login");
+    const btnDash    = document.getElementById("nav-dashboard");
+    const btnLogout  = document.getElementById("nav-logout");
+
+    if (user) {
+      // ✅ ล็อกอินแล้ว
+      btnSignUp.style.display = "none";
+      btnLogin.style.display  = "none";
+      btnDash.style.display   = "inline-block";
+      btnLogout.style.display = "inline-block";
+    } else {
+      // ❌ ยังไม่ล็อกอิน
+      btnSignUp.style.display = "inline-block";
+      btnLogin.style.display  = "inline-block";
+      btnDash.style.display   = "none";
+      btnLogout.style.display = "none";
+    }
+  });
+
+  // 🔓 Logout แบบเรียบง่าย
+  document.getElementById("nav-logout").onclick = e => {
+    e.preventDefault();
+    auth.signOut().then(() => {
+      location.href = "index.html"; // หรือ reload ได้เลย
+    });
+  };
+</script>
