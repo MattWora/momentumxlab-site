@@ -1,0 +1,48 @@
+<svg width="100%" height="100%" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#ffd700" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0.2" />
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes slide {
+        0% { transform: translateX(0); opacity: 0.2; }
+        50% { opacity: 0.6; }
+        100% { transform: translateX(-1200px); opacity: 0.2; }
+      }
+    </style>
+  </defs>
+
+  <g filter="url(#glow)">
+    <rect x="0" y="0" width="2400" height="200" fill="none" />
+    <g>
+      <!-- Series of candlestick bars -->
+      <g transform="translate(0,0)">
+        <rect x="20" y="50" width="6" height="60" fill="url(#goldGradient)">
+          <animate attributeName="y" values="70;50;70" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="height" values="40;60;40" dur="6s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="40" y="80" width="6" height="30" fill="url(#goldGradient)">
+          <animate attributeName="y" values="70;90;70" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="height" values="50;30;50" dur="5s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="60" y="40" width="6" height="80" fill="url(#goldGradient)">
+          <animate attributeName="y" values="60;40;60" dur="7s" repeatCount="indefinite"/>
+          <animate attributeName="height" values="60;80;60" dur="7s" repeatCount="indefinite"/>
+        </rect>
+        <!-- Repeat similar bars -->
+        <!-- You can copy these bars and offset 'x' position: x="80", x="100", etc. -->
+      </g>
+    </g>
+  </g>
+</svg>
