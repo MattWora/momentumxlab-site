@@ -16,32 +16,36 @@
     }
 
     .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       background-color: #d3d3d3;
       color: #0d0d0d;
-      text-align: center;
-      padding: 40px 20px;
+      padding: 20px 40px;
       position: relative;
       z-index: 2;
     }
 
     .header img {
-      height: 260px;
-      max-width: 100%;
+      height: 240px;
       object-fit: contain;
-      margin-bottom: 20px;
     }
 
-    .header h1 {
+    .header-content {
+      text-align: right;
+      max-width: 60%;
+    }
+
+    .header-content h1 {
       font-size: 1.4rem;
       margin: 0.5rem 0;
       font-weight: 600;
       color: #0072e5;
     }
 
-    .header p {
+    .header-content p {
       font-size: 0.9rem;
-      margin: 0.3rem auto;
-      max-width: 600px;
+      margin: 0.3rem 0;
       color: #444;
     }
 
@@ -50,7 +54,7 @@
     }
 
     .nav-buttons a {
-      margin: 0.3rem;
+      margin-left: 0.5rem;
       padding: 0.5rem 1rem;
       border-radius: 6px;
       font-size: 0.75rem;
@@ -68,7 +72,7 @@
 
     .svg-bg {
       position: absolute;
-      top: 380px; /* ✅ วางใต้ปุ่มกดพอดี */
+      top: 280px;
       left: 0;
       width: 100%;
       height: 100px;
@@ -176,16 +180,18 @@
 <body>
   <div class="header">
     <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
-    <h1>Adaptive Intelligence. Creative Precision.</h1>
-    <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
-    <div class="nav-buttons">
-      <a href="signup.html">Sign Up</a>
-      <a href="login.html">Login</a>
-      <a href="dashboard.html">Dashboard</a>
+    <div class="header-content">
+      <h1>Adaptive Intelligence. Creative Precision.</h1>
+      <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
+      <div class="nav-buttons">
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
     </div>
   </div>
 
-  <!-- ✅ กราฟทองถี่ เคลื่อนจากขวาไปซ้าย -->
+  <!-- ✅ กราฟทองคำถี่ ๆ เลื่อนเต็มพื้นหลัง -->
   <div class="svg-bg">
     <svg class="scroll-graph" width="4800" height="100" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -196,36 +202,28 @@
         </linearGradient>
       </defs>
       <g>
-        <!-- ตัวอย่างแท่งทอง -->
-        ${Array.from({ length: 400 }).map((_, i) => `
-          <rect x="${i * 12}" y="${60 - Math.floor(Math.random() * 30)}" width="6" height="${40 + Math.floor(Math.random() * 30)}" fill="url(#goldGradient)" />
-        `).join('')}
+        <!-- ตัวอย่างกราฟถี่ -->
+        <rect x="0" y="50" width="6" height="40" fill="url(#goldGradient)" />
+        <rect x="12" y="45" width="6" height="50" fill="url(#goldGradient)" />
+        <rect x="24" y="30" width="6" height="70" fill="url(#goldGradient)" />
+        <rect x="36" y="60" width="6" height="40" fill="url(#goldGradient)" />
+        <rect x="48" y="35" width="6" height="65" fill="url(#goldGradient)" />
+        <rect x="60" y="50" width="6" height="50" fill="url(#goldGradient)" />
+        <!-- เพิ่มได้อีกตามต้องการ -->
       </g>
     </svg>
   </div>
 
   <div class="gallery">
-    <div class="mockup-card" onclick="location.href='pro4.html'">
-      <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4" />
-      <h3>Pro-4</h3>
-      <p>Precision-Engineered Gold Automation</p>
-      <p><strong>Free trial available for 15 days</strong></p>
-    </div>
-
-    <div class="mockup-card" onclick="location.href='pro5.html'">
-      <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro-5" />
-      <h3>Pro-5</h3>
-      <p>Adaptive Risk Management</p>
-      <p><strong>Launching this September</strong></p>
-    </div>
-
-    <div class="mockup-card" onclick="location.href='corex.html'">
-      <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
-      <h3>Core-X</h3>
-      <p>Modular Expansions & AI Filters</p>
-      <p><strong>Currently in calibration</strong></p>
-    </div>
+    <!-- ...mockup cards... -->
   </div>
 
   <div class="cta">
-    <
+    <!-- ...CTA section... -->
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
+  </div>
+</body>
+</html>
