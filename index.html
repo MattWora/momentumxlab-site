@@ -9,85 +9,45 @@
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(to bottom, #d3d3d3 0%, #1a1a1a 40%, #0d0d0d 100%);
+      background-color: #0d0d0d;
       color: #eee;
       overflow-x: hidden;
-      position: relative;
-    }
-
-    .svg-bg {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
-      z-index: 0;
-      overflow: hidden;
-      opacity: 0.3;
-      pointer-events: none;
-    }
-
-    .scroll-graph {
-      animation: scrollLeft 20s linear infinite;
-    }
-
-    @keyframes scrollLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .page-content {
-      position: relative;
-      z-index: 1;
-      transform: scale(0.85);
-      transform-origin: top center;
-    }
-
-    .header, .intro {
-      background-color: #d3d3d3;
-      color: #0d0d0d;
-      padding-bottom: 40px;
     }
 
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 40px 40px 20px;
-      flex-wrap: wrap;
+      background-color: #d3d3d3;
+      color: #0d0d0d;
+      padding: 40px;
+      text-align: center;
     }
 
     .header img {
-      height: 180px;
-      object-fit: contain;
+      height: 220px;
       max-width: 100%;
+      object-fit: contain;
     }
 
-    .header-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .header-text h1,
-    .intro h2 {
-      font-size: 1.2rem;
-      margin: 0;
+    .header h1 {
+      font-size: 1.4rem;
+      margin: 0.5rem 0;
       font-weight: 600;
       color: #0072e5;
     }
 
-    .header-text p,
-    .intro p {
-      font-size: 0.8rem;
-      margin: 0.4rem 0;
-      max-width: 340px;
+    .header p {
+      font-size: 0.9rem;
+      margin: 0.3rem 0;
       color: #444;
+      max-width: 600px;
+      margin-inline: auto;
+    }
+
+    .nav-buttons {
+      margin-top: 20px;
     }
 
     .nav-buttons a {
-      margin: 0.2rem;
+      margin: 0.3rem;
       padding: 0.5rem 1rem;
       border-radius: 6px;
       font-size: 0.75rem;
@@ -103,17 +63,12 @@
       background-color: #00b27c;
     }
 
-    .intro {
-      text-align: center;
-      padding: 1rem;
-    }
-
     .gallery {
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
-      padding: 1rem;
+      padding: 2rem;
       max-width: 960px;
       margin: auto;
     }
@@ -152,16 +107,11 @@
 
     .cta {
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
     }
 
     .cta h2 {
       color: #00c98d;
-    }
-
-    .cta p {
-      color: #ccc;
-      font-size: 0.9rem;
     }
 
     .cta-buttons a {
@@ -177,10 +127,6 @@
       transition: background 0.3s;
     }
 
-    .cta-buttons a:hover {
-      background-color: #00b27c;
-    }
-
     .footer {
       background-color: #fff;
       color: #000;
@@ -193,95 +139,96 @@
     }
 
     .footer p {
-      font-family: 'Orbitron', sans-serif;
       margin: 0;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .svg-bg {
+      position: absolute;
+      bottom: 58px; /* อยู่เหนือ footer นิดเดียว */
+      left: 0;
+      width: 100%;
+      height: 80px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .scroll-graph {
+      animation: scrollLeft 16s linear infinite;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
   </style>
 </head>
 
 <body>
-  <div class="page-content">
-    <div class="header">
-      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
-      <div class="header-right">
-        <div class="header-text">
-          <h1>Adaptive Intelligence. Creative Precision.</h1>
-          <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
-        </div>
-        <div class="nav-buttons">
-          <a href="signup.html">Sign Up</a>
-          <a href="login.html">Login</a>
-          <a href="dashboard.html">Dashboard</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="intro">
-      <h2>MomentumXLab</h2>
-      <p>Building the future of adaptive trading systems – combining AI precision with creative excellence.</p>
-    </div>
-
-    <div class="gallery">
-      <div class="mockup-card" onclick="location.href='pro4.html'">
-        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4" />
-        <h3>Pro-4</h3>
-        <p>Precision-Engineered Gold Automation</p>
-        <p><strong>Free trial available for 15 days</strong></p>
-      </div>
-
-      <div class="mockup-card" onclick="location.href='pro5.html'">
-        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro-5" />
-        <h3>Pro-5</h3>
-        <p>Adaptive Risk Management</p>
-        <p><strong>Launching this September</strong></p>
-      </div>
-
-      <div class="mockup-card" onclick="location.href='corex.html'">
-        <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
-        <h3>Core-X</h3>
-        <p>Modular Expansions & AI Filters</p>
-        <p><strong>Currently in calibration</strong></p>
-      </div>
-    </div>
-
-    <div class="cta">
-      <h2>Ready to Experience ApexXAU?</h2>
-      <p>Start your journey with MomentumXLab today.</p>
-      <div class="cta-buttons">
-        <a href="signup.html">Start Free Trial</a>
-        <a href="login.html">Member Login</a>
-        <a href="dashboard.html">Go to Dashboard</a>
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
+  <div class="header">
+    <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
+    <h1>Adaptive Intelligence. Creative Precision.</h1>
+    <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
+    <div class="nav-buttons">
+      <a href="signup.html">Sign Up</a>
+      <a href="login.html">Login</a>
+      <a href="dashboard.html">Dashboard</a>
     </div>
   </div>
 
-  <!-- ✅ กราฟทองคำแอนิเมชันพื้นหลังล่างสุด -->
-    <div class="svg-bg">
+  <div class="gallery">
+    <div class="mockup-card" onclick="location.href='pro4.html'">
+      <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4" />
+      <h3>Pro-4</h3>
+      <p>Precision-Engineered Gold Automation</p>
+      <p><strong>Free trial available for 15 days</strong></p>
+    </div>
+
+    <div class="mockup-card" onclick="location.href='pro5.html'">
+      <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro-5" />
+      <h3>Pro-5</h3>
+      <p>Adaptive Risk Management</p>
+      <p><strong>Launching this September</strong></p>
+    </div>
+
+    <div class="mockup-card" onclick="location.href='corex.html'">
+      <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
+      <h3>Core-X</h3>
+      <p>Modular Expansions & AI Filters</p>
+      <p><strong>Currently in calibration</strong></p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Ready to Experience ApexXAU?</h2>
+    <div class="cta-buttons">
+      <a href="signup.html">Start Free Trial</a>
+      <a href="login.html">Member Login</a>
+      <a href="dashboard.html">Go to Dashboard</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
+  </div>
+
+  <!-- ✅ กราฟทองถี่ ยาวเต็มด้านล่าง -->
+  <div class="svg-bg">
     <svg class="scroll-graph" width="4800" height="100" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3"/>
-          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3"/>
+          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3" />
+          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3" />
         </linearGradient>
       </defs>
       <g>
-        <!-- 🪙 วางแท่งทองถี่ ๆ สลับความสูง -->
-        <rect x="0" y="60" width="6" height="60" fill="url(#goldGradient)" />
-        <rect x="12" y="50" width="6" height="70" fill="url(#goldGradient)" />
-        <rect x="24" y="40" width="6" height="80" fill="url(#goldGradient)" />
-        <rect x="36" y="65" width="6" height="55" fill="url(#goldGradient)" />
-        <rect x="48" y="45" width="6" height="75" fill="url(#goldGradient)" />
-        <rect x="60" y="55" width="6" height="65" fill="url(#goldGradient)" />
-        <rect x="72" y="42" width="6" height="78" fill="url(#goldGradient)" />
-        <rect x="84" y="60" width="6" height="60" fill="url(#goldGradient)" />
-        <!-- ✅ สามารถ copy รูปแบบนี้ต่อจนถึง x=4800 -->
-      </g>
-    </svg>
-  </div>
-</body>
-</html>
+        <!-- 💡 ตัวอย่างแท่งทองถี่ ๆ -->
+        <rect x="0" y="50" width="6" height="50" fill="url(#goldGradient)" />
+        <rect x="12" y="40" width="6" height="60" fill="url(#goldGradient)" />
+        <rect x="24" y="45" width="6" height="55" fill="url(#goldGradient)" />
+        <rect x="36" y="35" width="6" height="65" fill="url(#goldGradient)" />
+        <rect x="48" y="50" width="6" height="50" fill="url(#goldGradient)" />
+        <rect x="60" y="38" width="6" height="62" fill="url(#goldGradient)" />
+        <rect x="72" y="44" width="6" height="56" fill="url(#goldGradient)" />
+        <rect x="84" y="41" width="6"
