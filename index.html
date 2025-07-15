@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Global Reset & Layout */
+    /* Reset & Base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -19,13 +19,11 @@
     }
     .page-content {
       position: relative;
-      z-index: 1;
       flex: 1;
-      display: flex;
-      flex-direction: column;
+      z-index: 1;
     }
 
-    /* Header & Navigation */
+    /* Header */
     .header {
       display: flex;
       justify-content: space-between;
@@ -34,10 +32,7 @@
       background: #f0f0f0;
       height: 220px;
     }
-    .header img {
-      height: 180px;
-      object-fit: contain;
-    }
+    .header img { height: 180px; object-fit: contain; }
     .header-text {
       max-width: 400px;
       text-align: right;
@@ -46,33 +41,30 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
-      color: #1a1a1a;
     }
     .header-text p {
-      margin-top: 0.5rem;
+      margin-top: .5rem;
+      font-size: .9rem;
       color: #555;
-      font-size: 0.9rem;
     }
     .nav-buttons {
-      margin-top: 0.8rem;
+      margin-top: .8rem;
     }
     .nav-buttons a {
-      margin-left: 0.5rem;
-      padding: 0.5rem 1rem;
+      margin-left: .5rem;
+      padding: .5rem 1rem;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.75rem;
+      font-size: .75rem;
       font-weight: 600;
       color: #fff;
       background: #0072e5;
       border-radius: 6px;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: background .3s;
     }
-    .nav-buttons a:hover {
-      background: #005bb5;
-    }
+    .nav-buttons a:hover { background: #005bb5; }
 
-    /* Gold Graph Overlay */
+    /* Gold-Graph Overlay */
     .graph-overlay {
       position: absolute;
       top: 220px;
@@ -84,9 +76,9 @@
       overflow: hidden;
     }
     #goldGraph {
-      display: block;
       width: 100%;
       height: 100%;
+      display: block;
     }
 
     /* Mockup Gallery */
@@ -96,43 +88,41 @@
       justify-content: center;
       gap: 1rem;
       padding: 1rem 2rem;
-      z-index: 1;
-      margin-top: 320px; /* offset for the overlay */
+      margin-top: 0;          /* เอา margin-top ออก */
+      z-index: 1;             /* อยู่เหนือ graph-overlay */
     }
     .mockup-card {
       background: rgba(255,255,255,0.85);
       border-radius: 10px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.05);
       width: 200px;
-      padding: 0.8rem;
+      padding: .8rem;
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform .3s;
     }
-    .mockup-card:hover {
-      transform: translateY(-4px);
-    }
+    .mockup-card:hover { transform: translateY(-4px); }
     .mockup-card img {
       width: 100%;
       max-width: 180px;
+      margin-bottom: .5rem;
       object-fit: contain;
-      margin-bottom: 0.5rem;
     }
     .mockup-card h3 {
-      font-size: 0.95rem;
+      font-size: .95rem;
       font-weight: 600;
       color: #1f1f1f;
-      margin-bottom: 0.3rem;
+      margin-bottom: .3rem;
     }
     .mockup-card p {
-      font-size: 0.75rem;
+      font-size: .75rem;
       color: #555;
-      margin-bottom: 0.4rem;
+      margin-bottom: .4rem;
     }
-    .edition.pro4 { color: #C08C1B; font-weight: 600; }
-    .edition.pro5 { color: #0072e5; font-weight: 600; }
+    .edition.pro4  { color: #C08C1B; font-weight: 600; }
+    .edition.pro5  { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
 
-    /* CTA Section */
+    /* CTA */
     .cta-section {
       text-align: center;
       padding: 1.5rem 2rem;
@@ -143,11 +133,10 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 0.5rem;
+      margin-bottom: .5rem;
     }
     .cta-sub {
-      font-size: 0.9rem;
+      font-size: .9rem;
       color: #555;
       margin-bottom: 1rem;
     }
@@ -158,44 +147,45 @@
       flex-wrap: wrap;
     }
     .cta-btn {
-      padding: 0.6rem 1.2rem;
-      font-size: 0.85rem;
+      padding: .6rem 1.2rem;
+      font-size: .85rem;
       font-weight: 600;
-      text-decoration: none;
+      color: #fff;
       border-radius: 6px;
-      transition: opacity 0.3s;
+      text-decoration: none;
+      transition: opacity .3s;
     }
-    .cta-btn.primary {
-      background: #0072e5;
-      color: #fff;
-    }
-    .cta-btn.secondary {
-      background: #C08C1B;
-      color: #fff;
-    }
-    .cta-btn:hover {
-      opacity: 0.85;
-    }
+    .cta-btn.primary   { background: #0072e5; }
+    .cta-btn.secondary { background: #C08C1B; }
+    .cta-btn:hover      { opacity: .85; }
 
     /* Footer */
     .footer {
       text-align: center;
       padding: 1rem 2rem;
-      font-size: 0.75rem;
+      font-size: .75rem;
       color: #666;
       background: #f9f9f9;
     }
 
     /* Responsive */
     @media (max-width: 800px) {
-      .header { flex-direction: column; height: auto; padding: 1rem; }
+      .header {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+      }
       .header-text { text-align: center; }
-      .gallery { margin-top: 0; }
-      .mockup-card { width: 90%; max-width: 300px; }
+      .gallery {
+        padding: 1rem;
+      }
+      .mockup-card {
+        width: 90%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
-
 <body>
   <div class="page-content">
 
@@ -213,7 +203,7 @@
       </div>
     </div>
 
-    <!-- Gold Graph Overlay -->
+    <!-- Gold Graph Overlay (หลัง Header แต่ก่อน Gallery) -->
     <div class="graph-overlay">
       <canvas id="goldGraph"></canvas>
     </div>
@@ -250,7 +240,7 @@
       </div>
     </div>
 
-  </div> <!-- End .page-content -->
+  </div> <!-- .page-content -->
 
   <!-- Footer -->
   <div class="footer">
@@ -259,67 +249,61 @@
 
   <!-- Gold Graph Animation Script -->
   <script>
-    const canvas = document.getElementById('goldGraph');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = 320;
+    const canvas  = document.getElementById('goldGraph');
+    const ctx     = canvas.getContext('2d');
+    let barWidth  = 12, spacing = 5;
+    let bars      = [];
 
-    const bars = [];
-    const barWidth = 12;
-    const spacing = 5;
-    const totalBars = Math.ceil(canvas.width / (barWidth + spacing)) + 1;
-
-    // initialize bars offscreen to the right
-    for (let i = 0; i < totalBars; i++) {
-      const height = Math.random() * 180 + 60;
-      const dir = Math.random() > 0.5 ? 'up' : 'down';
-      bars.push({ x: canvas.width + i * (barWidth + spacing), h: height, dir });
+    function initBars() {
+      canvas.width  = window.innerWidth;
+      canvas.height = 320;
+      bars = [];
+      const total = Math.ceil(canvas.width / (barWidth + spacing)) + 1;
+      for (let i = 0; i < total; i++) {
+        const h   = Math.random() * 180 + 60;
+        const dir = Math.random() > .5 ? 'up' : 'down';
+        bars.push({ x: canvas.width + i * (barWidth + spacing), h, dir });
+      }
     }
 
-    function drawBar(bar) {
-      const x = bar.x;
-      const y = canvas.height - bar.h;
-      const grad = ctx.createLinearGradient(x, canvas.height, x, y);
-      if (bar.dir === 'up') {
-        grad.addColorStop(0, '#FFD700');
-        grad.addColorStop(0.5, '#FFF8DC');
-        grad.addColorStop(1, 'rgba(255,255,180,0.85)');
+    function drawBar(b) {
+      const x   = b.x;
+      const y   = canvas.height - b.h;
+      const grd = ctx.createLinearGradient(x, canvas.height, x, y);
+      if (b.dir === 'up') {
+        grd.addColorStop(0, '#FFD700');
+        grd.addColorStop(.5, '#FFF8DC');
+        grd.addColorStop(1, 'rgba(255,255,180,0.85)');
       } else {
-        grad.addColorStop(0, 'rgba(255,215,0,0.2)');
-        grad.addColorStop(1, 'rgba(240,220,150,0.05)');
+        grd.addColorStop(0, 'rgba(255,215,0,0.2)');
+        grd.addColorStop(1, 'rgba(240,220,150,0.05)');
       }
-      ctx.fillStyle = grad;
-      ctx.fillRect(x, y, barWidth, bar.h);
+      ctx.fillStyle = grd;
+      ctx.fillRect(x, y, barWidth, b.h);
     }
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let bar of bars) {
-        drawBar(bar);
-        bar.x -= 1.5;
-      }
-      // recycle bars
+      bars.forEach(b => {
+        drawBar(b);
+        b.x -= 1.5;
+      });
       if (bars[0].x < -barWidth) bars.shift();
-      if (bars[bars.length - 1].x < canvas.width) {
-        const height = Math.random() * 180 + 60;
-        const dir = Math.random() > 0.5 ? 'up' : 'down';
-        bars.push({ x: canvas.width, h: height, dir });
+      if (bars[bars.length-1].x < canvas.width) {
+        const h   = Math.random() * 180 + 60;
+        const dir = Math.random() > .5 ? 'up' : 'down';
+        bars.push({ x: canvas.width, h, dir });
       }
       requestAnimationFrame(animate);
     }
 
-    animate();
-
-    // adjust canvas size on resize
     window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      bars.length = 0;
-      for (let i = 0; i < Math.ceil(canvas.width / (barWidth + spacing)) + 1; i++) {
-        const height = Math.random() * 180 + 60;
-        const dir = Math.random() > 0.5 ? 'up' : 'down';
-        bars.push({ x: canvas.width + i * (barWidth + spacing), h: height, dir });
-      }
+      initBars();
     });
+
+    // เริ่มต้น
+    initBars();
+    animate();
   </script>
 </body>
 </html>
