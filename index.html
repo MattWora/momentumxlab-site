@@ -12,19 +12,23 @@
       background-color: #0d0d0d;
       color: #eee;
       overflow-x: hidden;
+      position: relative;
     }
 
     .header {
       background-color: #d3d3d3;
       color: #0d0d0d;
-      padding: 40px;
       text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .header img {
-      height: 220px;
+      height: 260px;
       max-width: 100%;
       object-fit: contain;
+      margin-bottom: 20px;
     }
 
     .header h1 {
@@ -36,10 +40,9 @@
 
     .header p {
       font-size: 0.9rem;
-      margin: 0.3rem 0;
-      color: #444;
+      margin: 0.3rem auto;
       max-width: 600px;
-      margin-inline: auto;
+      color: #444;
     }
 
     .nav-buttons {
@@ -61,6 +64,31 @@
 
     .nav-buttons a:hover {
       background-color: #00b27c;
+    }
+
+    .svg-bg {
+      position: absolute;
+      top: 380px; /* ✅ วางใต้ปุ่มกดพอดี */
+      left: 0;
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .scroll-graph {
+      animation: scrollLeft 18s linear infinite;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .gallery, .cta, .footer {
+      position: relative;
+      z-index: 2;
     }
 
     .gallery {
@@ -142,25 +170,6 @@
       margin: 0;
       font-family: 'Orbitron', sans-serif;
     }
-
-    .svg-bg {
-      position: absolute;
-      bottom: 58px; /* อยู่เหนือ footer นิดเดียว */
-      left: 0;
-      width: 100%;
-      height: 80px;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .scroll-graph {
-      animation: scrollLeft 16s linear infinite;
-    }
-
-    @keyframes scrollLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
   </style>
 </head>
 
@@ -174,6 +183,25 @@
       <a href="login.html">Login</a>
       <a href="dashboard.html">Dashboard</a>
     </div>
+  </div>
+
+  <!-- ✅ กราฟทองถี่ เคลื่อนจากขวาไปซ้าย -->
+  <div class="svg-bg">
+    <svg class="scroll-graph" width="4800" height="100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3" />
+          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3" />
+        </linearGradient>
+      </defs>
+      <g>
+        <!-- ตัวอย่างแท่งทอง -->
+        ${Array.from({ length: 400 }).map((_, i) => `
+          <rect x="${i * 12}" y="${60 - Math.floor(Math.random() * 30)}" width="6" height="${40 + Math.floor(Math.random() * 30)}" fill="url(#goldGradient)" />
+        `).join('')}
+      </g>
+    </svg>
   </div>
 
   <div class="gallery">
@@ -200,35 +228,4 @@
   </div>
 
   <div class="cta">
-    <h2>Ready to Experience ApexXAU?</h2>
-    <div class="cta-buttons">
-      <a href="signup.html">Start Free Trial</a>
-      <a href="login.html">Member Login</a>
-      <a href="dashboard.html">Go to Dashboard</a>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
-  </div>
-
-  <!-- ✅ กราฟทองถี่ ยาวเต็มด้านล่าง -->
-  <div class="svg-bg">
-    <svg class="scroll-graph" width="4800" height="100" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3" />
-          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9" />
-          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3" />
-        </linearGradient>
-      </defs>
-      <g>
-        <!-- 💡 ตัวอย่างแท่งทองถี่ ๆ -->
-        <rect x="0" y="50" width="6" height="50" fill="url(#goldGradient)" />
-        <rect x="12" y="40" width="6" height="60" fill="url(#goldGradient)" />
-        <rect x="24" y="45" width="6" height="55" fill="url(#goldGradient)" />
-        <rect x="36" y="35" width="6" height="65" fill="url(#goldGradient)" />
-        <rect x="48" y="50" width="6" height="50" fill="url(#goldGradient)" />
-        <rect x="60" y="38" width="6" height="62" fill="url(#goldGradient)" />
-        <rect x="72" y="44" width="6" height="56" fill="url(#goldGradient)" />
-        <rect x="84" y="41" width="6"
+    <
