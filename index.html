@@ -72,12 +72,93 @@
     .signup { background: #0072e5; }
     .login { background: #C08C1B; }
     .dashboard { background: #333; }
+    .intro, .cta, .footer {
+      text-align: center;
+      padding: 1rem;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    .mockup-card {
+      max-width: 220px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+      padding: 0.8rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .mockup-card:hover {
+      transform: translateY(-2px);
+    }
+    .mockup-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .mockup-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .mockup-card p {
+      font-size: 0.75rem;
+      margin: 0.15rem 0;
+    }
+    .edition.pro4 { color: #C08C1B; font-weight: 600; }
+    .edition.pro5 { color: #0072e5; font-weight: 600; }
+    .edition.corex { color: #673ab7; font-weight: 600; }
+    .cta-buttons a {
+      margin: 0.3rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+    }
+    .primary { background-color: #0072e5; }
+    .secondary { background-color: #C08C1B; }
+    .dark { background-color: #333; }
+    .footer p {
+      font-size: 0.75rem;
+      color: #666;
+    }
   </style>
 </head>
 <body>
-  <!-- 🪩 Inline Candlestick Background -->
   <div class="svg-bg">
-    <!-- ส่วน SVG จะแนบในข้อความถัดไป -->
+    <svg width="100%" height="100%" viewBox="0 0 2400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3" />
+          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.7" />
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3" />
+        </linearGradient>
+      </defs>
+      <g>
+        <rect x="20" y="40" width="6" height="80" fill="url(#goldGradient)">
+          <animate attributeName="y" values="60;40;60" dur="6s" repeatCount="indefinite" />
+          <animate attributeName="height" values="60;80;60" dur="6s" repeatCount="indefinite" />
+          <animate attributeName="fill-opacity" values="0.3;0.8;0.3" dur="6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="40" y="80" width="6" height="40" fill="url(#goldGradient)">
+          <animate attributeName="y" values="80;60;80" dur="5s" repeatCount="indefinite" />
+          <animate attributeName="height" values="40;60;40" dur="5s" repeatCount="indefinite" />
+          <animate attributeName="fill-opacity" values="0.8;0.3;0.8" dur="5s" repeatCount="indefinite" />
+        </rect>
+        <rect x="60" y="30" width="6" height="100" fill="url(#goldGradient)">
+          <animate attributeName="y" values="60;30;60" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="height" values="70;100;70" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="fill-opacity" values="0.3;0.9;0.3" dur="7s" repeatCount="indefinite" />
+        </rect>
+      </g>
+    </svg>
   </div>
 
   <div class="page-content">
@@ -95,38 +176,7 @@
         </div>
       </div>
     </div>
-        <svg width="100%" height="100%" viewBox="0 0 2400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3" />
-          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.7" />
-          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3" />
-        </linearGradient>
-      </defs>
-      <g>
-        <!-- Animated Candlesticks -->
-        <!-- เพิ่มได้ตามต้องการ -->
-        <rect x="20" y="40" width="6" height="80" fill="url(#goldGradient)">
-          <animate attributeName="y" values="60;40;60" dur="6s" repeatCount="indefinite" />
-          <animate attributeName="height" values="60;80;60" dur="6s" repeatCount="indefinite" />
-          <animate attributeName="fill-opacity" values="0.3;0.8;0.3" dur="6s" repeatCount="indefinite" />
-        </rect>
-        <rect x="40" y="80" width="6" height="40" fill="url(#goldGradient)">
-          <animate attributeName="y" values="80;60;80" dur="5s" repeatCount="indefinite" />
-          <animate attributeName="height" values="40;60;40" dur="5s" repeatCount="indefinite" />
-          <animate attributeName="fill-opacity" values="0.8;0.3;0.8" dur="5s" repeatCount="indefinite" />
-        </rect>
-        <rect x="60" y="30" width="6" height="100" fill="url(#goldGradient)">
-          <animate attributeName="y" values="60;30;60" dur="7s" repeatCount="indefinite" />
-          <animate attributeName="height" values="70;100;70" dur="7s" repeatCount="indefinite" />
-          <animate attributeName="fill-opacity" values="0.3;0.9;0.3" dur="7s" repeatCount="indefinite" />
-        </rect>
-        <!-- คัดลอกเพิ่มแท่งได้ตามความต้องการ -->
-      </g>
-    </svg>
-  </div>
 
-  <div class="page-content">
     <div class="intro">
       <h2>MomentumXLab</h2>
       <p>Building the future of adaptive trading systems – combining AI precision with creative excellence.</p>
@@ -145,6 +195,7 @@
         <p>Adaptive Risk Management</p>
         <p class="edition pro5"><strong>Launching this September</strong></p>
       </div>
+
       <div class="mockup-card" onclick="location.href='corex.html'">
         <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
         <h3>Core-X</h3>
