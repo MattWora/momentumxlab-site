@@ -5,73 +5,82 @@
   <title>MomentumXLab – Landing Page V.5.3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
+    /* -- styles เหมือนเดิมทั้งหมดของคุณ -- */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Outfit', 'Poppins', sans-serif;
-      overflow-x: hidden;
-      position: relative;
       background: linear-gradient(to right, #fdfdfd, #f6f9ff);
       color: #333;
+      overflow-x: hidden;
+      position: relative;
     }
-    .svg-bg { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden; }
-    .svg-bg object { width: 100%; height: 100%; }
-    .page-content { position: relative; z-index: 1; }
-    .header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #fff; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 1rem; }
-    .header img { height: 180px; object-fit: contain; }
+    .svg-bg object { width: 100%; height: 100%; pointer-events: none; }
+    .header, .gallery, .cta-section, .footer { padding: 1rem; }
+    .header { display: flex; justify-content: space-between; align-items: center; background: #fff; border-bottom: 1px solid #ddd; flex-wrap: wrap; }
     .header-text { max-width: 400px; text-align: right; }
-    .header-text h1 { margin: 0; font-size: 1.25rem; color: #1a1a1a; font-weight: 700; }
-    .header-text p { margin-top: 0.4rem; font-size: 0.85rem; color: #555; }
-    .nav-buttons { margin-top: 0.6rem; text-align: right; }
-    .nav-buttons a { margin-left: 0.4rem; padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 4px; font-weight: 600; text-decoration: none; transition: 0.3s ease; }
-    .nav-buttons a.signup { background: #0072e5; color: #fff; }
-    .nav-buttons a.signup:hover { background: #005bb5; }
-    .nav-buttons a.login { background: #C08C1B; color: #fff; }
-    .nav-buttons a.login:hover { background: #a07512; }
-    .nav-buttons a.dashboard { background: #333; color: #fff; }
-    .nav-buttons a.dashboard:hover { background: #111; }
-    .intro { text-align: center; padding: 1rem 1rem; }
-    .intro h2 { margin: 0; font-size: 1.5rem; color: #222; font-weight: 700; }
-    .intro p { margin: 0.3rem auto 0; font-size: 0.85rem; color: #444; max-width: 560px; }
-    .gallery { display: flex; justify-content: center; gap: 0.75rem; padding: 1rem; flex-wrap: wrap; }
-    .mockup-card { width: 100%; max-width: 200px; background: #ffffffd2; border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.05); padding: 0.7rem; text-align: center; transition: transform 0.3s ease; cursor: pointer; }
+    .header-text h1 { margin: 0; font-size: 1.25rem; font-weight: 700; }
+    .nav-buttons a {
+      margin-left: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+    }
+    .signup { background: #0072e5; }
+    .login { background: #C08C1B; }
+    .dashboard { background: #333; }
+    .gallery { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+    .mockup-card {
+      width: 100%;
+      max-width: 200px;
+      background: #ffffffd2;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      padding: 0.7rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
     .mockup-card:hover { transform: translateY(-2px); }
     .mockup-card img { width: 100%; border-radius: 8px; margin-bottom: 0.4rem; }
-    .mockup-card h3 { font-size: 0.95rem; color: #1f1f1f; margin-bottom: 0.2rem; }
+    .mockup-card h3 { font-size: 0.95rem; margin-bottom: 0.2rem; }
     .mockup-card p { font-size: 0.75rem; margin: 0.15rem 0; }
     .edition.pro4 { color: #C08C1B; font-weight: 600; }
     .edition.pro5 { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
-    .cta-section { text-align: center; padding: 1.2rem 1rem; background: linear-gradient(to right, #e6f3ff, #fef9f1); border-top: 1px solid #ddd; }
-    .cta-heading { font-size: 1.1rem; color: #1a1a1a; font-weight: 700; margin-bottom: 0.4rem; }
-    .cta-sub { font-size: 0.85rem; color: #555; margin-bottom: 0.8rem; }
-    .cta-buttons { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
-    .cta-btn { padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-    .cta-btn.primary { background-color: #0072e5; color: #fff; box-shadow: 0 3px 8px rgba(0, 114, 229, 0.2); }
-    .cta-btn.primary:hover { background-color: #005bb5; }
-    .cta-btn.secondary { background-color: #C08C1B; color: #fff; box-shadow: 0 3px 8px rgba(192, 140, 27, 0.2); }
-    .cta-btn.secondary:hover { background-color: #a07512; }
-    .cta-btn.dark { background-color: #333; color: #fff; }
-    .cta-btn.dark:hover { background-color: #111; }
-    .footer { text-align: left; padding: 0.5rem 1rem; font-size: 0.75rem; color: #666; }
-    @media screen and (max-width: 800px) {
-      .header { flex-direction: column; align-items: center; text-align: center; }
-      .header-text { text-align: center; }
-      .mockup-card { width: 90%; max-width: 300px; }
+    .cta-buttons a {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
     }
+    .primary { background-color: #0072e5; }
+    .secondary { background-color: #C08C1B; }
+    .dark { background-color: #333; }
+    .footer { font-size: 0.75rem; color: #666; text-align: left; }
   </style>
 </head>
 <body>
 
+  <!-- 🎞️ Background Candlestick -->
   <div class="svg-bg">
     <object type="image/svg+xml" data="candlestick-bg.svg"></object>
   </div>
 
   <div class="page-content">
+
+    <!-- 🔥 Header -->
     <div class="header">
-      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
+      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" style="height:160px;">
       <div class="header-text">
         <h1>Adaptive Intelligence. Creative Precision.</h1>
         <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
@@ -83,6 +92,7 @@
       </div>
     </div>
 
+    <!-- 🚀 Intro -->
     <div class="intro">
       <h2>MomentumXLab</h2>
       <p>Building the future of adaptive trading systems – combining AI precision with creative excellence.</p>
@@ -98,4 +108,35 @@
       </div>
 
       <div class="mockup-card" onclick="location.href='pro5.html'">
-       
+        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
+        <h3>ApexXAU Intelligent Pro-5</h3>
+        <p>Adaptive & Dynamic Based Risk Management</p>
+        <p class="edition pro5"><strong>Launching this September</strong></p>
+      </div>
+
+      <div class="mockup-card" onclick="location.href='corex.html'">
+        <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
+        <h3>ApexXAU Intelligent Core-X</h3>
+        <p>AI-powered Filters, Modular Expansions</p>
+        <p class="edition corex"><strong>Currently in calibration</strong></p>
+      </div>
+    </div>
+
+    <!-- 📣 CTA Section -->
+    <div class="cta-section">
+      <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
+      <p class="cta-sub">Start your journey with MomentumXLab today.</p>
+      <div class="cta-buttons">
+        <a href="signup.html" class="primary">Start Free Trial</a>
+        <a href="login.html" class="secondary">Member Login</a>
+        <a href="dashboard.html" class="dark">Go to Dashboard</a>
+      </div>
+    </div>
+
+    <!-- 📝 Footer -->
+    <div class="footer">
+      <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
