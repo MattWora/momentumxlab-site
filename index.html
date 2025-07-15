@@ -5,8 +5,8 @@
   <title>MomentumXLab – Landing Page V.5.3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    /* -- styles เหมือนเดิมทั้งหมดของคุณ -- */
     body {
       margin: 0;
       padding: 0;
@@ -14,73 +14,178 @@
       background: linear-gradient(to right, #fdfdfd, #f6f9ff);
       color: #333;
       overflow-x: hidden;
-      position: relative;
     }
-    .svg-bg object { width: 100%; height: 100%; pointer-events: none; }
-    .header, .gallery, .cta-section, .footer { padding: 1rem; }
-    .header { display: flex; justify-content: space-between; align-items: center; background: #fff; border-bottom: 1px solid #ddd; flex-wrap: wrap; }
-    .header-text { max-width: 400px; text-align: right; }
-    .header-text h1 { margin: 0; font-size: 1.25rem; font-weight: 700; }
+    .svg-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .svg-bg object {
+      width: 100%;
+      height: 100%;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
+    }
+    .header img {
+      height: 140px;
+      object-fit: contain;
+    }
+    .header-text {
+      max-width: 400px;
+      text-align: right;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .header-text p {
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+      color: #555;
+    }
+    .nav-buttons {
+      margin-top: 0.6rem;
+    }
     .nav-buttons a {
-      margin-left: 0.5rem;
+      margin-left: 0.4rem;
       padding: 0.4rem 0.8rem;
       font-size: 0.75rem;
       border-radius: 6px;
       font-weight: 600;
       text-decoration: none;
       color: #fff;
-      display: inline-block;
+      background-color: #0072e5;
     }
-    .signup { background: #0072e5; }
-    .login { background: #C08C1B; }
-    .dashboard { background: #333; }
-    .gallery { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+    .nav-buttons a.login {
+      background-color: #C08C1B;
+    }
+    .nav-buttons a.dashboard {
+      background-color: #333;
+    }
+    .intro {
+      text-align: center;
+      padding: 1.2rem 1rem;
+    }
+    .intro h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    .intro p {
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      color: #444;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 1rem;
+      max-width: 960px;
+      margin: auto;
+    }
     .mockup-card {
-      width: 100%;
-      max-width: 200px;
-      background: #ffffffd2;
+      max-width: 220px;
+      background: #fff;
       border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-      padding: 0.7rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+      padding: 0.8rem;
       text-align: center;
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-    .mockup-card:hover { transform: translateY(-2px); }
-    .mockup-card img { width: 100%; border-radius: 8px; margin-bottom: 0.4rem; }
-    .mockup-card h3 { font-size: 0.95rem; margin-bottom: 0.2rem; }
-    .mockup-card p { font-size: 0.75rem; margin: 0.15rem 0; }
+    .mockup-card:hover {
+      transform: translateY(-2px);
+    }
+    .mockup-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.4rem;
+    }
+    .mockup-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .mockup-card p {
+      font-size: 0.75rem;
+      margin: 0.15rem 0;
+    }
     .edition.pro4 { color: #C08C1B; font-weight: 600; }
     .edition.pro5 { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
+    .cta-section {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(to right, #e6f3ff, #fef9f1);
+      border-top: 1px solid #ddd;
+    }
+    .cta-heading {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+    .cta-sub {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      color: #555;
+    }
     .cta-buttons a {
-      margin: 0.5rem;
+      margin: 0.4rem;
       padding: 0.5rem 1rem;
       border-radius: 6px;
       font-size: 0.85rem;
       font-weight: 600;
       text-decoration: none;
       color: #fff;
-      display: inline-block;
     }
-    .primary { background-color: #0072e5; }
-    .secondary { background-color: #C08C1B; }
-    .dark { background-color: #333; }
-    .footer { font-size: 0.75rem; color: #666; text-align: left; }
+    .cta-buttons .primary { background-color: #0072e5; }
+    .cta-buttons .secondary { background-color: #C08C1B; }
+    .cta-buttons .dark { background-color: #333; }
+    .footer {
+      text-align: left;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      color: #666;
+    }
+    @media screen and (max-width: 800px) {
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .header-text {
+        text-align: center;
+      }
+      .mockup-card {
+        width: 90%;
+        max-width: 300px;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- 🎞️ Background Candlestick -->
   <div class="svg-bg">
     <object type="image/svg+xml" data="candlestick-bg.svg"></object>
   </div>
 
   <div class="page-content">
-
-    <!-- 🔥 Header -->
     <div class="header">
-      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" style="height:160px;">
+      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
       <div class="header-text">
         <h1>Adaptive Intelligence. Creative Precision.</h1>
         <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
@@ -92,13 +197,11 @@
       </div>
     </div>
 
-    <!-- 🚀 Intro -->
     <div class="intro">
       <h2>MomentumXLab</h2>
       <p>Building the future of adaptive trading systems – combining AI precision with creative excellence.</p>
     </div>
 
-    <!-- 💎 Mockup Gallery -->
     <div class="gallery">
       <div class="mockup-card" onclick="location.href='pro4.html'">
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
@@ -122,21 +225,6 @@
       </div>
     </div>
 
-    <!-- 📣 CTA Section -->
     <div class="cta-section">
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
-      <p class="cta-sub">Start your journey with MomentumXLab today.</p>
-      <div class="cta-buttons">
-        <a href="signup.html" class="primary">Start Free Trial</a>
-        <a href="login.html" class="secondary">Member Login</a>
-        <a href="dashboard.html" class="dark">Go to Dashboard</a>
-      </div>
-    </div>
-
-    <!-- 📝 Footer -->
-    <div class="footer">
-      <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
-    </div>
-  </div>
-</body>
-</html>
+      <p class="cta-sub">Start your journey with MomentumXLab today.</p
