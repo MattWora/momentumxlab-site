@@ -235,12 +235,10 @@
       </div>
     </div>
 
-    <!-- Metallic Gold Graph -->
     <div class="graph-overlay">
       <canvas id="goldGraph"></canvas>
     </div>
 
-    <!-- Mockups -->
     <div class="gallery">
       <div class="mockup-card">
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
@@ -256,7 +254,7 @@
       </div>
       <div class="mockup-card">
         <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
-        <h3>ApexXAU Intelligent Core-X</h3>
+                <h3>ApexXAU Intelligent Core-X</h3>
         <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
         <p class="edition corex"><strong>Currently in calibration and testing</strong></p>
       </div>
@@ -267,7 +265,7 @@
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
       <div class="cta-buttons">
-                <a href="#start-trial" class="cta-btn primary">Start 15-Day Free Trial</a>
+        <a href="#start-trial" class="cta-btn primary">Start 15-Day Free Trial</a>
         <a href="#subscribe" class="cta-btn secondary">Notify Me When Pro-5 Launches</a>
       </div>
     </div>
@@ -278,5 +276,62 @@
     </div>
 
   </div> <!-- End .page-content -->
+
+  <!-- Metallic Gold Graph Animation Script -->
+  <script>
+    const canvas = document.getElementById('goldGraph');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = 320;
+
+    const bars = [];
+    const barWidth = 10;
+    const spacing = 4;
+    const totalBars = Math.floor(canvas.width / (barWidth + spacing));
+
+    for (let i = 0; i < totalBars + 20; i++) {
+      const height = Math.floor(Math.random() * 180) + 60;
+      const direction = Math.random() > 0.5 ? 'up' : 'down';
+      bars.push({ x: canvas.width + i * (barWidth + spacing), h: height, dir: direction });
+    }
+
+    function drawBar(bar) {
+      const x = bar.x;
+      const y = canvas.height - bar.h;
+      const gradient = ctx.createLinearGradient(x, canvas.height, x, y);
+
+      if (bar.dir === 'up') {
+        gradient.addColorStop(0, '#FFD700');           // ฐานทองเข้ม
+        gradient.addColorStop(0.5, '#FFF8DC');         // กลางเงาอ่อน
+        gradient.addColorStop(1, 'rgba(255,255,180,0.85)'); // จุดสะท้อน
+      } else {
+        gradient.addColorStop(0, 'rgba(255,215,0,0.2)');
+        gradient.addColorStop(1, 'rgba(240,220,150,0.05)');
+      }
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(x, y, barWidth, bar.h);
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      bars.forEach(bar => {
+        drawBar(bar);
+        bar.x -= 1.6;
+      });
+
+      if (bars.length > totalBars + 20) bars.shift();
+
+      if (bars[bars.length - 1].x < canvas.width) {
+        const height = Math.floor(Math.random() * 180) + 60;
+        const direction = Math.random() > 0.5 ? 'up' : 'down';
+        bars.push({ x: canvas.width, h: height, dir: direction });
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
 </body>
 </html>
