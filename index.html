@@ -6,36 +6,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    /* Global Reset & Layout */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Rajdhani', sans-serif;
       background: linear-gradient(to right, #fdfdfd, #f6f9ff);
       color: #333;
-      min-height: 100vh;
       overflow-x: hidden;
-      position: relative;
       display: flex;
       flex-direction: column;
     }
-
     .page-content {
       position: relative;
       z-index: 1;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      flex: 1;
     }
 
+    /* Header & Navigation */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 1rem 2rem;
       background: #f0f0f0;
       height: 220px;
     }
+    .header img {
+      height: 180px;
+      object-fit: contain;
+    }
+    .header-text {
+      max-width: 400px;
+      text-align: right;
+    }
+    .header-text h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .header-text p {
+      margin-top: 0.5rem;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    .nav-buttons {
+      margin-top: 0.8rem;
+    }
+    .nav-buttons a {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #fff;
+      background: #0072e5;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .nav-buttons a:hover {
+      background: #005bb5;
+    }
 
+    /* Gold Graph Overlay */
     .graph-overlay {
       position: absolute;
       top: 220px;
@@ -46,96 +83,123 @@
       pointer-events: none;
       overflow: hidden;
     }
-
     #goldGraph {
+      display: block;
       width: 100%;
       height: 100%;
-      display: block;
     }
 
+    /* Mockup Gallery */
     .gallery {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
-      flex-wrap: wrap;
-      padding: 1rem;
+      padding: 1rem 2rem;
       z-index: 1;
+      margin-top: 320px; /* offset for the overlay */
     }
-
     .mockup-card {
-      flex: 0 0 200px;
-      background: #ffffffd2;
+      background: rgba(255,255,255,0.85);
       border-radius: 10px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-      padding: 0.7rem;
+      width: 200px;
+      padding: 0.8rem;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
-
     .mockup-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
     }
-
     .mockup-card img {
       width: 100%;
       max-width: 180px;
-      height: auto;
       object-fit: contain;
-      display: block;
-      margin: 0 auto 0.4rem;
+      margin-bottom: 0.5rem;
     }
-
     .mockup-card h3 {
       font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 0.2rem;
       color: #1f1f1f;
+      margin-bottom: 0.3rem;
     }
-
     .mockup-card p {
       font-size: 0.75rem;
-      margin: 0.15rem 0;
+      color: #555;
+      margin-bottom: 0.4rem;
     }
-
     .edition.pro4 { color: #C08C1B; font-weight: 600; }
     .edition.pro5 { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
 
+    /* CTA Section */
     .cta-section {
       text-align: center;
-      padding: 1.2rem 1rem;
+      padding: 1.5rem 2rem;
       background: linear-gradient(to right, #e6f3ff, #fef9f1);
       border-top: 1px solid #ddd;
     }
-
-    .footer {
-      text-align: left;
-      padding: 0.5rem 1rem;
-      font-size: 0.75rem;
-      color: #666;
-      margin-top: auto;
+    .cta-heading {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+    }
+    .cta-sub {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: opacity 0.3s;
+    }
+    .cta-btn.primary {
+      background: #0072e5;
+      color: #fff;
+    }
+    .cta-btn.secondary {
+      background: #C08C1B;
+      color: #fff;
+    }
+    .cta-btn:hover {
+      opacity: 0.85;
     }
 
-    @media screen and (max-width: 800px) {
-      .header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        height: auto;
-      }
-      .header-text {
-        text-align: center;
-      }
-      .mockup-card {
-        width: 90%;
-        max-width: 300px;
-      }
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.75rem;
+      color: #666;
+      background: #f9f9f9;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .header { flex-direction: column; height: auto; padding: 1rem; }
+      .header-text { text-align: center; }
+      .gallery { margin-top: 0; }
+      .mockup-card { width: 90%; max-width: 300px; }
     }
   </style>
 </head>
+
 <body>
   <div class="page-content">
-        <!-- 🚀 Header -->
+
+    <!-- Header -->
     <div class="header">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
       <div class="header-text">
@@ -148,30 +212,35 @@
         </div>
       </div>
     </div>
-        <!-- 🟡 Metallic Gold Graph Overlay -->
+
+    <!-- Gold Graph Overlay -->
     <div class="graph-overlay">
       <canvas id="goldGraph"></canvas>
-        <div class="gallery">
+    </div>
+
+    <!-- Mockup Gallery -->
+    <div class="gallery">
       <div class="mockup-card">
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
         <h3>ApexXAU Intelligent Pro-4</h3>
         <p>Precision-Engineered Gold Trading Automation</p>
-        <p class="edition pro4"><strong>Free trial available for 15 days</strong></p>
+        <p class="edition pro4">Free trial available for 15 days</p>
       </div>
       <div class="mockup-card">
         <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
         <h3>ApexXAU Intelligent Pro-5</h3>
         <p>Adaptive & Dynamic Based Risk Management</p>
-        <p class="edition pro5"><strong>Launching this September</strong></p>
+        <p class="edition pro5">Launching this September</p>
       </div>
       <div class="mockup-card">
         <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
         <h3>ApexXAU Intelligent Core-X</h3>
         <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
-        <p class="edition corex"><strong>Currently in calibration and testing</strong></p>
+        <p class="edition corex">Currently in calibration and testing</p>
       </div>
     </div>
 
+    <!-- CTA Section -->
     <div class="cta-section">
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
@@ -181,11 +250,14 @@
       </div>
     </div>
 
-    <div class="footer">
-      <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
-    </div>
   </div> <!-- End .page-content -->
 
+  <!-- Footer -->
+  <div class="footer">
+    &copy; 2025 MomentumXLab. All rights reserved.
+  </div>
+
+  <!-- Gold Graph Animation Script -->
   <script>
     const canvas = document.getElementById('goldGraph');
     const ctx = canvas.getContext('2d');
@@ -193,52 +265,61 @@
     canvas.height = 320;
 
     const bars = [];
-    const barWidth = 10;
-    const spacing = 4;
-    const totalBars = Math.floor(canvas.width / (barWidth + spacing));
+    const barWidth = 12;
+    const spacing = 5;
+    const totalBars = Math.ceil(canvas.width / (barWidth + spacing)) + 1;
 
-    for (let i = 0; i < totalBars + 20; i++) {
-      const height = Math.floor(Math.random() * 180) + 60;
-      const direction = Math.random() > 0.5 ? 'up' : 'down';
-      bars.push({ x: canvas.width + i * (barWidth + spacing), h: height, dir: direction });
+    // initialize bars offscreen to the right
+    for (let i = 0; i < totalBars; i++) {
+      const height = Math.random() * 180 + 60;
+      const dir = Math.random() > 0.5 ? 'up' : 'down';
+      bars.push({ x: canvas.width + i * (barWidth + spacing), h: height, dir });
     }
 
     function drawBar(bar) {
       const x = bar.x;
       const y = canvas.height - bar.h;
-      const gradient = ctx.createLinearGradient(x, canvas.height, x, y);
-
+      const grad = ctx.createLinearGradient(x, canvas.height, x, y);
       if (bar.dir === 'up') {
-        gradient.addColorStop(0, '#FFD700');
-        gradient.addColorStop(0.5, '#FFF8DC');
-        gradient.addColorStop(1, 'rgba(255,255,180,0.85)');
+        grad.addColorStop(0, '#FFD700');
+        grad.addColorStop(0.5, '#FFF8DC');
+        grad.addColorStop(1, 'rgba(255,255,180,0.85)');
       } else {
-        gradient.addColorStop(0, 'rgba(255,215,0,0.2)');
-        gradient.addColorStop(1, 'rgba(240,220,150,0.05)');
+        grad.addColorStop(0, 'rgba(255,215,0,0.2)');
+        grad.addColorStop(1, 'rgba(240,220,150,0.05)');
       }
-
-      ctx.fillStyle = gradient;
+      ctx.fillStyle = grad;
       ctx.fillRect(x, y, barWidth, bar.h);
     }
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      bars.forEach(bar => {
+      for (let bar of bars) {
         drawBar(bar);
-        bar.x -= 1.6;
-      });
-
-      if (bars.length > totalBars + 20) bars.shift();
-      if (bars[bars.length - 1].x < canvas.width) {
-        const height = Math.floor(Math.random() * 180) + 60;
-        const direction = Math.random() > 0.5 ? 'up' : 'down';
-        bars.push({ x: canvas.width, h: height, dir: direction });
+        bar.x -= 1.5;
       }
-
+      // recycle bars
+      if (bars[0].x < -barWidth) bars.shift();
+      if (bars[bars.length - 1].x < canvas.width) {
+        const height = Math.random() * 180 + 60;
+        const dir = Math.random() > 0.5 ? 'up' : 'down';
+        bars.push({ x: canvas.width, h: height, dir });
+      }
       requestAnimationFrame(animate);
     }
 
     animate();
+
+    // adjust canvas size on resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      bars.length = 0;
+      for (let i = 0; i < Math.ceil(canvas.width / (barWidth + spacing)) + 1; i++) {
+        const height = Math.random() * 180 + 60;
+        const dir = Math.random() > 0.5 ? 'up' : 'down';
+        bars.push({ x: canvas.width + i * (barWidth + spacing), h: height, dir });
+      }
+    });
   </script>
 </body>
 </html>
