@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(to bottom right, #0d0d0d, #1a1a1a);
+      background: linear-gradient(to bottom, #d3d3d3 0%, #1a1a1a 40%, #0d0d0d 100%);
       color: #eee;
     }
 
@@ -18,7 +18,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 220px;
+      height: 240px;
       z-index: 0;
       opacity: 0.2;
       pointer-events: none;
@@ -31,6 +31,11 @@
       transform-origin: top center;
       max-width: 100%;
       max-height: 100vh;
+    }
+
+    .header, .intro {
+      background-color: #d3d3d3;
+      color: #0d0d0d;
     }
 
     .header {
@@ -54,18 +59,20 @@
       text-align: right;
     }
 
-    .header-text h1 {
+    .header-text h1,
+    .intro h2 {
       font-size: 1.2rem;
       margin: 0;
       font-weight: 600;
-      color: #00c98d;
+      color: #0072e5;
     }
 
-    .header-text p {
+    .header-text p,
+    .intro p {
       font-size: 0.8rem;
       margin: 0.4rem 0;
       max-width: 340px;
-      color: #ccc;
+      color: #444;
     }
 
     .nav-buttons a {
@@ -88,16 +95,6 @@
     .intro {
       text-align: center;
       padding: 1rem;
-    }
-
-    .intro h2 {
-      color: #00c98d;
-      font-weight: 600;
-    }
-
-    .intro p {
-      color: #ccc;
-      font-size: 0.9rem;
     }
 
     .gallery {
@@ -250,7 +247,7 @@
     </div>
   </div>
 
-  <!-- ✅ SVG Background อยู่ตำแหน่งล่างสุดของ body -->
+  <!-- ✅ SVG Background at bottom -->
   <div class="svg-bg">
     <svg width="100%" height="100%" viewBox="0 0 2400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
       <defs>
