@@ -11,6 +11,8 @@
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(to bottom, #d3d3d3 0%, #1a1a1a 40%, #0d0d0d 100%);
       color: #eee;
+      overflow-x: hidden;
+      position: relative;
     }
 
     .svg-bg {
@@ -18,10 +20,20 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 240px;
+      height: 120px;
       z-index: 0;
-      opacity: 0.2;
+      overflow: hidden;
+      opacity: 0.3;
       pointer-events: none;
+    }
+
+    .scroll-graph {
+      animation: scrollLeft 20s linear infinite;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .page-content {
@@ -29,13 +41,12 @@
       z-index: 1;
       transform: scale(0.85);
       transform-origin: top center;
-      max-width: 100%;
-      max-height: 100vh;
     }
 
     .header, .intro {
       background-color: #d3d3d3;
       color: #0d0d0d;
+      padding-bottom: 40px;
     }
 
     .header {
@@ -47,7 +58,7 @@
     }
 
     .header img {
-      height: 140px;
+      height: 180px;
       object-fit: contain;
       max-width: 100%;
     }
@@ -187,6 +198,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page-content">
     <div class="header">
@@ -247,32 +259,27 @@
     </div>
   </div>
 
-  <!-- ✅ SVG Background at bottom -->
-  <div class="svg-bg">
-    <svg width="100%" height="100%" viewBox="0 0 2400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <!-- ✅ กราฟทองคำแอนิเมชันพื้นหลังล่างสุด -->
+    <div class="svg-bg">
+    <svg class="scroll-graph" width="4800" height="100" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.4" />
-          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9" />
-          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.4" />
+          <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3"/>
+          <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0.3"/>
         </linearGradient>
       </defs>
       <g>
-        <rect x="20" y="60" width="6" height="60" fill="url(#goldGradient)">
-          <animate attributeName="y" values="60;40;60" dur="3.5s" repeatCount="indefinite" />
-          <animate attributeName="height" values="60;80;60" dur="3.5s" repeatCount="indefinite" />
-          <animate attributeName="fill-opacity" values="0.4;0.9;0.4" dur="3.5s" repeatCount="indefinite" />
-        </rect>
-        <rect x="40" y="80" width="6" height="40" fill="url(#goldGradient)">
-          <animate attributeName="y" values="80;60;80" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="height" values="40;60;40" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="fill-opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite" />
-        </rect>
-        <rect x="60" y="30" width="6" height="100" fill="url(#goldGradient)">
-          <animate attributeName="y" values="60;30;60" dur="4s" repeatCount="indefinite" />
-          <animate attributeName="height" values="70;100;70" dur="4s" repeatCount="indefinite" />
-          <animate attributeName="fill-opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite" />
-        </rect>
+        <!-- 🪙 วางแท่งทองถี่ ๆ สลับความสูง -->
+        <rect x="0" y="60" width="6" height="60" fill="url(#goldGradient)" />
+        <rect x="12" y="50" width="6" height="70" fill="url(#goldGradient)" />
+        <rect x="24" y="40" width="6" height="80" fill="url(#goldGradient)" />
+        <rect x="36" y="65" width="6" height="55" fill="url(#goldGradient)" />
+        <rect x="48" y="45" width="6" height="75" fill="url(#goldGradient)" />
+        <rect x="60" y="55" width="6" height="65" fill="url(#goldGradient)" />
+        <rect x="72" y="42" width="6" height="78" fill="url(#goldGradient)" />
+        <rect x="84" y="60" width="6" height="60" fill="url(#goldGradient)" />
+        <!-- ✅ สามารถ copy รูปแบบนี้ต่อจนถึง x=4800 -->
       </g>
     </svg>
   </div>
