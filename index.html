@@ -22,12 +22,13 @@
       padding: 1rem 2rem; background: #f0f0f0; height: 220px;
       z-index: 2; position: relative;
     }
-    .header img { height: 180px; }
+    .header img { height: 180px; object-fit: contain; }
     .header-text { max-width: 400px; text-align: right; }
     .header-text h1 {
       font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 700;
+      color: #1a1a1a;
     }
-    .header-text p { margin-top: .5rem; color: #555; font-size: .9rem; }
+    .header-text p { margin-top: .5rem; font-size: .9rem; color: #555; }
     .nav-buttons { margin-top: .8rem; }
     .nav-buttons a {
       margin-left: .5rem; padding: .5rem 1rem;
@@ -39,8 +40,8 @@
 
     .graph-overlay {
       position: absolute; top: 220px; left: 0;
-      width: 100%; height: 320px; pointer-events: none;
-      z-index: 0;
+      width: 100%; height: 320px; pointer-events: none; z-index: 0;
+      overflow: hidden;
     }
     #goldGraph { width: 100%; height: 100%; display: block; }
 
@@ -55,9 +56,9 @@
       padding: .8rem; text-align: center; transition: transform .3s;
     }
     .mockup-card:hover { transform: translateY(-4px); }
-    .mockup-card img { width: 100%; margin-bottom: .5rem; }
+    .mockup-card img { width: 100%; margin-bottom: .5rem; object-fit: contain; }
     .mockup-card h3 { font-size: .95rem; font-weight: 600; color: #1f1f1f; }
-    .mockup-card p { font-size: .75rem; color: #555; }
+    .mockup-card p { font-size: .75rem; color: #555; margin-bottom: .4rem; }
     .edition.pro4  { color: #C08C1B; font-weight: 600; }
     .edition.pro5  { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
@@ -69,6 +70,7 @@
     }
     .cta-heading {
       font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700;
+      margin-bottom: .5rem;
     }
     .cta-sub { margin: .5rem 0 1rem; font-size: .9rem; color: #555; }
     .cta-buttons {
@@ -92,7 +94,9 @@
       .header { flex-direction: column; height: auto; padding: 1rem; }
       .header-text { text-align: center; }
       .gallery { padding: 1rem; }
-      .mockup-card { width: 90%; max-width: 300px; }
+      .mockup-card {
+        width: 90%; max-width: 300px;
+      }
     }
   </style>
 </head>
@@ -164,9 +168,10 @@
       canvas.width  = window.innerWidth;
       canvas.height = 320;
       bars = [];
-      const count = Math.ceil(canvas.width / (barWidth + spacing)) + 1;
+      const count = Math.ceil(canvas.width / (barWidth + spacing));
+      // สร้างแท่งกราฟเต็มความกว้างแรก
       for (let i = 0; i < count; i++) {
-        const x = canvas.width + i * (barWidth + spacing);
+        const x = i * (barWidth + spacing);
         const h = Math.random() * 180 + 60;
         bars.push({ x, h, targetH: h, prevH: h, dir: 'up' });
       }
@@ -176,18 +181,17 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       bars.forEach(bar => {
-        // height animation
+        // ปรับความสูงช้าเหลือครึ่ง (factor 0.025)
         bar.prevH = bar.h;
-        bar.h += (bar.targetH - bar.h) * 0.05;
+        bar.h += (bar.targetH - bar.h) * 0.025;
         if (Math.random() < 0.005) {
           bar.targetH = Math.random() * 180 + 60;
         }
         bar.dir = bar.h > bar.prevH ? 'up' : 'down';
 
-        // draw
-        const x  = bar.x;
-        const y  = canvas.height - bar.h;
-        const g  = ctx.createLinearGradient(x, canvas.height, x, y);
+        const x = bar.x;
+        const y = canvas.height - bar.h;
+        const g = ctx.createLinearGradient(x, canvas.height, x, y);
         if (bar.dir === 'up') {
           g.addColorStop(0, '#FFD700');
           g.addColorStop(0.5, '#FFF8DC');
@@ -199,14 +203,13 @@
         ctx.fillStyle = g;
         ctx.fillRect(x, y, barWidth, bar.h);
 
-        // move
-        bar.x -= 1.5;
+        // เคลื่อนที่ช้าเหลือ 0.75px/frame
+        bar.x -= 0.75;
 
-        // recycle off-screen
+        // รีไซเคิลโดยโยกแท่งซ้ายสุดไปด้านขวาเมื่อหลุด
         if (bar.x < -barWidth) {
-          // find rightmost bar
-          const lastX = bars.reduce((max, b) => b.x > max ? b.x : max, bars[0].x);
-          bar.x = lastX + barWidth + spacing;
+          const maxX = Math.max(...bars.map(b => b.x));
+          bar.x = maxX + barWidth + spacing;
           bar.h = bar.targetH = Math.random() * 180 + 60;
           bar.prevH = bar.h;
         }
