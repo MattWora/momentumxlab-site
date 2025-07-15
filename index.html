@@ -222,6 +222,7 @@
 </head>
 <body>
   <div class="page-content">
+        <!-- 🚀 Header -->
     <div class="header">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
       <div class="header-text">
@@ -234,11 +235,11 @@
         </div>
       </div>
     </div>
-
+        <!-- 🟡 Metallic Gold Graph Overlay -->
     <div class="graph-overlay">
       <canvas id="goldGraph"></canvas>
     </div>
-
+        <!-- 💎 Mockup Gallery -->
     <div class="gallery">
       <div class="mockup-card">
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
@@ -246,21 +247,23 @@
         <p>Precision-Engineered Gold Trading Automation</p>
         <p class="edition pro4"><strong>Free trial available for 15 days</strong></p>
       </div>
+
       <div class="mockup-card">
         <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
         <h3>ApexXAU Intelligent Pro-5</h3>
         <p>Adaptive & Dynamic Based Risk Management</p>
         <p class="edition pro5"><strong>Launching this September</strong></p>
       </div>
+
       <div class="mockup-card">
         <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
-                <h3>ApexXAU Intelligent Core-X</h3>
+        <h3>ApexXAU Intelligent Core-X</h3>
         <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
         <p class="edition corex"><strong>Currently in calibration and testing</strong></p>
       </div>
     </div>
 
-    <!-- CTA -->
+    <!-- 📣 CTA Section -->
     <div class="cta-section">
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
@@ -270,14 +273,14 @@
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- 📝 Footer -->
     <div class="footer">
       <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
     </div>
 
   </div> <!-- End .page-content -->
 
-  <!-- Metallic Gold Graph Animation Script -->
+  <!-- 🟡 Gold Graph Animation Script -->
   <script>
     const canvas = document.getElementById('goldGraph');
     const ctx = canvas.getContext('2d');
@@ -301,9 +304,9 @@
       const gradient = ctx.createLinearGradient(x, canvas.height, x, y);
 
       if (bar.dir === 'up') {
-        gradient.addColorStop(0, '#FFD700');           // ฐานทองเข้ม
-        gradient.addColorStop(0.5, '#FFF8DC');         // กลางเงาอ่อน
-        gradient.addColorStop(1, 'rgba(255,255,180,0.85)'); // จุดสะท้อน
+        gradient.addColorStop(0, '#FFD700');
+        gradient.addColorStop(0.5, '#FFF8DC');
+        gradient.addColorStop(1, 'rgba(255,255,180,0.85)');
       } else {
         gradient.addColorStop(0, 'rgba(255,215,0,0.2)');
         gradient.addColorStop(1, 'rgba(240,220,150,0.05)');
@@ -321,7 +324,6 @@
       });
 
       if (bars.length > totalBars + 20) bars.shift();
-
       if (bars[bars.length - 1].x < canvas.width) {
         const height = Math.floor(Math.random() * 180) + 60;
         const direction = Math.random() > 0.5 ? 'up' : 'down';
