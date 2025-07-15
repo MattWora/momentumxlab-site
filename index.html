@@ -9,23 +9,23 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #fdfdfd, #f6f9ff);
       font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to right, #fdfdfd, #f6f9ff);
+      color: #333;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       position: relative;
-      color: #333;
       overflow-x: hidden;
     }
 
     .svg-bg {
       position: absolute;
-      top: 0;
+      top: 220px;
       left: 0;
       width: 100vw;
-      height: 100vh;
-      z-index: -1;
+      height: 100px;
+      z-index: 0;
       pointer-events: none;
       overflow: hidden;
     }
@@ -77,9 +77,30 @@
       color: #555;
     }
 
+    .nav-buttons {
+      margin-top: 0.8rem;
+    }
+
+    .nav-buttons a {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #0072e5;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      transition: background 0.3s;
+    }
+
+    .nav-buttons a:hover {
+      background-color: #005bb5;
+    }
+
     .intro {
       text-align: center;
-      padding: 1rem 1rem;
+      padding: 1.5rem 1rem;
     }
 
     .intro h2 {
@@ -183,21 +204,11 @@
     .cta-btn.primary {
       background-color: #0072e5;
       color: #fff;
-      box-shadow: 0 3px 8px rgba(0, 114, 229, 0.2);
-    }
-
-    .cta-btn.primary:hover {
-      background-color: #005bb5;
     }
 
     .cta-btn.secondary {
       background-color: #C08C1B;
       color: #fff;
-      box-shadow: 0 3px 8px rgba(192, 140, 27, 0.2);
-    }
-
-    .cta-btn.secondary:hover {
-      background-color: #a07512;
     }
 
     .footer {
@@ -213,6 +224,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        height: auto;
       }
       .header-text {
         text-align: center;
@@ -226,14 +238,14 @@
 </head>
 <body>
 
-  <!-- 🟡 Background Graph (SVG) -->
+  <!-- 🔶 Background Gold Graph Overlay -->
   <div class="svg-bg">
     <object type="image/svg+xml" data="candlestick-bg.svg"></object>
   </div>
 
   <div class="page-content">
 
-    <!-- 🔥 Header -->
+    <!-- 🚀 Header -->
     <div class="header">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
       <div class="header-text">
@@ -247,7 +259,7 @@
       </div>
     </div>
 
-    <!-- 🚀 Intro -->
+    <!-- ✨ Intro -->
     <div class="intro">
       <h2>MomentumXLab</h2>
       <p>Building the future of adaptive trading systems – combining AI precision with creative excellence.</p>
@@ -256,10 +268,7 @@
     <!-- 💎 Mockup Gallery -->
     <div class="gallery">
       <div class="mockup-card">
-        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
-        <h3>ApexXAU Intelligent Pro-4</h3>
-        <p>Precision-Engineered Gold Trading Automation</p>
-        <p class="edition pro4"><strong>Free trial available for 15
+        <img src="Pro4_Collector
                 </div>
 
     <!-- 📣 CTA Section -->
