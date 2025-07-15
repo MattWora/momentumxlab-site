@@ -236,6 +236,9 @@
   </script>
 </body>
 </html>
+<!-- SweetAlert2 สำหรับ popup หรู -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
@@ -277,6 +280,17 @@
     e.preventDefault();
     auth.signOut().then(() => {
       location.href = "index.html"; // หรือ reload ได้เลย
+    });
+  };
+</script>
+<script>
+  document.getElementById("nav-logout").onclick = e => {
+    e.preventDefault();
+    firebase.auth().signOut().then(() => {
+      location.href = "index.html"; // หรือ location.reload();
+    }).catch(err => {
+      console.error("Logout failed:", err.message);
+      alert("Logout failed. Please try again.");
     });
   };
 </script>
