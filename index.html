@@ -100,10 +100,9 @@
     }
   </style>
 </head>
+
 <body>
-
   <div class="page-content">
-
     <div class="header">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
       <div class="header-text">
@@ -150,7 +149,6 @@
         <a href="#subscribe" class="cta-btn secondary">Notify Me When Pro-5 Launches</a>
       </div>
     </div>
-
   </div>
 
   <div class="footer">
@@ -169,7 +167,6 @@
       canvas.height = 320;
       bars = [];
       const count = Math.ceil(canvas.width / (barWidth + spacing));
-      // สร้างแท่งกราฟเต็มความกว้างแรก
       for (let i = 0; i < count; i++) {
         const x = i * (barWidth + spacing);
         const h = Math.random() * 180 + 60;
@@ -181,9 +178,9 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       bars.forEach(bar => {
-        // ปรับความสูงช้าเหลือครึ่ง (factor 0.025)
+        // height interpolation factor ลดเหลือ 0.0125
         bar.prevH = bar.h;
-        bar.h += (bar.targetH - bar.h) * 0.025;
+        bar.h += (bar.targetH - bar.h) * 0.0125;
         if (Math.random() < 0.005) {
           bar.targetH = Math.random() * 180 + 60;
         }
@@ -203,10 +200,10 @@
         ctx.fillStyle = g;
         ctx.fillRect(x, y, barWidth, bar.h);
 
-        // เคลื่อนที่ช้าเหลือ 0.75px/frame
+        // เคลื่อนที่ช้า 0.75px/frame (เดิมปรับแล้ว)
         bar.x -= 0.75;
 
-        // รีไซเคิลโดยโยกแท่งซ้ายสุดไปด้านขวาเมื่อหลุด
+        // รีไซเคิลเมื่อหลุดซ้าย
         if (bar.x < -barWidth) {
           const maxX = Math.max(...bars.map(b => b.x));
           bar.x = maxX + barWidth + spacing;
