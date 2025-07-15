@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Reset & Layout */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -14,184 +13,93 @@
       background: linear-gradient(to right, #fdfdfd, #f6f9ff);
       color: #333;
       overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
     }
-    .page-content {
-      position: relative;
-      flex: 1;
-      z-index: 1;
-    }
+    .page-content { position: relative; flex: 1; }
 
-    /* Header */
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: #f0f0f0;
-      height: 220px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; background: #f0f0f0; height: 220px;
+      z-index: 2; position: relative;
     }
-    .header img { height: 180px; object-fit: contain; }
-    .header-text {
-      max-width: 400px;
-      text-align: right;
-    }
+    .header img { height: 180px; }
+    .header-text { max-width: 400px; text-align: right; }
     .header-text h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1a1a1a;
+      font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 700;
     }
-    .header-text p {
-      margin-top: .5rem;
-      font-size: .9rem;
-      color: #555;
-    }
-    .nav-buttons {
-      margin-top: .8rem;
-    }
+    .header-text p { margin-top: .5rem; color: #555; font-size: .9rem; }
+    .nav-buttons { margin-top: .8rem; }
     .nav-buttons a {
-      margin-left: .5rem;
-      padding: .5rem 1rem;
-      font-family: 'Orbitron', sans-serif;
-      font-size: .75rem;
-      font-weight: 600;
-      color: #fff;
-      background: #0072e5;
-      border-radius: 6px;
-      text-decoration: none;
+      margin-left: .5rem; padding: .5rem 1rem;
+      font-family: 'Orbitron', sans-serif; font-size: .75rem; font-weight: 600;
+      color: #fff; background: #0072e5; border-radius: 6px; text-decoration: none;
       transition: background .3s;
     }
     .nav-buttons a:hover { background: #005bb5; }
 
-    /* Graph Overlay */
     .graph-overlay {
-      position: absolute;
-      top: 220px;
-      left: 0;
-      width: 100%;
-      height: 320px;
+      position: absolute; top: 220px; left: 0;
+      width: 100%; height: 320px; pointer-events: none;
       z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
     }
-    #goldGraph {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
+    #goldGraph { width: 100%; height: 100%; display: block; }
 
-    /* Mockup Gallery */
     .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      padding: 1rem 2rem;
-      margin-top: 0;     /* เอา margin-top ออก */
-      z-index: 1;        /* อยู่เหนือกราฟ */
+      position: relative; z-index: 2;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 1rem; padding: 1rem 2rem; margin-top: 0;
     }
     .mockup-card {
-      background: rgba(255,255,255,0.85);
-      border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-      width: 200px;
-      padding: .8rem;
-      text-align: center;
-      transition: transform .3s;
+      background: rgba(255,255,255,0.85); border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05); width: 200px;
+      padding: .8rem; text-align: center; transition: transform .3s;
     }
     .mockup-card:hover { transform: translateY(-4px); }
-    .mockup-card img {
-      width: 100%;
-      max-width: 180px;
-      margin-bottom: .5rem;
-      object-fit: contain;
-    }
-    .mockup-card h3 {
-      font-size: .95rem;
-      font-weight: 600;
-      color: #1f1f1f;
-      margin-bottom: .3rem;
-    }
-    .mockup-card p {
-      font-size: .75rem;
-      color: #555;
-      margin-bottom: .4rem;
-    }
+    .mockup-card img { width: 100%; margin-bottom: .5rem; }
+    .mockup-card h3 { font-size: .95rem; font-weight: 600; color: #1f1f1f; }
+    .mockup-card p { font-size: .75rem; color: #555; }
     .edition.pro4  { color: #C08C1B; font-weight: 600; }
     .edition.pro5  { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
 
-    /* CTA Section */
     .cta-section {
-      text-align: center;
-      padding: 1.5rem 2rem;
+      text-align: center; padding: 1.5rem 2rem;
       background: linear-gradient(to right, #e6f3ff, #fef9f1);
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #ddd; z-index: 2; position: relative;
     }
     .cta-heading {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
+      font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700;
     }
-    .cta-sub {
-      font-size: .9rem;
-      color: #555;
-      margin-bottom: 1rem;
-    }
+    .cta-sub { margin: .5rem 0 1rem; font-size: .9rem; color: #555; }
     .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
     }
     .cta-btn {
-      padding: .6rem 1.2rem;
-      font-size: .85rem;
-      font-weight: 600;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
+      padding: .6rem 1.2rem; font-size: .85rem; font-weight: 600;
+      color: #fff; border-radius: 6px; text-decoration: none;
       transition: opacity .3s;
     }
     .cta-btn.primary   { background: #0072e5; }
     .cta-btn.secondary { background: #C08C1B; }
     .cta-btn:hover      { opacity: .85; }
 
-    /* Footer */
     .footer {
-      text-align: center;
-      padding: 1rem 2rem;
-      font-size: .75rem;
-      color: #666;
-      background: #f9f9f9;
+      text-align: center; padding: 1rem 2rem; font-size: .75rem;
+      color: #666; background: #f9f9f9; z-index: 2; position: relative;
     }
 
-    /* Responsive */
     @media (max-width: 800px) {
-      .header {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem;
-      }
+      .header { flex-direction: column; height: auto; padding: 1rem; }
       .header-text { text-align: center; }
-      .gallery {
-        padding: 1rem;
-      }
-      .mockup-card {
-        width: 90%;
-        max-width: 300px;
-      }
+      .gallery { padding: 1rem; }
+      .mockup-card { width: 90%; max-width: 300px; }
     }
   </style>
 </head>
-
 <body>
+
   <div class="page-content">
 
-    <!-- Header -->
     <div class="header">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
       <div class="header-text">
@@ -205,12 +113,10 @@
       </div>
     </div>
 
-    <!-- Gold Graph Overlay (หลัง Header แต่ก่อน Gallery) -->
     <div class="graph-overlay">
       <canvas id="goldGraph"></canvas>
     </div>
 
-    <!-- Mockup Gallery -->
     <div class="gallery">
       <div class="mockup-card">
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
@@ -232,7 +138,6 @@
       </div>
     </div>
 
-    <!-- CTA Section -->
     <div class="cta-section">
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
@@ -242,17 +147,15 @@
       </div>
     </div>
 
-  </div> <!-- .page-content -->
+  </div>
 
-  <!-- Footer -->
   <div class="footer">
     &copy; 2025 MomentumXLab. All rights reserved.
   </div>
 
-  <!-- Gold Graph Animation Script -->
   <script>
-    const canvas  = document.getElementById('goldGraph');
-    const ctx     = canvas.getContext('2d');
+    const canvas    = document.getElementById('goldGraph');
+    const ctx       = canvas.getContext('2d');
     const barWidth  = 12;
     const spacing   = 5;
     let bars        = [];
@@ -272,52 +175,48 @@
     function updateAndDraw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // update & draw each bar
-      bars.forEach((bar, i) => {
-        // update height toward target
+      bars.forEach(bar => {
+        // height animation
         bar.prevH = bar.h;
         bar.h += (bar.targetH - bar.h) * 0.05;
         if (Math.random() < 0.005) {
           bar.targetH = Math.random() * 180 + 60;
         }
-        // determine direction for gradient
         bar.dir = bar.h > bar.prevH ? 'up' : 'down';
 
         // draw
-        const x = bar.x;
-        const y = canvas.height - bar.h;
-        const grad = ctx.createLinearGradient(x, canvas.height, x, y);
+        const x  = bar.x;
+        const y  = canvas.height - bar.h;
+        const g  = ctx.createLinearGradient(x, canvas.height, x, y);
         if (bar.dir === 'up') {
-          grad.addColorStop(0, '#FFD700');
-          grad.addColorStop(0.5, '#FFF8DC');
-          grad.addColorStop(1, 'rgba(255,255,180,0.85)');
+          g.addColorStop(0, '#FFD700');
+          g.addColorStop(0.5, '#FFF8DC');
+          g.addColorStop(1, 'rgba(255,255,180,0.85)');
         } else {
-          grad.addColorStop(0, 'rgba(255,215,0,0.2)');
-          grad.addColorStop(1, 'rgba(240,220,150,0.05)');
+          g.addColorStop(0, 'rgba(255,215,0,0.2)');
+          g.addColorStop(1, 'rgba(240,220,150,0.05)');
         }
-        ctx.fillStyle = grad;
+        ctx.fillStyle = g;
         ctx.fillRect(x, y, barWidth, bar.h);
 
-        // move left
+        // move
         bar.x -= 1.5;
-      });
 
-      // recycle off-screen bars
-      if (bars.length && bars[0].x < -barWidth) bars.shift();
-      const last = bars[bars.length - 1];
-      if (last && last.x < canvas.width) {
-        const h = Math.random() * 180 + 60;
-        bars.push({ x: canvas.width, h, targetH: h, prevH: h, dir: 'up' });
-      }
+        // recycle off-screen
+        if (bar.x < -barWidth) {
+          // find rightmost bar
+          const lastX = bars.reduce((max, b) => b.x > max ? b.x : max, bars[0].x);
+          bar.x = lastX + barWidth + spacing;
+          bar.h = bar.targetH = Math.random() * 180 + 60;
+          bar.prevH = bar.h;
+        }
+      });
 
       requestAnimationFrame(updateAndDraw);
     }
 
-    window.addEventListener('resize', () => {
-      initBars();
-    });
+    window.addEventListener('resize', initBars);
 
-    // start animation
     initBars();
     updateAndDraw();
   </script>
