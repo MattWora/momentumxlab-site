@@ -51,10 +51,17 @@
       gap: 1rem; padding: 1rem 2rem; margin-top: 0;
     }
     .mockup-card {
-      background: rgba(255,255,255,0.85); border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.05); width: 200px;
-      padding: .8rem; text-align: center; transition: transform .3s;
-    }
+  display: block;           /* ทำให้ทั้งการ์ดคลิกได้ */
+  text-decoration: none;    /* ลบเส้นใต้ลิงก์ */
+  color: inherit;           /* รักษาสีตัวอักษรเดิม */
+  background: rgba(255,255,255,0.85);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  width: 200px;
+  padding: .8rem;
+  text-align: center;
+  transition: transform .3s;
+}
     .mockup-card:hover { transform: translateY(-4px); }
     .mockup-card img { width: 100%; margin-bottom: .5rem; object-fit: contain; }
     .mockup-card h3 { font-size: .95rem; font-weight: 600; color: #1f1f1f; }
@@ -120,27 +127,27 @@
       <canvas id="goldGraph"></canvas>
     </div>
 
-    <div class="gallery">
-      <div class="mockup-card">
-        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
-        <h3>ApexXAU Intelligent Pro-4</h3>
-        <p>Precision-Engineered Gold Trading Automation</p>
-        <p class="edition pro4">Free trial available for 15 days</p>
-      </div>
-      <div class="mockup-card">
-        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
-        <h3>ApexXAU Intelligent Pro-5</h3>
-        <p>Adaptive & Dynamic Based Risk Management</p>
-        <p class="edition pro5">Launching this September</p>
-      </div>
-      <div class="mockup-card">
-        <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
-        <h3>ApexXAU Intelligent Core-X</h3>
-        <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
-        <p class="edition corex">Currently in calibration and testing</p>
-      </div>
-    </div>
-
+    <!-- Mockup Gallery: เปลี่ยนจาก <div> เป็น <a> ครอบคลุมทั้งการ์ด -->
+<div class="gallery">
+  <a href="pro4.html" class="mockup-card">
+    <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
+    <h3>ApexXAU Intelligent Pro-4</h3>
+    <p>Precision-Engineered Gold Trading Automation</p>
+    <p class="edition pro4">Free trial available for 15 days</p>
+  </a>
+  <a href="pro5.html" class="mockup-card">
+    <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
+    <h3>ApexXAU Intelligent Pro-5</h3>
+    <p>Adaptive & Dynamic Based Risk Management</p>
+    <p class="edition pro5">Launching this September</p>
+  </a>
+  <a href="corex.html" class="mockup-card">
+    <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
+    <h3>ApexXAU Intelligent Core-X</h3>
+    <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
+    <p class="edition corex">Currently in calibration and testing</p>
+  </a>
+</div>
     <div class="cta-section">
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
