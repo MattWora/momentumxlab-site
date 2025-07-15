@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Reset & Base */
+    /* Reset & Layout */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -41,6 +41,7 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
+      color: #1a1a1a;
     }
     .header-text p {
       margin-top: .5rem;
@@ -64,7 +65,7 @@
     }
     .nav-buttons a:hover { background: #005bb5; }
 
-    /* Gold-Graph Overlay */
+    /* Graph Overlay */
     .graph-overlay {
       position: absolute;
       top: 220px;
@@ -88,8 +89,8 @@
       justify-content: center;
       gap: 1rem;
       padding: 1rem 2rem;
-      margin-top: 0;          /* เอา margin-top ออก */
-      z-index: 1;             /* อยู่เหนือ graph-overlay */
+      margin-top: 0;     /* เอา margin-top ออก */
+      z-index: 1;        /* อยู่เหนือกราฟ */
     }
     .mockup-card {
       background: rgba(255,255,255,0.85);
@@ -122,7 +123,7 @@
     .edition.pro5  { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
 
-    /* CTA */
+    /* CTA Section */
     .cta-section {
       text-align: center;
       padding: 1.5rem 2rem;
@@ -186,6 +187,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page-content">
 
@@ -251,59 +253,73 @@
   <script>
     const canvas  = document.getElementById('goldGraph');
     const ctx     = canvas.getContext('2d');
-    let barWidth  = 12, spacing = 5;
-    let bars      = [];
+    const barWidth  = 12;
+    const spacing   = 5;
+    let bars        = [];
 
     function initBars() {
       canvas.width  = window.innerWidth;
       canvas.height = 320;
       bars = [];
-      const total = Math.ceil(canvas.width / (barWidth + spacing)) + 1;
-      for (let i = 0; i < total; i++) {
-        const h   = Math.random() * 180 + 60;
-        const dir = Math.random() > .5 ? 'up' : 'down';
-        bars.push({ x: canvas.width + i * (barWidth + spacing), h, dir });
+      const count = Math.ceil(canvas.width / (barWidth + spacing)) + 1;
+      for (let i = 0; i < count; i++) {
+        const x = canvas.width + i * (barWidth + spacing);
+        const h = Math.random() * 180 + 60;
+        bars.push({ x, h, targetH: h, prevH: h, dir: 'up' });
       }
     }
 
-    function drawBar(b) {
-      const x   = b.x;
-      const y   = canvas.height - b.h;
-      const grd = ctx.createLinearGradient(x, canvas.height, x, y);
-      if (b.dir === 'up') {
-        grd.addColorStop(0, '#FFD700');
-        grd.addColorStop(.5, '#FFF8DC');
-        grd.addColorStop(1, 'rgba(255,255,180,0.85)');
-      } else {
-        grd.addColorStop(0, 'rgba(255,215,0,0.2)');
-        grd.addColorStop(1, 'rgba(240,220,150,0.05)');
-      }
-      ctx.fillStyle = grd;
-      ctx.fillRect(x, y, barWidth, b.h);
-    }
-
-    function animate() {
+    function updateAndDraw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      bars.forEach(b => {
-        drawBar(b);
-        b.x -= 1.5;
+
+      // update & draw each bar
+      bars.forEach((bar, i) => {
+        // update height toward target
+        bar.prevH = bar.h;
+        bar.h += (bar.targetH - bar.h) * 0.05;
+        if (Math.random() < 0.005) {
+          bar.targetH = Math.random() * 180 + 60;
+        }
+        // determine direction for gradient
+        bar.dir = bar.h > bar.prevH ? 'up' : 'down';
+
+        // draw
+        const x = bar.x;
+        const y = canvas.height - bar.h;
+        const grad = ctx.createLinearGradient(x, canvas.height, x, y);
+        if (bar.dir === 'up') {
+          grad.addColorStop(0, '#FFD700');
+          grad.addColorStop(0.5, '#FFF8DC');
+          grad.addColorStop(1, 'rgba(255,255,180,0.85)');
+        } else {
+          grad.addColorStop(0, 'rgba(255,215,0,0.2)');
+          grad.addColorStop(1, 'rgba(240,220,150,0.05)');
+        }
+        ctx.fillStyle = grad;
+        ctx.fillRect(x, y, barWidth, bar.h);
+
+        // move left
+        bar.x -= 1.5;
       });
-      if (bars[0].x < -barWidth) bars.shift();
-      if (bars[bars.length-1].x < canvas.width) {
-        const h   = Math.random() * 180 + 60;
-        const dir = Math.random() > .5 ? 'up' : 'down';
-        bars.push({ x: canvas.width, h, dir });
+
+      // recycle off-screen bars
+      if (bars.length && bars[0].x < -barWidth) bars.shift();
+      const last = bars[bars.length - 1];
+      if (last && last.x < canvas.width) {
+        const h = Math.random() * 180 + 60;
+        bars.push({ x: canvas.width, h, targetH: h, prevH: h, dir: 'up' });
       }
-      requestAnimationFrame(animate);
+
+      requestAnimationFrame(updateAndDraw);
     }
 
     window.addEventListener('resize', () => {
       initBars();
     });
 
-    // เริ่มต้น
+    // start animation
     initBars();
-    animate();
+    updateAndDraw();
   </script>
 </body>
 </html>
