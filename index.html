@@ -5,6 +5,7 @@
   <title>MomentumXLab – Landing Page V.5.3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
       margin: 0;
@@ -70,6 +71,28 @@
       font-size: 0.85rem;
       color: #555;
     }
+
+    .nav-buttons {
+      margin-top: 0.6rem;
+      text-align: right;
+    }
+
+    .nav-buttons a {
+      margin-left: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .nav-buttons a.signup { background: #0072e5; color: #fff; }
+    .nav-buttons a.signup:hover { background: #005bb5; }
+    .nav-buttons a.login { background: #C08C1B; color: #fff; }
+    .nav-buttons a.login:hover { background: #a07512; }
+    .nav-buttons a.dashboard { background: #333; color: #fff; }
+    .nav-buttons a.dashboard:hover { background: #111; }
 
     .intro {
       text-align: center;
@@ -190,6 +213,15 @@
       background-color: #a07512;
     }
 
+    .cta-btn.dark {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .cta-btn.dark:hover {
+      background-color: #111;
+    }
+
     .footer {
       text-align: left;
       padding: 0.5rem 1rem;
@@ -228,6 +260,11 @@
       <div class="header-text">
         <h1>Adaptive Intelligence. Creative Precision.</h1>
         <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
+        <div class="nav-buttons">
+          <a href="signup.html" class="signup">Sign Up</a>
+          <a href="login.html" class="login">Login</a>
+          <a href="dashboard.html" class="dashboard">Dashboard</a>
+        </div>
       </div>
     </div>
 
@@ -242,37 +279,4 @@
       <div class="mockup-card">
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
         <h3>ApexXAU Intelligent Pro-4</h3>
-        <p>Precision-Engineered Gold Trading Automation</p>
-        <p class="edition pro4"><strong>Free trial available for 15 days</strong></p>
-      </div>
-      <div class="mockup-card">
-        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
-        <h3>ApexXAU Intelligent Pro-5</h3>
-        <p>Adaptive & Dynamic Based Risk Management</p>
-        <p class="edition pro5"><strong>Launching this September</strong></p>
-      </div>
-      <div class="mockup-card">
-        <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
-        <h3>ApexXAU Intelligent Core-X</h3>
-        <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
-        <p class="edition corex"><strong>Currently in calibration and testing</strong></p>
-      </div>
-    </div>
-
-    <!-- 📣 CTA Section -->
-    <div class="cta-section">
-      <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
-      <p class="cta-sub">Start your journey with MomentumXLab today.</p>
-      <div class="cta-buttons">
-                <a href="#start-trial" class="cta-btn primary">Start 15-Day Free Trial</a>
-        <a href="#subscribe" class="cta-btn secondary">Notify Me When Pro-5 Launches</a>
-      </div>
-    </div>
-
-    <!-- 📝 Footer -->
-    <div class="footer">
-      <p>&copy; 2025 MomentumXLab. All rights reserved.</p>
-    </div>
-  </div>
-</body>
-</html>
+        <p
