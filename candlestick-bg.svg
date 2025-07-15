@@ -1,0 +1,62 @@
+<!-- 🎞️ SVG Candlestick Background Animation -->
+<div class="svg-bg">
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 280 140" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="upGold" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFD700" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#DAA520" stop-opacity="0.2"/>
+      </linearGradient>
+
+      <linearGradient id="downGold" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#DAA520" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="#FFD700" stop-opacity="0.05"/>
+      </linearGradient>
+    </defs>
+
+    <g transform="translate(0,0)">
+      <g>
+        <!-- ลายแท่งขึ้น -->
+        <rect x="10" y="70" width="1" height="20" rx="0.5" fill="url(#upGold)" />
+        <rect x="20" y="60" width="1" height="30" rx="0.5" fill="url(#upGold)" />
+        <rect x="30" y="50" width="1" height="40" rx="0.5" fill="url(#upGold)" />
+        <rect x="40" y="65" width="1" height="25" rx="0.5" fill="url(#upGold)" />
+        <rect x="50" y="55" width="1" height="35" rx="0.5" fill="url(#upGold)" />
+        <rect x="60" y="50" width="1" height="40" rx="0.5" fill="url(#upGold)" />
+        <rect x="70" y="58" width="1" height="32" rx="0.5" fill="url(#upGold)" />
+
+        <!-- ลายแท่งลง -->
+        <rect x="80" y="45" width="1" height="50" rx="0.5" fill="url(#downGold)" />
+        <rect x="90" y="48" width="1" height="47" rx="0.5" fill="url(#downGold)" />
+        <rect x="100" y="60" width="1" height="35" rx="0.5" fill="url(#downGold)" />
+        <rect x="110" y="65" width="1" height="30" rx="0.5" fill="url(#downGold)" />
+        <rect x="120" y="68" width="1" height="27" rx="0.5" fill="url(#downGold)" />
+        <rect x="130" y="75" width="1" height="20" rx="0.5" fill="url(#downGold)" />
+        <rect x="140" y="80" width="1" height="15" rx="0.5" fill="url(#downGold)" />
+
+        <!-- ลายแท่งขึ้นอีกชุด -->
+        <rect x="150" y="55" width="1" height="35" rx="0.5" fill="url(#upGold)" />
+        <rect x="160" y="50" width="1" height="40" rx="0.5" fill="url(#upGold)" />
+        <rect x="170" y="58" width="1" height="32" rx="0.5" fill="url(#upGold)" />
+        <rect x="180" y="60" width="1" height="30" rx="0.5" fill="url(#upGold)" />
+        <rect x="190" y="50" width="1" height="40" rx="0.5" fill="url(#upGold)" />
+        <rect x="200" y="65" width="1" height="25" rx="0.5" fill="url(#upGold)" />
+        <rect x="210" y="70" width="1" height="20" rx="0.5" fill="url(#upGold)" />
+
+        <!-- ลายแท่งลงอีกชุด -->
+        <rect x="220" y="45" width="1" height="50" rx="0.5" fill="url(#downGold)" />
+        <rect x="230" y="48" width="1" height="47" rx="0.5" fill="url(#downGold)" />
+        <rect x="240" y="55" width="1" height="40" rx="0.5" fill="url(#downGold)" />
+        <rect x="250" y="60" width="1" height="35" rx="0.5" fill="url(#downGold)" />
+        <rect x="260" y="65" width="1" height="30" rx="0.5" fill="url(#downGold)" />
+        <rect x="270" y="70" width="1" height="25" rx="0.5" fill="url(#downGold)" />
+      </g>
+
+      <!-- ✨ เคลื่อนที่แนวนอน -->
+      <animateTransform attributeName="transform"
+        type="translate"
+        from="0,0" to="40,0"
+        dur="30s"
+        repeatCount="indefinite" />
+    </g>
+  </svg>
+</div>
