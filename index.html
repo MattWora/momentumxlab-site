@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <title>MomentumXLab – Landing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
@@ -13,88 +16,162 @@
       background: linear-gradient(to right, #fdfdfd, #f6f9ff);
       color: #333;
       overflow-x: hidden;
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
     .page-content { position: relative; flex: 1; }
 
     .header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 2rem; background: #f0f0f0; height: 220px;
-      z-index: 2; position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #f0f0f0;
+      height: 220px;
+      z-index: 2;
+      position: relative;
     }
-    .header img { max-height: 100%; width: auto; }
+    .header img {
+      max-height: 100%;
+      width: auto;
+    }
     .header-text { max-width: 400px; text-align: right; }
     .header-text h1 {
-      font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
       color: #1a1a1a;
     }
-    .header-text p { margin-top: .5rem; font-size: .9rem; color: #555; }
+    .header-text p {
+      margin-top: .5rem;
+      font-size: .9rem;
+      color: #555;
+    }
     .nav-buttons { margin-top: .8rem; }
     .nav-buttons a {
-      margin-left: .5rem; padding: .5rem 1rem;
-      font-family: 'Orbitron', sans-serif; font-size: .75rem; font-weight: 600;
-      color: #fff; background: #0072e5; border-radius: 6px; text-decoration: none;
+      margin-left: .5rem;
+      padding: .5rem 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      color: #fff;
+      background: #0072e5;
+      border-radius: 6px;
+      text-decoration: none;
       transition: background .3s;
     }
     .nav-buttons a:hover { background: #005bb5; }
 
     .graph-overlay {
-      position: absolute; top: 220px; left: 0;
-      width: 100%; height: 320px; pointer-events: none; z-index: 0;
+      position: absolute;
+      top: 220px;
+      left: 0;
+      width: 100%;
+      height: 320px;
+      pointer-events: none;
+      z-index: 0;
       overflow: hidden;
     }
     #goldGraph { width: 100%; height: 100%; display: block; }
 
     .gallery {
-      position: relative; z-index: 2;
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 1rem; padding: 1rem 2rem; margin-top: 0;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      margin-top: 0;
     }
     .mockup-card {
-  display: block;           /* ทำให้ทั้งการ์ดคลิกได้ */
-  text-decoration: none;    /* ลบเส้นใต้ลิงก์ */
-  color: inherit;           /* รักษาสีตัวอักษรเดิม */
-  background: rgba(255,255,255,0.85);
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-  width: 200px;
-  padding: .8rem;
-  text-align: center;
-  transition: transform .3s;
-}
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255,255,255,0.85);
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      width: 200px;
+      padding: .8rem;
+      text-align: center;
+      transition: transform .3s;
+    }
     .mockup-card:hover { transform: translateY(-4px); }
-    .mockup-card img { width: 100%; margin-bottom: .5rem; object-fit: contain; }
-    .mockup-card h3 { font-size: .95rem; font-weight: 600; color: #1f1f1f; }
-    .mockup-card p { font-size: .75rem; color: #555; margin-bottom: .4rem; }
+    .mockup-card img {
+      width: 100%;
+      margin-bottom: .5rem;
+      object-fit: contain;
+    }
+    .mockup-card h3 {
+      font-size: .95rem;
+      font-weight: 600;
+      color: #1f1f1f;
+    }
+    .mockup-card p {
+      font-size: .75rem;
+      color: #555;
+      margin-bottom: .4rem;
+    }
     .edition.pro4  { color: #C08C1B; font-weight: 600; }
     .edition.pro5  { color: #0072e5; font-weight: 600; }
     .edition.corex { color: #673ab7; font-weight: 600; }
 
     .cta-section {
-      text-align: center; padding: 1.5rem 2rem;
+      text-align: center;
+      padding: 1.5rem 2rem;
       background: linear-gradient(to right, #e6f3ff, #fef9f1);
-      border-top: 1px solid #ddd; z-index: 2; position: relative;
+      border-top: 1px solid #ddd;
+      z-index: 2;
+      position: relative;
     }
     .cta-heading {
-      font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
       margin-bottom: .5rem;
     }
     .cta-sub { margin: .5rem 0 1rem; font-size: .9rem; color: #555; }
     .cta-buttons {
-      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
     .cta-btn {
-      padding: .6rem 1.2rem; font-size: .85rem; font-weight: 600;
-      color: #fff; border-radius: 6px; text-decoration: none;
+      padding: .6rem 1.2rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
       transition: opacity .3s;
     }
     .cta-btn.primary   { background: #0072e5; }
     .cta-btn.secondary { background: #C08C1B; }
-    .cta-btn:hover      { opacity: .85; }
+    .cta-btn:hover     { opacity: .85; }
+
+    .contact-section {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .contact-section p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+    .contact-section a {
+      color: #FFD700;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
     .footer {
-      text-align: center; padding: 1rem 2rem; font-size: .75rem;
-      color: #666; background: #f9f9f9; z-index: 2; position: relative;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: .75rem;
+      color: #666;
+      background: #f9f9f9;
+      z-index: 2;
+      position: relative;
     }
 
     @media (max-width: 800px) {
@@ -102,7 +179,8 @@
       .header-text { text-align: center; }
       .gallery { padding: 1rem; }
       .mockup-card {
-        width: 90%; max-width: 300px;
+        width: 90%;
+        max-width: 300px;
       }
     }
   </style>
@@ -116,17 +194,11 @@
         <h1>Adaptive Intelligence. Creative Precision.</h1>
         <p>MomentumXLab crafts gold trading systems at the intersection of AI and design — engineered for clarity, trust, and performance.</p>
         <div class="nav-buttons">
-  <a id="nav-signup" href="https://mattwora.github.io/momentumxlab-auth-system/signup.html" target="_blank">
-    Sign Up
-  </a>
-  <a id="nav-login" href="https://mattwora.github.io/momentumxlab-auth-system/login.html" target="_blank">
-    Login
-  </a>
-  <a id="nav-dashboard" href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html" target="_blank">
-    Dashboard
-  </a>
-  <a id="nav-logout" href="#">Logout</a>
-</div>
+          <a id="nav-signup" href="https://mattwora.github.io/momentumxlab-auth-system/signup.html" target="_blank">Sign Up</a>
+          <a id="nav-login" href="https://mattwora.github.io/momentumxlab-auth-system/login.html" target="_blank">Login</a>
+          <a id="nav-dashboard" href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html" target="_blank">Dashboard</a>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
       </div>
     </div>
 
@@ -134,54 +206,65 @@
       <canvas id="goldGraph"></canvas>
     </div>
 
-    <!-- Mockup Gallery: เปลี่ยนจาก <div> เป็น <a> ครอบคลุมทั้งการ์ด -->
-<div class="gallery">
-  <a href="pro4.html" class="mockup-card">
-    <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
-    <h3>ApexXAU Intelligent Pro-4</h3>
-    <p>Precision-Engineered Gold Trading Automation</p>
-    <p class="edition pro4">Free trial available for 15 days</p>
-  </a>
-  <a href="pro5.html" class="mockup-card">
-    <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
-    <h3>ApexXAU Intelligent Pro-5</h3>
-    <p>Adaptive & Dynamic Based Risk Management</p>
-    <p class="edition pro5">Launching this September</p>
-  </a>
-  <a href="corex.html" class="mockup-card">
-    <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
-    <h3>ApexXAU Intelligent Core-X</h3>
-    <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
-    <p class="edition corex">Currently in calibration and testing</p>
-  </a>
-</div>
+    <div class="gallery">
+      <a href="pro4.html" class="mockup-card">
+        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
+        <h3>ApexXAU Intelligent Pro-4</h3>
+        <p>Precision-Engineered Gold Trading Automation</p>
+        <p class="edition pro4">Free trial available for 15 days</p>
+      </a>
+      <a href="pro5.html" class="mockup-card">
+        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
+        <h3>ApexXAU Intelligent Pro-5</h3>
+        <p>Adaptive & Dynamic Based Risk Management</p>
+        <p class="edition pro5">Launching this September</p>
+      </a>
+      <a href="corex.html" class="mockup-card">
+        <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
+        <h3>ApexXAU Intelligent Core-X</h3>
+        <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
+        <p class="edition corex">Currently in calibration and testing</p>
+      </a>
+    </div>
+
     <div class="cta-section">
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
       <div class="cta-buttons">
-        <a href="#start-trial" class="cta-btn primary">Start 15-Day Free Trial</a>
+        <!-- Updated: force sign-in before download -->
+        <a
+          id="trial-btn"
+          href="downloads/ApexXAU Intelligent Pro-4 Trial Version.ex5"
+          download
+          class="cta-btn primary"
+        >
+          Start 15-Day Free Trial
+        </a>
         <a href="#subscribe" class="cta-btn secondary">Notify Me When Pro-5 Launches</a>
       </div>
     </div>
   </div>
-<div class="contact-section" style="text-align:center; margin-top:3rem;">
-  <p style="font-size:1.1rem; color:#ccc;">
-    📧 Contact us at:
-    <a href="mailto:contact@momentumxlab.com" style="color:#FFD700; font-weight:bold;">
-      contact@momentumxlab.com
-    </a>
-  </p>
-</div>
+
+  <div class="contact-section">
+    <p>
+      📧 Contact us at:
+      <a href="mailto:contact@momentumxlab.com">
+        contact@momentumxlab.com
+      </a>
+    </p>
+  </div>
+
   <div class="footer">
     &copy; 2025 MomentumXLab. All rights reserved.
   </div>
 
+  <!-- Chart animation -->
   <script>
-    const canvas    = document.getElementById('goldGraph');
-    const ctx       = canvas.getContext('2d');
-    const barWidth  = 12;
-    const spacing   = 5;
-    let bars        = [];
+    const canvas   = document.getElementById('goldGraph');
+    const ctx      = canvas.getContext('2d');
+    const barWidth = 12;
+    const spacing  = 5;
+    let bars       = [];
 
     function initBars() {
       canvas.width  = window.innerWidth;
@@ -199,7 +282,6 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       bars.forEach(bar => {
-        // height interpolation factor ลดเหลือ 0.0125
         bar.prevH = bar.h;
         bar.h += (bar.targetH - bar.h) * 0.0125;
         if (Math.random() < 0.005) {
@@ -221,10 +303,7 @@
         ctx.fillStyle = g;
         ctx.fillRect(x, y, barWidth, bar.h);
 
-        // เคลื่อนที่ช้า 0.75px/frame (เดิมปรับแล้ว)
         bar.x -= 0.75;
-
-        // รีไซเคิลเมื่อหลุดซ้าย
         if (bar.x < -barWidth) {
           const maxX = Math.max(...bars.map(b => b.x));
           bar.x = maxX + barWidth + spacing;
@@ -237,67 +316,76 @@
     }
 
     window.addEventListener('resize', initBars);
-
     initBars();
     updateAndDraw();
   </script>
+
+  <!-- SweetAlert2 for popups -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <!-- App logic: Auth & UI controls -->
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT",
+      // …other config…
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Show/hide nav buttons based on auth state
+    auth.onAuthStateChanged(user => {
+      document.getElementById("nav-signup").style.display    = user ? "none" : "inline-block";
+      document.getElementById("nav-login").style.display     = user ? "none" : "inline-block";
+      document.getElementById("nav-dashboard").style.display = user ? "inline-block" : "none";
+      document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
+    });
+
+    // Logout with SweetAlert2 confirmation
+    document.getElementById("nav-logout").onclick = e => {
+      e.preventDefault();
+      auth.signOut().then(() => {
+        Swal.fire({
+          title: 'Logged out',
+          text: 'You have been logged out successfully.',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false
+        }).then(() => {
+          location.href = "index.html";
+        });
+      }).catch(err => {
+        Swal.fire({
+          title: 'Error',
+          text: err.message,
+          icon: 'error'
+        });
+      });
+    };
+
+    // Free Trial button: require sign-in before download
+    document.getElementById("trial-btn").addEventListener("click", e => {
+      if (!auth.currentUser) {
+        e.preventDefault();
+        Swal.fire({
+          title: 'Please sign in first',
+          text: 'You need an account to download the trial.',
+          icon: 'info',
+          confirmButtonText: 'Go to Login',
+          showCancelButton: true,
+          cancelButtonText: 'Cancel'
+        }).then(result => {
+          if (result.isConfirmed) {
+            location.href = 'login.html';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-<!-- SweetAlert2 สำหรับ popup หรู -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
-<script>
-  // 🔧 config Firebase (ถ้ายังไม่ได้ตั้ง)
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    // ...อื่นๆตามที่ได้จาก Firebase Console
-  };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-
-  // 🧠 ควบคุมปุ่มตามสถานะผู้ใช้
-  auth.onAuthStateChanged(user => {
-    const btnSignUp  = document.getElementById("nav-signup");
-    const btnLogin   = document.getElementById("nav-login");
-    const btnDash    = document.getElementById("nav-dashboard");
-    const btnLogout  = document.getElementById("nav-logout");
-
-    if (user) {
-      // ✅ ล็อกอินแล้ว
-      btnSignUp.style.display = "none";
-      btnLogin.style.display  = "none";
-      btnDash.style.display   = "inline-block";
-      btnLogout.style.display = "inline-block";
-    } else {
-      // ❌ ยังไม่ล็อกอิน
-      btnSignUp.style.display = "inline-block";
-      btnLogin.style.display  = "inline-block";
-      btnDash.style.display   = "none";
-      btnLogout.style.display = "none";
-    }
-  });
-
-  // 🔓 Logout แบบเรียบง่าย
-  document.getElementById("nav-logout").onclick = e => {
-    e.preventDefault();
-    auth.signOut().then(() => {
-      location.href = "index.html"; // หรือ reload ได้เลย
-    });
-  };
-</script>
-<script>
-  document.getElementById("nav-logout").onclick = e => {
-    e.preventDefault();
-    firebase.auth().signOut().then(() => {
-      location.href = "index.html"; // หรือ location.reload();
-    }).catch(err => {
-      console.error("Logout failed:", err.message);
-      alert("Logout failed. Please try again.");
-    });
-  };
-</script>
