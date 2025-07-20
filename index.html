@@ -139,32 +139,8 @@
 </head>
 
 <body>
-  <!-- Banner IB ด้านล่างก่อน footer -->
-<div style="
-  width: 100%;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 0;
-  border-top: 1px solid #ddd;
-  position: relative;
-  z-index: 10;
-">
-  <a href="https://one.exnesstrack.org/intl/en/a/1bsigr45e4" target="_blank" rel="noopener noreferrer">
-    <img
-      src="https://d3dpet1g0ty5ed.cloudfront.net/EN_The_20best_20pricing_20on_20gold_728x90_GOOGLE.png"
-      width="728"
-      height="90"
-      alt="Exness Affiliate Banner"
-      style="display: block; object-fit: contain;"
-        />
-      />
-    </a>
-  </div>
-
   <div class="page-content">
-        <div class="header">
+    <div class="header">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
       <div class="header-text">
         <h1>Adaptive Intelligence. Creative Precision.</h1>
@@ -198,14 +174,12 @@
         <p>Precision-Engineered Gold Trading Automation</p>
         <p class="edition pro4">Free trial available for 15 days</p>
       </a>
-
       <a href="pro5.html" class="mockup-card">
         <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
         <h3>ApexXAU Intelligent Pro-5</h3>
         <p>Adaptive & Dynamic Based Risk Management</p>
         <p class="edition pro5">Launching this September</p>
       </a>
-
       <a href="corex.html" class="mockup-card">
         <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
         <h3>ApexXAU Intelligent Core-X</h3>
@@ -241,11 +215,32 @@
       </a>
     </p>
   </div>
-
+<div style="
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid #ddd;
+  position: relative;
+  z-index: 10;
+">
+  <a href="https://one.exnesstrack.org/intl/en/a/1bsigr45e4" target="_blank" rel="noopener noreferrer">
+    <img
+      src="https://d3dpet1g0ty5ed.cloudfront.net/EN_The_20best_20pricing_20on_20gold_728x90_GOOGLE.png"
+      width="728"
+      height="90"
+      alt="Exness Affiliate Banner"
+      style="display: block; object-fit: contain;"
+    />
+  </a>
+</div>
   <div class="footer">
     &copy; 2025 MomentumXLab. All rights reserved.
   </div>
-    <!-- Chart animation -->
+
+  <!-- Chart animation -->
   <script>
     const canvas   = document.getElementById('goldGraph');
     const ctx      = canvas.getContext('2d');
@@ -314,21 +309,29 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
   <script>
+    // Initialize Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
       authDomain: "momentumxlab-37ce2.firebaseapp.com",
       projectId: "momentumxlab-37ce2",
+      // …other config…
     };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
+    // Show/hide nav buttons based on auth state
     auth.onAuthStateChanged(user => {
-      document.getElementById("nav-signup").style.display    = user ? "none" : "inline-block";
-      document.getElementById("nav-login").style.display     = user ? "none" : "inline-block";
-      document.getElementById("nav-dashboard").style.display = user ? "inline-block" : "none";
-      document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
+      document.getElementById("nav-signup").style.display    =
+        user ? "none" : "inline-block";
+      document.getElementById("nav-login").style.display     =
+        user ? "none" : "inline-block";
+      document.getElementById("nav-dashboard").style.display =
+        user ? "inline-block" : "none";
+      document.getElementById("nav-logout").style.display    =
+        user ? "inline-block" : "none";
     });
 
+    // Logout with SweetAlert2
     document.getElementById("nav-logout").onclick = e => {
       e.preventDefault();
       auth.signOut().then(() => {
@@ -346,6 +349,7 @@
       });
     };
 
+    // Free Trial button: require sign-in and open login page in correct target
     document.getElementById("trial-btn").addEventListener("click", e => {
       if (!auth.currentUser) {
         e.preventDefault();
@@ -369,5 +373,4 @@
   </script>
 </body>
 </html>
-
 
