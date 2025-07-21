@@ -124,33 +124,32 @@
 
   const auth = firebase.auth();
 
-  // ✅ Bind ทันที โดยเรียก auth.currentUser ข้างใน handler
-document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
-  button.addEventListener('click', e => {
-    const selectedPlan = button.dataset.plan;
+  auth.onAuthStateChanged(user => {
+    // ✅ Firebase รู้แล้วว่าผู้ใช้ login หรือยัง
+    document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
+      button.addEventListener('click', e => {
+        const selectedPlan = button.dataset.plan;
 
-    // ✅ ใช้ currentUser แบบสดภายใน listener
-    const user = auth.currentUser;
-
-    if (!user) {
-      e.preventDefault();
-      Swal.fire({
-        title: 'Please log in first',
-        text: 'You must be signed in before selecting your package',
-        icon: 'info',
-        confirmButtonText: 'Go to Login',
-        showCancelButton: true,
-        cancelButtonText: 'Cancel'
-      }).then(result => {
-        if (result.isConfirmed) {
-          window.location.href = "signup.html";
+        if (!user) {
+          e.preventDefault();
+          Swal.fire({
+            title: 'Please log in first',
+            text: 'You must be signed in before selecting your package',
+            icon: 'info',
+            confirmButtonText: 'Go to Login',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel'
+          }).then(result => {
+            if (result.isConfirmed) {
+              window.location.href = "signup.html";
+            }
+          });
+        } else {
+          window.location.href = `confirm-order.html?plan=${selectedPlan}`;
         }
       });
-    } else {
-      window.location.href = `confirm-order.html?plan=${selectedPlan}`;
-    }
+    });
   });
-});
 </script>
 
 
