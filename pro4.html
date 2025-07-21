@@ -118,36 +118,36 @@
 <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
 
 <script>
-  // ✅ Firebase config ของคุณ — ใส่จริงตามที่ใช้ใน signup.html
   const firebaseConfig = {
     apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
     authDomain: "momentumxlab-37ce2.firebaseapp.com",
-    // ...
+    // ✳️ เพิ่ม config อื่นถ้ายังไม่ได้ใส่
   };
+
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-  // ✅ ตรวจ login ก่อน redirect ไป checkout
   document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
     button.addEventListener('click', e => {
       const selectedPlan = button.dataset.plan;
-      if (!auth.currentUser) {
+      const user = auth.currentUser;
+
+      if (!user) {
         e.preventDefault();
         Swal.fire({
-          title: 'Please sign in first',
-          text: 'You must be logged in to order the ApexXAU Intelligent Pro-4 package',
           icon: 'info',
-          confirmButtonText: 'Login',
+          title: 'Please log in first',
+          text: 'You must be signed in before selecting your package',
+          confirmButtonText: 'Go to Login',
           showCancelButton: true,
           cancelButtonText: 'Cancel'
         }).then(result => {
           if (result.isConfirmed) {
-            const loginAnchor = document.getElementById("nav-login");
-            window.open(loginAnchor.href, loginAnchor.target || "_self");
+            window.location.href = "signup.html"; // ✅ หรือ login.html
           }
         });
       } else {
-        window.location.href = `checkout.html?plan=${selectedPlan}`;
+        window.location.href = `confirm-order.html?plan=${selectedPlan}`;
       }
     });
   });
