@@ -127,29 +127,29 @@
   // ✅ ตรวจสถานะ login แล้ว bind ปุ่มหลังจาก Firebase โหลดสถานะผู้ใช้เสร็จ
   auth.onAuthStateChanged(user => {
     document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
-      button.addEventListener('click', e => {
-        const selectedPlan = button.dataset.plan;
+  button.addEventListener('click', () => {
+    const selectedPlan = button.dataset.plan;
 
-        if (!user) {
-          e.preventDefault();
-          Swal.fire({
-            title: 'Please log in first',
-            text: 'You must be signed in before selecting your package',
-            icon: 'info',
-            confirmButtonText: 'Go to Login',
-            showCancelButton: true,
-            cancelButtonText: 'Cancel'
-          }).then(result => {
-            if (result.isConfirmed) {
-              window.location.href = "signup.html";
-            }
-          });
-        } else {
-          window.location.href = `confirm-order.html?plan=${selectedPlan}`;
-        }
-      });
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        Swal.fire({
+          title: 'Please log in first',
+          text: 'You must be signed in before selecting your package',
+          icon: 'info',
+          confirmButtonText: 'Go to Login',
+          showCancelButton: true,
+          cancelButtonText: 'Cancel'
+        }).then(result => {
+          if (result.isConfirmed) {
+            window.location.href = "signup.html";
+          }
+        });
+      } else {
+        window.location.href = `confirm-order.html?plan=${selectedPlan}`;
+      }
     });
   });
+});
 </script>
 
 
