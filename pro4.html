@@ -110,14 +110,17 @@
       <p class="copyright">&copy; 2025 MomentumXLab. All rights reserved.</p>
     </div>
   </footer>
-<!-- 🔒 Load SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- 🔒 Load Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
 
 <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
+    authDomain: "momentumxlab-37ce2.firebaseapp.com",
+    // เพิ่ม config ให้ครบ
+  };
+
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
