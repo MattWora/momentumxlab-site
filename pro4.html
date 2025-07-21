@@ -7,32 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-  <script>
-  document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
-    button.addEventListener('click', e => {
-      const selectedPlan = button.dataset.plan;
-      if (!auth.currentUser) {
-        e.preventDefault();
-        Swal.fire({
-          title: 'กรุณาเข้าสู่ระบบก่อน',
-          text: 'คุณต้องเข้าสู่ระบบเพื่อสั่งซื้อแพ็กเกจ Pro-4',
-          icon: 'info',
-          confirmButtonText: 'เข้าสู่ระบบ',
-          showCancelButton: true,
-          cancelButtonText: 'ยกเลิก'
-        }).then(result => {
-          if (result.isConfirmed) {
-            const loginAnchor = document.getElementById("nav-login");
-            window.open(loginAnchor.href, loginAnchor.target || "_self");
-          }
-        });
-      } else {
-        window.location.href = `checkout.html?plan=${selectedPlan}`;
-      }
-    });
-  });
-</script>
-
 <body>
 
   <!-- ❌ Removed Logo Header -->
