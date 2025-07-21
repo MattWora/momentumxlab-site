@@ -120,8 +120,8 @@
 <script>
   // ✅ Firebase config ของคุณ — ใส่จริงตามที่ใช้ใน signup.html
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
+    authDomain: "momentumxlab-37ce2.firebaseapp.com",
     // ...
   };
   firebase.initializeApp(firebaseConfig);
@@ -134,12 +134,12 @@
       if (!auth.currentUser) {
         e.preventDefault();
         Swal.fire({
-          title: 'กรุณาเข้าสู่ระบบก่อน',
-          text: 'คุณต้องเข้าสู่ระบบเพื่อสั่งซื้อแพ็กเกจ Pro-4',
+          title: 'Please sign in first',
+          text: 'You must be logged in to order the ApexXAU Intelligent Pro-4 package',
           icon: 'info',
-          confirmButtonText: 'เข้าสู่ระบบ',
+          confirmButtonText: 'Login',
           showCancelButton: true,
-          cancelButtonText: 'ยกเลิก'
+          cancelButtonText: 'Cancel'
         }).then(result => {
           if (result.isConfirmed) {
             const loginAnchor = document.getElementById("nav-login");
