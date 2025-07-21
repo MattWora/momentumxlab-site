@@ -110,6 +110,48 @@
       <p class="copyright">&copy; 2025 MomentumXLab. All rights reserved.</p>
     </div>
   </footer>
+<!-- 🔒 Load SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- 🔒 Load Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+
+<script>
+  // ✅ Firebase config ของคุณ — ใส่จริงตามที่ใช้ใน signup.html
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    // ...
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  // ✅ ตรวจ login ก่อน redirect ไป checkout
+  document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
+    button.addEventListener('click', e => {
+      const selectedPlan = button.dataset.plan;
+      if (!auth.currentUser) {
+        e.preventDefault();
+        Swal.fire({
+          title: 'กรุณาเข้าสู่ระบบก่อน',
+          text: 'คุณต้องเข้าสู่ระบบเพื่อสั่งซื้อแพ็กเกจ Pro-4',
+          icon: 'info',
+          confirmButtonText: 'เข้าสู่ระบบ',
+          showCancelButton: true,
+          cancelButtonText: 'ยกเลิก'
+        }).then(result => {
+          if (result.isConfirmed) {
+            const loginAnchor = document.getElementById("nav-login");
+            window.open(loginAnchor.href, loginAnchor.target || "_self");
+          }
+        });
+      } else {
+        window.location.href = `checkout.html?plan=${selectedPlan}`;
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
