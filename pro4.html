@@ -115,15 +115,16 @@
 <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
 
 <script>
-  const firebaseConfig = {
+  // ✅ เริ่มหลังจาก Firebase ถูก initialize แล้ว
+  firebase.initializeApp({
     apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
     authDomain: "momentumxlab-37ce2.firebaseapp.com",
-    // เพิ่ม config ให้ครบ
-  };
+    // เพิ่ม config อื่นหากจำเป็น
+  });
 
-  firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
+  // ✅ ตรวจสถานะ login แล้ว bind ปุ่มหลังจาก Firebase โหลดสถานะผู้ใช้เสร็จ
   auth.onAuthStateChanged(user => {
     document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
       button.addEventListener('click', e => {
@@ -150,6 +151,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
