@@ -153,11 +153,16 @@
            Login
           </button>
           <div class="nav-buttons">
-  <button id="authBtn" class="cta-btn" style="min-width:120px;">Loading…</button>
-  <a id="nav-signup" href="https://mattwora.github.io/momentumxlab-auth-system/signup.html" target="_blank">Sign Up</a>
-  <a id="nav-login" href="https://mattwora.github.io/momentumxlab-auth-system/login.html" target="_blank" style="display:none;">Login</a>
-  <a id="nav-dashboard" href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html" target="_blank">Dashboard</a>
-  <a id="nav-logout" href="#" style="display:none;">Logout</a>
+  <a id="nav-signup"
+     href="https://mattwora.github.io/momentumxlab-auth-system/signup.html"
+     target="_blank">Sign Up</a>
+  <a id="nav-login"
+     href="https://mattwora.github.io/momentumxlab-auth-system/login.html"
+     target="_blank">Login</a>
+  <a id="nav-dashboard"
+     href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html"
+     target="_blank">Dashboard</a>
+  <a id="nav-logout" href="#">Logout</a>
         </div>
       </div>
     </div>
@@ -369,66 +374,7 @@
         });
       }
     });
-    <script>
-  const authBtn     = document.getElementById("authBtn");
-  const navSignup   = document.getElementById("nav-signup");
-  const navLogin    = document.getElementById("nav-login");
-  const navLogout   = document.getElementById("nav-logout");
-  const navDashboard= document.getElementById("nav-dashboard");
-  const trialBtn    = document.getElementById("trial-btn");
-
-  const AUTH_BASE = "https://mattwora.github.io/momentumxlab-auth-system";
-
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      // Logged in
-      authBtn.textContent           = "Logout";
-      authBtn.style.backgroundColor = "#e53935";
-      navSignup.style.display       = "none";
-      navLogin.style.display        = "none";
-      navLogout.style.display       = "inline-block";
-      navDashboard.style.display    = "inline-block";
-
-      authBtn.onclick = async () => {
-        await firebase.auth().signOut();
-        await Swal.fire("Signed Out", "You have been logged out.", "success");
-        location.reload();
-      };
-    } else {
-      // Not logged in
-      authBtn.textContent           = "Login";
-      authBtn.style.backgroundColor = "#43a047";
-      navSignup.style.display       = "inline-block";
-      navLogin.style.display        = "inline-block";
-      navLogout.style.display       = "none";
-      navDashboard.style.display    = "none";
-
-      authBtn.onclick = () => {
-        const back = encodeURIComponent(location.href);
-        window.location.href = `${AUTH_BASE}/login.html?redirect=${back}`;
-      };
-    }
-  });
-
-  // Trial download requires login
-  trialBtn.addEventListener("click", e => {
-    if (!firebase.auth().currentUser) {
-      e.preventDefault();
-      Swal.fire({
-        title: "Please Sign In First",
-        text: "You need an account to download the trial.",
-        icon: "info",
-        confirmButtonText: "Go to Login",
-        showCancelButton: true,
-        cancelButtonText: "Cancel"
-      }).then(result => {
-        if (result.isConfirmed) {
-          const back = encodeURIComponent(location.href);
-          window.location.href = `${AUTH_BASE}/login.html?redirect=${back}`;
-        }
-      });
-    }
-  });
+    
 </script>
 </body>
 </html>
