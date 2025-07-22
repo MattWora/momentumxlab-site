@@ -123,8 +123,8 @@
   <script>
     // กรอก config Firebase ของคุณ
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
+      apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
+      authDomain: "momentumxlab-37ce2.firebaseapp.com",
       // … config อื่นๆ
     };
     firebase.initializeApp(firebaseConfig);
@@ -142,8 +142,8 @@
           if (!user) {
             // ยังไม่ล็อกอิน → ให้เลือก Login หรือ Signup
             const result = await Swal.fire({
-              title: 'กรุณาสมัครหรือเข้าสู่ระบบ',
-              text: 'คุณต้อง Login หรือ Signup ก่อนเลือกแพ็กเกจ',
+              title: 'Please Sign up or Login',
+              text: 'You must Login or Signup befor choosing a package',
               icon: 'info',
               showDenyButton: true,
               confirmButtonText: 'Login',
