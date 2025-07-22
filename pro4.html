@@ -9,8 +9,6 @@
 </head>
 <body>
 
-  <!-- ❌ Removed Logo Header -->
-
   <!-- ⚙️ Pro-4 Main Section -->
   <section class="pro4-section">
     <div class="left-content">
@@ -82,22 +80,24 @@
       </table>
 
       <div class="btn-group">
-      <button class="cta-btn pro4-checkout-btn" data-plan="monthly">Subscribe Monthly</button>
-      <button class="cta-btn pro4-checkout-btn" data-plan="6m">Subscribe 6 Months</button>
-      <button class="cta-btn pro4-checkout-btn" data-plan="annual">Subscribe 12 Months</button>
-
+        <button class="cta-btn pro4-checkout-btn" data-plan="monthly">Subscribe Monthly</button>
+        <button class="cta-btn pro4-checkout-btn" data-plan="6m">Subscribe 6 Months</button>
+        <button class="cta-btn pro4-checkout-btn" data-plan="annual">Subscribe 12 Months</button>
       </div>
-      <p class="roi-note">Backtested monthly return: <strong>$33.20</strong> — keep over 50% of your gains.</p>
+
+      <p class="roi-note">
+        Backtested monthly return: <strong>$33.20</strong> — keep over 50% of your gains.
+      </p>
     </div>
 
     <div class="right-content">
-  <div class="mockup-wrapper">
-    <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4 Mockup" />
-    <p class="edition custom">
-      Ideal for XAUUSDc with minimal starting capital (5,000 USDc) — fully compatible with XAUUSD at $5,000 deposit.
-    </p>
-  </div>
-</div>
+      <div class="mockup-wrapper">
+        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4 Mockup" />
+        <p class="edition custom">
+          Ideal for XAUUSDc with minimal starting capital (5,000 USDc) — fully compatible with XAUUSD at $5,000 deposit.
+        </p>
+      </div>
+    </div>
   </section>
 
   <!-- ✅ Footer Logo + Branding -->
@@ -106,52 +106,62 @@
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
     </div>
     <div class="footer-text">
-      <p>Past performance does not guarantee future results.<br>Use with discretion and risk management.</p>
+      <p>
+        Past performance does not guarantee future results.<br>
+        Use with discretion and risk management.
+      </p>
       <p class="copyright">&copy; 2025 MomentumXLab. All rights reserved.</p>
     </div>
   </footer>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
 
-<script>
-  // ✅ เริ่มหลังจาก Firebase ถูก initialize แล้ว
-  firebase.initializeApp({
-    apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
-    authDomain: "momentumxlab-37ce2.firebaseapp.com",
-    // เพิ่ม config อื่นหากจำเป็น
-  });
+  <!-- 1) ไลบรารี SweetAlert2 + Firebase (compat) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
-  const auth = firebase.auth();
+  <!-- 2) สคริปต์เช็คสถานะผู้ใช้ตอนกดปุ่ม -->
+  <script>
+    // กรอก config Firebase ของคุณ
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      // … config อื่นๆ
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-  auth.onAuthStateChanged(user => {
-    // ✅ Firebase รู้แล้วว่าผู้ใช้ login หรือยัง
-    document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
-      button.addEventListener('click', e => {
-        const selectedPlan = button.dataset.plan;
-
-        if (!user) {
+    // bind ปุ่มทั้งหมดที่มี class="pro4-checkout-btn"
+    document
+      .querySelectorAll('.pro4-checkout-btn')
+      .forEach(button => {
+        button.addEventListener('click', async (e) => {
           e.preventDefault();
-          Swal.fire({
-            title: 'Please log in first',
-            text: 'You must be signed in before selecting your package',
-            icon: 'info',
-            confirmButtonText: 'Go to Login',
-            showCancelButton: true,
-            cancelButtonText: 'Cancel'
-          }).then(result => {
+          const plan = button.dataset.plan;
+          const user = auth.currentUser;
+
+          if (!user) {
+            // ยังไม่ล็อกอิน → ให้เลือก Login หรือ Signup
+            const result = await Swal.fire({
+              title: 'กรุณาสมัครหรือเข้าสู่ระบบ',
+              text: 'คุณต้อง Login หรือ Signup ก่อนเลือกแพ็กเกจ',
+              icon: 'info',
+              showDenyButton: true,
+              confirmButtonText: 'Login',
+              denyButtonText: 'Signup'
+            });
+
             if (result.isConfirmed) {
-              window.location.href = "signup.html";
+              window.location.href = 'login.html';
             }
-          });
-        } else {
-          window.location.href = `confirm-order.html?plan=${selectedPlan}`;
-        }
+            else if (result.isDenied) {
+              window.location.href = 'signup.html';
+            }
+          } else {
+            // ล็อกอินแล้ว → ไปหน้ายืนยันคำสั่งซื้อ
+            window.location.href = `confirm-order.html?plan=${plan}`;
+          }
+        });
       });
-    });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
