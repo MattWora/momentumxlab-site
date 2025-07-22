@@ -4,24 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pro-4 | MomentumXLab</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- ⚙️ Pro-4 Main Section -->
+  <!-- Pro-4 Main Section -->
   <section class="pro4-section">
     <div class="left-content">
       <h2>Key Features of ApexXAU Pro-4 for MT5 platform</h2>
       <ul class="feature-list">
-        <li><strong>Multi-Signal Entry Logic:</strong> Uses CCI, MACD, RSI + ADX threshold</li>
+        <li><strong>Multi-Signal Entry Logic:</strong> CCI, MACD, RSI + ADX threshold</li>
         <li><strong>Adaptive Exit Strategy:</strong> ATR-based trailing stop & dynamic TP</li>
-        <li><strong>Aggregated Intelligent Closure:</strong> Closes grouped positions at floating drawdown</li>
-        <li><strong>ADX-Based Risk Adjustment:</strong> Modulates entry and trailing intensity</li>
-        <li><strong>Zero-Redundancy Filtering:</strong> Prevents trade overlap, ensures precision</li>
+        <li><strong>Intelligent Closure:</strong> Closes grouped positions at floating drawdown</li>
+        <li><strong>Risk Adjustment:</strong> ADX-based modulation of entry & trailing</li>
+        <li><strong>Zero-Redundancy Filtering:</strong> Prevents trade overlap for precision</li>
       </ul>
 
-      <h3>Backtest Performance </h3>
+      <h3>Backtest Performance</h3>
       <table class="info-table">
         <thead>
           <tr>
@@ -80,9 +82,15 @@
       </table>
 
       <div class="btn-group">
-        <button class="cta-btn pro4-checkout-btn" data-plan="monthly">Subscribe Monthly</button>
-        <button class="cta-btn pro4-checkout-btn" data-plan="6m">Subscribe 6 Months</button>
-        <button class="cta-btn pro4-checkout-btn" data-plan="annual">Subscribe 12 Months</button>
+        <button class="cta-btn pro4-checkout-btn" data-plan="monthly">
+          Subscribe Monthly
+        </button>
+        <button class="cta-btn pro4-checkout-btn" data-plan="6m">
+          Subscribe 6 Months
+        </button>
+        <button class="cta-btn pro4-checkout-btn" data-plan="annual">
+          Subscribe 12 Months
+        </button>
       </div>
 
       <p class="roi-note">
@@ -94,74 +102,79 @@
       <div class="mockup-wrapper">
         <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro-4 Mockup" />
         <p class="edition custom">
-          Ideal for XAUUSDc with minimal starting capital (5,000 USDc) — fully compatible with XAUUSD at $5,000 deposit.
+          Ideal for XAUUSDc with minimal starting capital (5,000 USDc) — fully
+          compatible with XAUUSD at $5,000 deposit.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ✅ Footer Logo + Branding -->
+  <!-- Footer -->
   <footer class="footer-section">
     <div class="footer-logo-left">
       <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
     </div>
     <div class="footer-text">
       <p>
-        Past performance does not guarantee future results.<br>
+        Past performance does not guarantee future results.<br />
         Use with discretion and risk management.
       </p>
       <p class="copyright">&copy; 2025 MomentumXLab. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- 1) ไลบรารี SweetAlert2 + Firebase (compat) -->
+  <!-- Scripts: SweetAlert2 + Firebase Auth (compat) -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-
-  <!-- 2) สคริปต์เช็คสถานะผู้ใช้ตอนกดปุ่ม -->
   <script>
-    // กรอก config Firebase ของคุณ
+    // Base URL for your auth pages repo
+    const AUTH_BASE_URL = 'https://mattwora.github.io/momentumxlab-auth-system';
+
+    // Firebase config (replace with your own)
     const firebaseConfig = {
       apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
       authDomain: "momentumxlab-37ce2.firebaseapp.com",
-      // … config อื่นๆ
+      projectId: "momentumxlab-37ce2",
+      storageBucket: "momentumxlab-37ce2.appspot.com",
+      messagingSenderId: "1234567890",
+      appId: "1:1234567890:web:abcdef"
     };
     firebase.initializeApp(firebaseConfig);
+
     const auth = firebase.auth();
 
-    // bind ปุ่มทั้งหมดที่มี class="pro4-checkout-btn"
-    document
-      .querySelectorAll('.pro4-checkout-btn')
-      .forEach(button => {
-        button.addEventListener('click', async (e) => {
-          e.preventDefault();
-          const plan = button.dataset.plan;
-          const user = auth.currentUser;
+    // Handle subscribe button clicks
+    document.querySelectorAll('.pro4-checkout-btn').forEach(button => {
+      button.addEventListener('click', async e => {
+        e.preventDefault();
+        const plan = button.dataset.plan;
+        const user = auth.currentUser;
 
-          if (!user) {
-            // ยังไม่ล็อกอิน → ให้เลือก Login หรือ Signup
-            const result = await Swal.fire({
-              title: 'Please Sign up or Login',
-              text: 'You must Login or Signup befor choosing a package',
-              icon: 'info',
-              showDenyButton: true,
-              confirmButtonText: 'Login',
-              denyButtonText: 'Signup'
-            });
+        if (!user) {
+          // Prompt login or signup
+          const result = await Swal.fire({
+            title: 'Please Sign Up or Login',
+            text: 'You must sign in before choosing a package.',
+            icon: 'info',
+            showDenyButton: true,
+            confirmButtonText: 'Login',
+            denyButtonText: 'Signup'
+          });
 
-            if (result.isConfirmed) {
-              window.location.href = 'login.html';
-            }
-            else if (result.isDenied) {
-              window.location.href = 'signup.html';
-            }
-          } else {
-            // ล็อกอินแล้ว → ไปหน้ายืนยันคำสั่งซื้อ
-            window.location.href = `confirm-order.html?plan=${plan}`;
+          if (result.isConfirmed) {
+            window.location.href = `${AUTH_BASE_URL}/login.html`;
+          } else if (result.isDenied) {
+            window.location.href = `${AUTH_BASE_URL}/signup.html`;
           }
-        });
+
+        } else {
+          // User is signed in → go to confirm-order
+          window.location.href = 
+            `${AUTH_BASE_URL}/confirm-order.html?plan=${plan}`;
+        }
       });
+    });
   </script>
 </body>
 </html>
