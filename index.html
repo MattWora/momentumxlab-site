@@ -153,7 +153,7 @@
              href="https://mattwora.github.io/momentumxlab-auth-system/signup.html"
              target="_blank">Sign Up</a>
           <a id="nav-login"
-             href="https://mattwora.github.io/momentumxlab-auth-system/login.html"
+             href="https://mattwora.github.io/momentumxlab-auth-system/docs/login.html?redirect=dashboard.html"
              target="_blank">Login</a>
           <a id="nav-dashboard"
              href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html"
@@ -375,8 +375,8 @@
         cancelButtonText: "Cancel"
       }).then(result => {
         if (result.isConfirmed) {
-          window.open(navLogin.href, navLogin.target);
-        }
+          window.open(navLogin.href + '?redirect=dashboard.html',navLogin.target
+      );
       });
     }
   });
