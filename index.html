@@ -376,7 +376,9 @@ navSignup.addEventListener("click", e => {
       location.reload();
     }
   });
-navLogout.addEventListener("click", e => {
+const navLogout = document.getElementById("nav-logout");
+
+navLogout?.addEventListener("click", e => {
   e.preventDefault();
   Swal.fire({
     title: "Are you sure?",
@@ -388,7 +390,7 @@ navLogout.addEventListener("click", e => {
     reverseButtons: true
   }).then(result => {
     if (result.isConfirmed) {
-      auth.signOut()
+      firebase.auth().signOut()
         .then(() => Swal.fire({
           title: "Logged out",
           icon: "success",
