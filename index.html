@@ -331,11 +331,11 @@
 
   // --- 3) สลับปุ่มบน Navbar ตามสถานะล็อกอิน ---
   auth.onAuthStateChanged(user => {
-    navSignup.style.display    = user ? "none"         : "inline-block";
-    navLogin.style.display     = user ? "none"         : "inline-block";
-    navDashboard.style.display = user ? "inline-block" : "none";
-    navLogout.style.display    = user ? "inline-block" : "none";
-  });
+  nav.signup.style.display = user ? "none" : "inline-block";
+  nav.login.style.display = user ? "none" : "inline-block";
+  nav.dashboard.style.display = user ? "inline-block" : "none";
+  nav.logout.style.display = user ? "inline-block" : "none";
+});
 
 navSignup.addEventListener("click", e => {
   e.preventDefault();
