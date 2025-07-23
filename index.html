@@ -157,8 +157,16 @@
              target="_blank">Login</a>
           <a id="nav-dashboard"
              href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html"
-             target="_blank">Dashboard</a>
-          <a id="nav-logout" href="#">Logout</a>
+             target="_blank"
+             style="display: none;">
+             Dashboard
+</a>
+<a id="nav-logout"
+   href="#"
+   style="display: none;">
+  Logout
+</a>
+
         </div>
       </div>
     </div>
@@ -327,7 +335,15 @@
       document.getElementById("nav-login").style.display     = user ? "none" : "inline-block";
       document.getElementById("nav-dashboard").style.display = user ? "inline-block" : "none";
       document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
-    });
+    // วางไว้หลัง onAuthStateChanged
+window.addEventListener('message', event => {
+  // ตรวจสอบ origin ให้แน่ใจว่าเรียกมาจาก GitHub Pages เท่านั้น
+  if (event.origin === 'https://mattwora.github.io'
+      && event.data === 'login-success') {
+    location.reload();
+  }
+});
+
 
     document.getElementById("nav-logout").onclick = e => {
       e.preventDefault();
