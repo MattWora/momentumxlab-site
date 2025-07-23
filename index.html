@@ -348,7 +348,7 @@
     showCancelButton: true
   }).then(result => {
     if (result.isConfirmed) {
-      window.open(navSignup.href, navSignup.target);
+      window.open(nav.signup.href, nav.signup.target);
     }
   });
 });
@@ -363,7 +363,7 @@
     showCancelButton: true
   }).then(result => {
     if (result.isConfirmed) {
-      window.open(navLogin.href, navLogin.target);
+      window.open(nav.login.href, nav.login.target);
     }
   });
 });
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cancelButtonText:  "Cancel"
       }).then(result => {
         if (result.isConfirmed) {
-          window.open(navLogin.href, navLogin.target);
+          window.open(nav.login.href, nav.login.target);
         }
       });
     }
