@@ -346,26 +346,40 @@
       });
     };
 
-    document.getElementById("trial-btn").addEventListener("click", e => {
+     document.getElementById("trial-btn").addEventListener("click", e => {
       if (!auth.currentUser) {
-        e.preventDefault();
-        Swal.fire({
-          title: 'Please sign in first',
-          text: 'You need an account to download the trial.',
-          icon: 'info',
-          confirmButtonText: 'Go to Login',
-          showCancelButton: true,
-          cancelButtonText: 'Cancel'
-        }).then(result => {
-          if (result.isConfirmed) {
-            const loginAnchor = document.getElementById("nav-login");
-            const url         = loginAnchor.href;
-            const target      = loginAnchor.target || "_self";
-            window.open(url, target);
-          }
-        });
+      e.preventDefault();
+      Swal.fire({ /* … */ }).then(result => {
+      if (result.isConfirmed) {
+      const loginAnchor = document.getElementById("nav-login");
+      window.open(loginAnchor.href, loginAnchor.target);
       }
-    });
+      });
+      }
+      e.preventDefault();  // หยุด href เดิมเสมอก่อน
+  
+      if (auth.currentUser) {
+      // กรณีล็อกอินแล้ว → ไป Dashboard
+      window.location.href = 
+      'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
+      } else {
+      // กรณียังไม่ล็อกอิน → เดิมใช้งาน SweetAlert
+      Swal.fire({
+      title: 'Please sign in first',
+      text: 'You need an account to download the trial.',
+      icon: 'info',
+      confirmButtonText: 'Go to Login',
+      showCancelButton: true,
+      cancelButtonText: 'Cancel'
+      }).then(result => {
+      if (result.isConfirmed) {
+      const loginAnchor = document.getElementById("nav-login");
+      window.open(loginAnchor.href, loginAnchor.target);
+     }
+   });
+   }
+ });
+
   </script>
 </body>
 </html>
