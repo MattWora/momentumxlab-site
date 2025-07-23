@@ -158,10 +158,24 @@
           <a id="nav-dashboard"
              href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html"
              target="_blank">Dashboard</a>
-          <a id="nav-logout" href="#">Logout</a>
-        </div>
-      </div>
-    </div>
+          style="display: none;">
+          Dashboard
+          </a>
+          <a id="nav-logout"
+          href="#"
+          style="display: none;">
+          Logout
+  </a>
+       </div>
+      <script>
+  // สมมติว่า auth คือ Firebase Auth instance
+  auth.onAuthStateChanged(user => {
+    document.getElementById("nav-signup").style.display    = user ? "none"         : "inline-block";
+    document.getElementById("nav-login").style.display     = user ? "none"         : "inline-block";
+    document.getElementById("nav-dashboard").style.display = user ? "inline-block" : "none";
+    document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
+  });
+</script>
 
     <div class="graph-overlay">
       <canvas id="goldGraph"></canvas>
