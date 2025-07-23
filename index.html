@@ -351,6 +351,22 @@ navSignup.addEventListener("click", e => {
     }
   });
 });
+  navLogin.addEventListener("click", e => {
+  e.preventDefault();
+  Swal.fire({
+    title: "Log in to MomentumXLab",
+    text: "You will be redirected to the login page.",
+    icon: "info",
+    confirmButtonText: "Proceed",
+    cancelButtonText: "Cancel",
+    showCancelButton: true
+  }).then(result => {
+    if (result.isConfirmed) {
+      window.open(navLogin.href, navLogin.target);
+    }
+  });
+});
+
   // --- 4) รับ postMessage ‘login-success’ แล้ว reload หน้าให้ onAuthStateChanged ทำงาน ---
   window.addEventListener("message", event => {
     if (
