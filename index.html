@@ -307,31 +307,35 @@
     updateAndDraw();
   </script>
 
-  <!-- SweetAlert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
-      authDomain: "momentumxlab-37ce2.firebaseapp.com",
-      projectId: "momentumxlab-37ce2",
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+<script>
+  // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
+    authDomain: "momentumxlab-37ce2.firebaseapp.com",
+    projectId: "momentumxlab-37ce2",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-    auth.onAuthStateChanged(user => {
-      document.getElementById("nav-signup").style.display    = user ? "none" : "inline-block";
-      document.getElementById("nav-login").style.display     = user ? "none" : "inline-block";
-      document.getElementById("nav-dashboard").style.display = user ? "none" : "inline-block";
-      document.getElementById("nav-logout").style.display    = user ? "none" : "inline-block";
-    });
-    
-    document.getElementById("nav-logout").onclick = e => {
-      e.preventDefault();
-      auth.signOut().then(() => {
+  // สลับปุ่ม SignUp / Login / Dashboard / Logout ตามสถานะล็อกอิน
+  auth.onAuthStateChanged(user => {
+    document.getElementById("nav-signup").style.display    = user ? "none"         : "inline-block";
+    document.getElementById("nav-login").style.display     = user ? "none"         : "inline-block";
+    document.getElementById("nav-dashboard").style.display = user ? "inline-block" : "none";
+    document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
+  });
+
+  // Logout
+  document.getElementById("nav-logout").onclick = e => {
+    e.preventDefault();
+    auth.signOut()
+      .then(() => {
         Swal.fire({
           title: 'Logged out',
           text: 'You have been logged out successfully.',
@@ -341,46 +345,38 @@
         }).then(() => {
           location.href = "index.html";
         });
-      }).catch(err => {
+      })
+      .catch(err => {
         Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
       });
-    };
+  };
 
-     document.getElementById("trial-btn").addEventListener("click", e => {
-      if (!auth.currentUser) {
-      e.preventDefault();
-      Swal.fire({ /* … */ }).then(result => {
-      if (result.isConfirmed) {
-      const loginAnchor = document.getElementById("nav-login");
-      window.open(loginAnchor.href, loginAnchor.target);
-      }
-      });
-      }
-      e.preventDefault();  // หยุด href เดิมเสมอก่อน
-  
-      if (auth.currentUser) {
+  // ปรับ listener ของปุ่ม Trial
+  document.getElementById("trial-btn").addEventListener("click", e => {
+    e.preventDefault(); // หยุด href/download เดิมเสมอ
+
+    if (auth.currentUser) {
       // กรณีล็อกอินแล้ว → ไป Dashboard
-      window.location.href = 
-      'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
-      } else {
-      // กรณียังไม่ล็อกอิน → เดิมใช้งาน SweetAlert
+      window.location.href = 'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
+    } else {
+      // กรณียังไม่ล็อกอิน → แสดง SweetAlert แล้วเปิดหน้า Login
       Swal.fire({
-      title: 'Please sign in first',
-      text: 'You need an account to download the trial.',
-      icon: 'info',
-      confirmButtonText: 'Go to Login',
-      showCancelButton: true,
-      cancelButtonText: 'Cancel'
+        title: 'Please sign in first',
+        text: 'You need an account to download the trial.',
+        icon: 'info',
+        confirmButtonText: 'Go to Login',
+        showCancelButton: true,
+        cancelButtonText: 'Cancel'
       }).then(result => {
-      if (result.isConfirmed) {
-      const loginAnchor = document.getElementById("nav-login");
-      window.open(loginAnchor.href, loginAnchor.target);
-     }
-   });
-   }
- });
+        if (result.isConfirmed) {
+          const loginAnchor = document.getElementById("nav-login");
+          window.open(loginAnchor.href, loginAnchor.target);
+        }
+      });
+    }
+  });
+</script>
 
-  </script>
 </body>
 </html>
 
