@@ -411,17 +411,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
   const auth = firebase.auth();
   const trialBtn = document.getElementById("trial-btn");
 
   if (trialBtn) {
     trialBtn.addEventListener("click", e => {
-      e.preventDefault();
+      e.preventDefault();  // ✅ หยุด default anchor behavior
       const user = auth.currentUser;
 
       if (user) {
-        // ล็อกอินแล้ว → เด้งไป Dashboard
+        // ล็อกอินแล้ว → ไป Dashboard
         location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
       } else {
         // ยังไม่ได้ล็อกอิน → ไปหน้า login พร้อม redirect
