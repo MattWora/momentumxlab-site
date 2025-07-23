@@ -195,9 +195,10 @@
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
       <div class="cta-buttons">
         <a id="trial-btn"
-           href="#start-trial"
-           class="cta-btn primary">
-        Start 15-Day Free Trial
+        href="https://mattwora.github.io/momentumxlab-auth-system/confirm-order.html"
+       target="_blank"
+       class="cta-btn primary">Start 15-Day Free Trial</a>
+
         </a>
         <a href="#subscribe" class="cta-btn secondary">
           Notify Me When Pro-5 Launches
@@ -411,28 +412,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  const nav = {
-  trial: document.getElementById("trial-btn")
-};
+  document.addEventListener("DOMContentLoaded", () => {
+  const auth = firebase.auth();
+  const trialBtn = document.getElementById("trial-btn");
 
-if (nav.trial) {
-  nav.trial.addEventListener("click", e => {
-    e.preventDefault();
-    Swal.fire({
-      title: "Start your free trial",
-      text: "You will be redirected to confirm your order.",
-      icon: "info",
-      confirmButtonText: "Proceed",
-      cancelButtonText: "Cancel",
-      showCancelButton: true,
-      reverseButtons: true
-    }).then(result => {
-      if (result.isConfirmed) {
-        window.open(nav.trial.href, nav.trial.target);
+  if (trialBtn) {
+    trialBtn.addEventListener("click", e => {
+      e.preventDefault();
+      const user = auth.currentUser;
+
+      if (user) {
+        // ล็อกอินแล้ว → เด้งไป Dashboard
+        location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
+      } else {
+        // ยังไม่ได้ล็อกอิน → ไปหน้า login พร้อม redirect
+        location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=confirm-order.html";
       }
     });
-  });
-}
+  }
+});
+
 
 </script>
 
