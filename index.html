@@ -417,16 +417,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (trialBtn) {
     trialBtn.addEventListener("click", e => {
-      e.preventDefault();  // ✅ หยุด default anchor behavior
-      const user = auth.currentUser;
+      e.preventDefault();
 
-      if (user) {
-        // ล็อกอินแล้ว → ไป Dashboard
-        location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
-      } else {
-        // ยังไม่ได้ล็อกอิน → ไปหน้า login พร้อม redirect
-        location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=confirm-order.html";
-      }
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          // ล็อกอินแล้ว → ไป Dashboard
+          location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
+        } else {
+          // ยังไม่ได้ล็อกอิน → ไป login พร้อม redirect
+          location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=confirm-order.html";
+        }
+      });
     });
   }
 });
