@@ -382,8 +382,8 @@ document.addEventListener("DOMContentLoaded", () => {
     logout: document.getElementById("nav-logout")
   };
 
-  if (nav.logout) {
-    nav.logout.addEventListener("click", e => {
+  if (navLogout) {
+  navLogout.addEventListener("click", e => {
       e.preventDefault();
       Swal.fire({
         title: "Are you sure?",
