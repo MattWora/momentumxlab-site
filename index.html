@@ -194,13 +194,10 @@
       <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
       <p class="cta-sub">Start your journey with MomentumXLab today.</p>
       <div class="cta-buttons">
-        <a
-          id="trial-btn"
-          href="downloads/ApexXAU Intelligent Pro-4 Trial Version.ex5"
-          download
-          class="cta-btn primary"
-        >
-          Start 15-Day Free Trial
+        <a id="trial-btn"
+           href="#start-trial"
+           class="cta-btn primary">
+        Start 15-Day Free Trial
         </a>
         <a href="#subscribe" class="cta-btn secondary">
           Notify Me When Pro-5 Launches
@@ -352,14 +349,24 @@
   };
 
   // ปรับ listener ของปุ่ม Trial
+  <script>
+  const auth = firebase.auth();
+
+  // สลับปุ่ม nav (เดิม)
+  auth.onAuthStateChanged(user => {
+    /* … */
+  });
+
+  // จับคลิก Trial
   document.getElementById("trial-btn").addEventListener("click", e => {
-    e.preventDefault(); // หยุด href/download เดิมเสมอ
+    e.preventDefault(); 
 
     if (auth.currentUser) {
-      // กรณีล็อกอินแล้ว → ไป Dashboard
-      window.location.href = 'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
+      // ถ้าล็อกอินแล้ว → ไป Dashboard
+      window.location.href = 
+        'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
     } else {
-      // กรณียังไม่ล็อกอิน → แสดง SweetAlert แล้วเปิดหน้า Login
+      // ยังไม่ล็อกอิน → SweetAlert → เปิด Login
       Swal.fire({
         title: 'Please sign in first',
         text: 'You need an account to download the trial.',
@@ -376,6 +383,7 @@
     }
   });
 </script>
+
 
 </body>
 </html>
