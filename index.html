@@ -321,11 +321,13 @@
   const auth = firebase.auth();
 
   // --- 2) เก็บ Element ปุ่มต่างๆ ---
-  const navSignup    = document.getElementById("nav-signup");
-  const navLogin     = document.getElementById("nav-login");
-  const navDashboard = document.getElementById("nav-dashboard");
-  const navLogout    = document.getElementById("nav-logout");
-  const btnTrial     = document.getElementById("trial-btn");
+  const nav = {
+  signup: document.getElementById("nav-signup"),
+  login: document.getElementById("nav-login"),
+  dashboard: document.getElementById("nav-dashboard"),
+  logout: document.getElementById("nav-logout"),
+  trial: document.getElementById("trial-btn")
+};
 
   // --- 3) สลับปุ่มบน Navbar ตามสถานะล็อกอิน ---
   auth.onAuthStateChanged(user => {
@@ -334,7 +336,6 @@
     navDashboard.style.display = user ? "inline-block" : "none";
     navLogout.style.display    = user ? "inline-block" : "none";
   });
-const navSignup = document.getElementById("nav-signup");
 
 navSignup.addEventListener("click", e => {
   e.preventDefault();
@@ -378,7 +379,8 @@ navSignup.addEventListener("click", e => {
   });
 const navLogout = document.getElementById("nav-logout");
 
-navLogout?.addEventListener("click", e => {
+if (navLogout) {
+  navLogout.addEventListener("click", e => {
   e.preventDefault();
   Swal.fire({
     title: "Are you sure?",
@@ -390,7 +392,7 @@ navLogout?.addEventListener("click", e => {
     reverseButtons: true
   }).then(result => {
     if (result.isConfirmed) {
-      firebase.auth().signOut()
+        auth.signOut()
         .then(() => Swal.fire({
           title: "Logged out",
           icon: "success",
