@@ -320,23 +320,22 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-  // --- 2) เก็บ Element ปุ่มต่างๆ ---
+  document.addEventListener("DOMContentLoaded", () => {
+  const auth = firebase.auth();
   const nav = {
-  signup: document.getElementById("nav-signup"),
-  login: document.getElementById("nav-login"),
-  dashboard: document.getElementById("nav-dashboard"),
-  logout: document.getElementById("nav-logout"),
-  trial: document.getElementById("trial-btn")
-};
+    signup: document.getElementById("nav-signup"),
+    login: document.getElementById("nav-login"),
+    dashboard: document.getElementById("nav-dashboard"),
+    logout: document.getElementById("nav-logout"),
+    trial: document.getElementById("trial-btn")
+  };
 
-  // --- 3) สลับปุ่มบน Navbar ตามสถานะล็อกอิน ---
   auth.onAuthStateChanged(user => {
-  nav.signup.style.display = user ? "none" : "inline-block";
-  nav.login.style.display = user ? "none" : "inline-block";
-  nav.dashboard.style.display = user ? "inline-block" : "none";
-  nav.logout.style.display = user ? "inline-block" : "none";
-});
-
+    nav.signup.style.display = user ? "none" : "inline-block";
+    nav.login.style.display = user ? "none" : "inline-block";
+    nav.dashboard.style.display = user ? "inline-block" : "none";
+    nav.logout.style.display = user ? "inline-block" : "none";
+  });
   nav.signup.addEventListener("click", e => {
   e.preventDefault();
   Swal.fire({
