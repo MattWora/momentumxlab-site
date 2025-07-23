@@ -150,7 +150,7 @@
         </p>
         <div class="nav-buttons">
           <a id="nav-signup"
-             href="#">Sign Up</a>
+             href="https://mattwora.github.io/momentumxlab-auth-system/docs/signup.html"
              target="_blank">Sign Up</a>
           <a id="nav-login"
              href="https://mattwora.github.io/momentumxlab-auth-system/docs/login.html?redirect=dashboard.html"
@@ -334,7 +334,23 @@
     navDashboard.style.display = user ? "inline-block" : "none";
     navLogout.style.display    = user ? "inline-block" : "none";
   });
+const navSignup = document.getElementById("nav-signup");
 
+navSignup.addEventListener("click", e => {
+  e.preventDefault();
+  Swal.fire({
+    title: "Sign up for MomentumXLab",
+    text: "You will be redirected to the registration page.",
+    icon: "info",
+    confirmButtonText: "Proceed",
+    cancelButtonText: "Cancel",
+    showCancelButton: true
+  }).then(result => {
+    if (result.isConfirmed) {
+      window.open(navSignup.href, navSignup.target);
+    }
+  });
+});
   // --- 4) รับ postMessage ‘login-success’ แล้ว reload หน้าให้ onAuthStateChanged ทำงาน ---
   window.addEventListener("message", event => {
     if (
