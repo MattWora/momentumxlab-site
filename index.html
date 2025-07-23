@@ -377,33 +377,38 @@ navSignup.addEventListener("click", e => {
       location.reload();
     }
   });
-const navLogout = document.getElementById("nav-logout");
+document.addEventListener("DOMContentLoaded", () => {
+  const auth = firebase.auth();
+  const navLogout = document.getElementById("nav-logout");
 
-if (navLogout) {
-  navLogout.addEventListener("click", e => {
-  e.preventDefault();
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You will be signed out of your account.",
-    icon: "warning",
-    confirmButtonText: "Logout",
-    cancelButtonText: "Cancel",
-    showCancelButton: true,
-    reverseButtons: true
-  }).then(result => {
-    if (result.isConfirmed) {
-        auth.signOut()
-        .then(() => Swal.fire({
-          title: "Logged out",
-          icon: "success",
-          timer: 1200,
-          showConfirmButton: false
-        }))
-        .then(() => location.reload())
-        .catch(err => Swal.fire("Error", err.message, "error"));
-    }
-  });
+  if (navLogout) {
+    navLogout.addEventListener("click", e => {
+      e.preventDefault();
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You will be signed out of your account.",
+        icon: "warning",
+        confirmButtonText: "Logout",
+        cancelButtonText: "Cancel",
+        showCancelButton: true,
+        reverseButtons: true
+      }).then(result => {
+        if (result.isConfirmed) {
+          auth.signOut()
+            .then(() => Swal.fire({
+              title: "Logged out",
+              icon: "success",
+              timer: 1200,
+              showConfirmButton: false
+            }))
+            .then(() => location.reload())
+            .catch(err => Swal.fire("Error", err.message, "error"));
+        }
+      });
+    });
+  }
 });
+
   // --- 6) Start 15-Day Free Trial Handler ---
   btnTrial.addEventListener("click", e => {
     e.preventDefault();
