@@ -325,7 +325,7 @@
     auth.onAuthStateChanged(user => {
       document.getElementById("nav-signup").style.display    = user ? "none" : "inline-block";
       document.getElementById("nav-login").style.display     = user ? "none" : "inline-block";
-      document.getElementById("nav-dashboard").style.display = user ? "none" : "inline-block";
+      document.getElementById("nav-dashboard").style.display = user ? "inline-block" : "none";
       document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
     });
     
