@@ -311,7 +311,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-  // Initialize Firebase
+  // 1. Initialize Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
     authDomain: "momentumxlab-37ce2.firebaseapp.com",
@@ -320,71 +320,67 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-  // สลับปุ่ม SignUp / Login / Dashboard / Logout ตามสถานะล็อกอิน
+  // 2. เก็บ Element ของปุ่มต่างๆ
+  const navSignup    = document.getElementById("nav-signup");
+  const navLogin     = document.getElementById("nav-login");
+  const navDashboard = document.getElementById("nav-dashboard");
+  const navLogout    = document.getElementById("nav-logout");
+  const btnTrial     = document.getElementById("trial-btn");
+
+  // 3. onAuthStateChanged: สลับปุ่ม SignUp / Login / Dashboard / Logout
   auth.onAuthStateChanged(user => {
-    document.getElementById("nav-signup").style.display    = user ? "none"         : "inline-block";
-    document.getElementById("nav-login").style.display     = user ? "none"         : "inline-block";
-    document.getElementById("nav-dashboard").style.display = user ? "inline-block" : "none";
-    document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
+    navSignup.style.display    = user ? "none"         : "inline-block";
+    navLogin.style.display     = user ? "none"         : "inline-block";
+    navDashboard.style.display = user ? "inline-block" : "none";
+    navLogout.style.display    = user ? "inline-block" : "none";
   });
 
-  // Logout
-  document.getElementById("nav-logout").onclick = e => {
+  // 4. Logout: sign out + alert + reload
+  navLogout.addEventListener("click", e => {
     e.preventDefault();
     auth.signOut()
       .then(() => {
-        Swal.fire({
-          title: 'Logged out',
-          text: 'You have been logged out successfully.',
-          icon: 'success',
+        return Swal.fire({
+          title: "Logged out",
+          text: "You have been logged out successfully.",
+          icon: "success",
           timer: 1500,
           showConfirmButton: false
-        }).then(() => {
-          location.href = "index.html";
         });
       })
+      .then(() => {
+        location.reload();
+      })
       .catch(err => {
-        Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
+        Swal.fire({ title: "Error", text: err.message, icon: "error" });
       });
-  };
-
-  // ปรับ listener ของปุ่ม Trial
-  <script>
-  const auth = firebase.auth();
-
-  // สลับปุ่ม nav (เดิม)
-  auth.onAuthStateChanged(user => {
-    /* … */
   });
 
-  // จับคลิก Trial
-  document.getElementById("trial-btn").addEventListener("click", e => {
-    e.preventDefault(); 
+  // 5. Start 15-Day Free Trial
+  btnTrial.addEventListener("click", e => {
+    e.preventDefault(); // หยุด href เดิมเสมอ
 
     if (auth.currentUser) {
-      // ถ้าล็อกอินแล้ว → ไป Dashboard
+      // กรณีล็อกอินแล้ว → ไป Dashboard ในแท็บนี้เลย
       window.location.href = 
-        'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
+        "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
     } else {
-      // ยังไม่ล็อกอิน → SweetAlert → เปิด Login
+      // ยังไม่ล็อกอิน → แจ้งให้ล็อกอิน แล้วเปิดหน้า Login ในแท็บใหม่
       Swal.fire({
-        title: 'Please sign in first',
-        text: 'You need an account to download the trial.',
-        icon: 'info',
-        confirmButtonText: 'Go to Login',
+        title: "Please sign in first",
+        text: "You need an account to download the trial.",
+        icon: "info",
+        confirmButtonText: "Go to Login",
         showCancelButton: true,
-        cancelButtonText: 'Cancel'
+        cancelButtonText: "Cancel"
       }).then(result => {
         if (result.isConfirmed) {
-          const loginAnchor = document.getElementById("nav-login");
-          window.open(loginAnchor.href, loginAnchor.target);
+          window.open(navLogin.href, navLogin.target);
         }
       });
     }
   });
 </script>
-
-
 </body>
 </html>
 
