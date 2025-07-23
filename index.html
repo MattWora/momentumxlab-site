@@ -378,9 +378,11 @@
   });
 document.addEventListener("DOMContentLoaded", () => {
   const auth = firebase.auth();
-  const navLogout = document.getElementById("nav-logout");
+  const nav = {
+    logout: document.getElementById("nav-logout")
+  };
 
-  if (navLogout) {
+  if (nav.logout) {
     nav.logout.addEventListener("click", e => {
       e.preventDefault();
       Swal.fire({
