@@ -205,6 +205,31 @@
         <a href="#subscribe" class="cta-btn secondary">
           Notify Me When Pro-5 Launches
         </a>
+        <script>
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  auth.onAuthStateChanged(user => {
+    /* … เงื่อนไขสลับปุ่ม nav … */
+  });
+
+  // --- เพิ่มส่วนนี้ ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnTrial = document.getElementById('trial-btn');
+    btnTrial.addEventListener('click', e => {
+      e.preventDefault();
+      if (auth.currentUser) {
+        // ถ้าล็อกอินแล้ว → ไปหน้า Dashboard
+        window.location.href = 'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
+      } else {
+        // ถ้ายังไม่ล็อกอิน → เปิดหน้า Signup ตาม href เดิม
+        window.open(btnTrial.href, '_blank');
+      }
+    });
+  });
+  // --- จบส่วนที่เพิ่ม ---
+</script>
+
       </div>
     </div>
   </div>
@@ -328,31 +353,7 @@
       document.getElementById("nav-dashboard").style.display = user ? "none" : "inline-block";
       document.getElementById("nav-logout").style.display    = user ? "inline-block" : "none";
     });
-    <script>
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-
-  auth.onAuthStateChanged(user => {
-    /* … เงื่อนไขสลับปุ่ม nav … */
-  });
-
-  // --- เพิ่มส่วนนี้ ---
-  document.addEventListener('DOMContentLoaded', () => {
-    const btnTrial = document.getElementById('trial-btn');
-    btnTrial.addEventListener('click', e => {
-      e.preventDefault();
-      if (auth.currentUser) {
-        // ถ้าล็อกอินแล้ว → ไปหน้า Dashboard
-        window.location.href = 'https://mattwora.github.io/momentumxlab-auth-system/dashboard.html';
-      } else {
-        // ถ้ายังไม่ล็อกอิน → เปิดหน้า Signup ตาม href เดิม
-        window.open(btnTrial.href, '_blank');
-      }
-    });
-  });
-  // --- จบส่วนที่เพิ่ม ---
-</script>
-
+    
     document.getElementById("nav-logout").onclick = e => {
       e.preventDefault();
       auth.signOut().then(() => {
