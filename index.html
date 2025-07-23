@@ -411,29 +411,29 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  // --- 6) Start 15-Day Free Trial Handler ---
-  btnTrial.addEventListener("click", e => {
-    e.preventDefault();
+  const nav = {
+  trial: document.getElementById("trial-btn")
+};
 
-    if (auth.currentUser) {
-      // ถ้าล็อกอินแล้ว → ไป Dashboard
-      window.location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
-    } else {
-      // ยังไม่ล็อกอิน → แจ้งให้ล็อกอิน แล้วเปิด Login ในแท็บใหม่
-      Swal.fire({
-        title: "Please sign in first",
-        text:  "You need an account to download the trial.",
-        icon:  "info",
-        confirmButtonText: "Go to Login",
-        showCancelButton:  true,
-        cancelButtonText:  "Cancel"
-      }).then(result => {
-        if (result.isConfirmed) {
-          window.open(nav.login.href, nav.login.target);
-        }
-      });
-    }
+if (nav.trial) {
+  nav.trial.addEventListener("click", e => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Start your free trial",
+      text: "You will be redirected to confirm your order.",
+      icon: "info",
+      confirmButtonText: "Proceed",
+      cancelButtonText: "Cancel",
+      showCancelButton: true,
+      reverseButtons: true
+    }).then(result => {
+      if (result.isConfirmed) {
+        window.open(nav.trial.href, nav.trial.target);
+      }
+    });
   });
+}
+
 </script>
 
 </body>
