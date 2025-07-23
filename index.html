@@ -333,8 +333,8 @@
   auth.onAuthStateChanged(user => {
     nav.signup.style.display = user ? "none" : "inline-block";
     nav.login.style.display = user ? "none" : "inline-block";
-    nav.dashboard.style.display = user ? "none" : "inline-block";
-    nav.logout.style.display = user ? "none" : "inline-block";
+    nav.dashboard.style.display = user ? "inline-block" : "none";
+    nav.logout.style.display = user ? "inline-block" : "none";
   });
   nav.signup.addEventListener("click", e => {
   e.preventDefault();
