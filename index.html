@@ -337,7 +337,7 @@
   nav.logout.style.display = user ? "inline-block" : "none";
 });
 
-  nav.Signup.addEventListener("click", e => {
+  nav.signup.addEventListener("click", e => {
   e.preventDefault();
   Swal.fire({
     title: "Sign up for MomentumXLab",
@@ -352,7 +352,7 @@
     }
   });
 });
-  nav.Login.addEventListener("click", e => {
+  nav.login.addEventListener("click", e => {
   e.preventDefault();
   Swal.fire({
     title: "Log in to MomentumXLab",
@@ -382,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLogout = document.getElementById("nav-logout");
 
   if (navLogout) {
-    nav.Logout.addEventListener("click", e => {
+    nav.logout.addEventListener("click", e => {
       e.preventDefault();
       Swal.fire({
         title: "Are you sure?",
