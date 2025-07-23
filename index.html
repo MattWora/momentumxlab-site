@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MomentumXLab – Landing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to right, #fdfdfd, #f6f9ff);
+      color: #333;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-content { position: relative; flex: 1; }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 2rem;
+      background: #f0f0f0;
+      height: 170px;
+      position: relative;
+      z-index: 2;
+    }
+    .header img { max-height: 160%; width: auto; }
+    .header-text { max-width: 400px; text-align: right; }
+    .header-text h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem; font-weight: 700; color: #1a1a1a;
+    }
+    .header-text p {
+      margin-top: .5rem; font-size: .9rem; color: #555;
+    }
+    .nav-buttons { margin-top: .8rem; }
+    .nav-buttons a {
+      margin-left: .5rem;
+      padding: .5rem 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: .75rem; font-weight: 600;
+      color: #fff; background: #0072e5;
+      border-radius: 6px; text-decoration: none;
+      transition: background .3s;
+    }
+    .nav-buttons a:hover { background: #005bb5; }
+
+    .graph-overlay {
+      position: absolute; top: 220px; left: 0;
+      width: 100%; height: 320px;
+      pointer-events: none; overflow: hidden;
+      z-index: 0;
+    }
+    #goldGraph { width: 100%; height: 100%; display: block; }
+
+    .gallery {
+      position: relative; z-index: 2;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      padding: 1rem 2rem; margin-top: 0;
+    }
+    .mockup-card {
+      display: block; text-decoration: none; color: inherit;
+      background: rgba(255,255,255,0.85);
+      border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      width: 200px; padding: .8rem; text-align: center;
+      transition: transform .3s;
+    }
+    .mockup-card:hover { transform: translateY(-4px); }
+    .mockup-card img {
+      width: 100%; margin-bottom: .5rem; object-fit: contain;
+    }
+    .mockup-card h3 {
+      font-size: .95rem; font-weight: 600; color: #1f1f1f;
+    }
+    .mockup-card p {
+      font-size: .75rem; color: #555; margin-bottom: .4rem;
+    }
+    .edition.pro4  { color: #C08C1B; font-weight: 600; }
+    .edition.pro5  { color: #0072e5; font-weight: 600; }
+    .edition.corex { color: #673ab7; font-weight: 600; }
+
+    .cta-section {
+      text-align: center; padding: 1rem 2rem;
+      background: linear-gradient(to right, #e6f3ff, #fef9f1);
+      border-top: 1px solid #ddd; position: relative; z-index: 2;
+    }
+    .cta-heading {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem; font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .cta-sub { margin: .5rem 0 1rem; font-size: .9rem; color: #555; }
+    .cta-buttons {
+      display: flex; justify-content: center; gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      padding: .6rem 1.2rem; font-size: .85rem; font-weight: 600;
+      color: #fff; border-radius: 6px; text-decoration: none;
+      transition: opacity .3s;
+    }
+    .cta-btn.primary   { background: #0072e5; }
+    .cta-btn.secondary { background: #C08C1B; }
+    .cta-btn:hover     { opacity: .85; }
+
+    .contact-section {
+      text-align: center; margin-top: 3rem;
+    }
+    .contact-section p {
+      font-size: 1rem; color: #ccc;
+    }
+    .contact-section a {
+      color: #FFD700; font-weight: bold; text-decoration: none;
+    }
+
+    .footer {
+      text-align: center; padding: 0.5rem 2rem;
+      font-size: 0.8rem; color: #666;
+      background: #f9f9f9; position: relative; z-index: 2;
+    }
+
+    @media (max-width: 800px) {
+      .header { flex-direction: column; height: auto; padding: 1rem; }
+      .header-text { text-align: center; }
+      .gallery { padding: 1rem; }
+      .mockup-card {
+        width: 90%; max-width: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-content">
+        <div class="header">
+      <img src="momentumxlab-logo.png" alt="MomentumXLab Logo" />
+      <div class="header-text">
+        <h1>Adaptive Intelligence. Creative Precision.</h1>
+        <p>
+          Experience gold trading automation on MetaTrader 5 with MomentumXLab’s AI-enhanced 
+          Expert Advisors—engineered for maximum clarity, trust, and performance.
+        </p>
+        <div class="nav-buttons">
+          <a id="nav-signup"
+             href="https://mattwora.github.io/momentumxlab-auth-system/signup.html"
+             target="_blank">Sign Up</a>
+          <a id="nav-login"
+             href="https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=dashboard.html"
+             target="_blank">Login</a>
+          <a id="nav-dashboard"
+             href="https://mattwora.github.io/momentumxlab-auth-system/dashboard.html"
+             target="_blank">Dashboard</a>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="graph-overlay">
+      <canvas id="goldGraph"></canvas>
+    </div>
+
+    <div class="gallery">
+      <a href="https://mattwora.github.io/momentumxlab-auth-system/pro4.html" class="mockup-card">
+        <img src="Pro4_CollectorEdition_whiteBG.png" alt="Pro4" />
+        <h3>ApexXAU Intelligent Pro-4</h3>
+        <p>Precision-Engineered Gold Trading Automation</p>
+        <p class="edition pro4">Free trial available for 15 days</p>
+      </a>
+
+      <a href="https://mattwora.github.io/momentumxlab-auth-system/pro5.html" class="mockup-card">
+        <img src="Pro5_CollectorEdition_whiteBG.png" alt="Pro5" />
+        <h3>ApexXAU Intelligent Pro-5</h3>
+        <p>Adaptive & Dynamic Based Risk Management</p>
+        <p class="edition pro5">Launching this September</p>
+      </a>
+
+      <a href="https://mattwora.github.io/momentumxlab-auth-system/corex.html" class="mockup-card">
+        <img src="CoreX_PerformanceEdition_whiteBG.png" alt="Core-X" />
+        <h3>ApexXAU Intelligent Core-X</h3>
+        <p>AI-powered Filters, Adaptive & Dynamic Based Risk Management</p>
+        <p class="edition corex">Currently in calibration and testing</p>
+      </a>
+    </div>
+
+    <div class="cta-section">
+      <h2 class="cta-heading">Ready to Experience ApexXAU Intelligence?</h2>
+      <p class="cta-sub">Start your journey with MomentumXLab today.</p>
+      <div class="cta-buttons">
+        <a id="trial-btn"
+           href="#start-trial"
+           class="cta-btn primary">
+        Start 15-Day Free Trial
+        </a>
+        <a href="#subscribe" class="cta-btn secondary">
+          Notify Me When Pro-5 Launches
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <p>
+      📧 Contact us at:
+      <a href="mailto:contact@momentumxlab.com">
+        contact@momentumxlab.com
+      </a>
+    </p>
+  </div>
+<!-- ✅ Banner IB ด้านล่างสุดก่อน footer -->
+<div style="
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid #ddd;
+  position: relative;
+  z-index: 10;
+">
+  <a href="https://one.exnesstrack.org/intl/en/a/1bsigr45e4" target="_blank" rel="noopener noreferrer">
+    <img
+      src="https://d3dpet1g0ty5ed.cloudfront.net/EN_The_20best_20pricing_20on_20gold_728x90_GOOGLE.png"
+      width="728"
+      height="90"
+      alt="Exness Affiliate Banner"
+      style="display: block; object-fit: contain;"
+    />
+  </a>
+</div>
+
+<!-- Footer ที่คุณมีอยู่ -->
+<div class="footer">
+  &copy; 2025 MomentumXLab. All rights reserved.
+</div>
+
+    <!-- Chart animation -->
+  <script>
+    const canvas   = document.getElementById('goldGraph');
+    const ctx      = canvas.getContext('2d');
+    const barWidth = 12;
+    const spacing  = 5;
+    let bars       = [];
+
+    function initBars() {
+      canvas.width  = window.innerWidth;
+      canvas.height = 320;
+      bars = [];
+      const count = Math.ceil(canvas.width / (barWidth + spacing));
+      for (let i = 0; i < count; i++) {
+        const x = i * (barWidth + spacing);
+        const h = Math.random() * 180 + 60;
+        bars.push({ x, h, targetH: h, prevH: h, dir: 'up' });
+      }
+    }
+
+    function updateAndDraw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      bars.forEach(bar => {
+        bar.prevH = bar.h;
+        bar.h += (bar.targetH - bar.h) * 0.0125;
+        if (Math.random() < 0.005) {
+          bar.targetH = Math.random() * 180 + 60;
+        }
+        bar.dir = bar.h > bar.prevH ? 'up' : 'down';
+
+        const x = bar.x;
+        const y = canvas.height - bar.h;
+        const g = ctx.createLinearGradient(x, canvas.height, x, y);
+        if (bar.dir === 'up') {
+          g.addColorStop(0, '#FFD700');
+          g.addColorStop(0.5, '#FFF8DC');
+          g.addColorStop(1, 'rgba(255,255,180,0.85)');
+        } else {
+          g.addColorStop(0, 'rgba(255,215,0,0.2)');
+          g.addColorStop(1, 'rgba(240,220,150,0.05)');
+        }
+        ctx.fillStyle = g;
+        ctx.fillRect(x, y, barWidth, bar.h);
+
+        bar.x -= 0.75;
+        if (bar.x < -barWidth) {
+          const maxX = Math.max(...bars.map(b => b.x));
+          bar.x = maxX + barWidth + spacing;
+          bar.h = bar.targetH = Math.random() * 180 + 60;
+          bar.prevH = bar.h;
+        }
+      });
+
+      requestAnimationFrame(updateAndDraw);
+    }
+
+    window.addEventListener('resize', initBars);
+    initBars();
+    updateAndDraw();
+  </script>
+
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  // --- 1) Initialize Firebase & Auth ---
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
+    authDomain: "momentumxlab-37ce2.firebaseapp.com",
+    projectId: "momentumxlab-37ce2",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  // --- 2) เก็บ Element ปุ่มต่างๆ ---
+  const navSignup    = document.getElementById("nav-signup");
+  const navLogin     = document.getElementById("nav-login");
+  const navDashboard = document.getElementById("nav-dashboard");
+  const navLogout    = document.getElementById("nav-logout");
+  const btnTrial     = document.getElementById("trial-btn");
+
+  // --- 3) สลับปุ่มบน Navbar ตามสถานะล็อกอิน ---
+  auth.onAuthStateChanged(user => {
+    navSignup.style.display    = user ? "none"         : "inline-block";
+    navLogin.style.display     = user ? "none"         : "inline-block";
+    navDashboard.style.display = user ? "inline-block" : "none";
+    navLogout.style.display    = user ? "inline-block" : "none";
+  });
+const navSignup = document.getElementById("nav-signup");
+
+navSignup.addEventListener("click", e => {
+  e.preventDefault();
+  Swal.fire({
+    title: "Sign up for MomentumXLab",
+    text: "You will be redirected to the registration page.",
+    icon: "info",
+    confirmButtonText: "Proceed",
+    cancelButtonText: "Cancel",
+    showCancelButton: true
+  }).then(result => {
+    if (result.isConfirmed) {
+      window.open(navSignup.href, navSignup.target);
+    }
+  });
+});
+  navLogin.addEventListener("click", e => {
+  e.preventDefault();
+  Swal.fire({
+    title: "Log in to MomentumXLab",
+    text: "You will be redirected to the login page.",
+    icon: "info",
+    confirmButtonText: "Proceed",
+    cancelButtonText: "Cancel",
+    showCancelButton: true
+  }).then(result => {
+    if (result.isConfirmed) {
+      window.open(navLogin.href, navLogin.target);
+    }
+  });
+});
+
+  // --- 4) รับ postMessage ‘login-success’ แล้ว reload หน้าให้ onAuthStateChanged ทำงาน ---
+  window.addEventListener("message", event => {
+    if (
+      event.origin === "https://mattwora.github.io" &&
+      event.data   === "login-success"
+    ) {
+      location.reload();
+    }
+  });
+const navLogout = document.getElementById("nav-logout");
+
+navLogout?.addEventListener("click", e => {
+  e.preventDefault();
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You will be signed out of your account.",
+    icon: "warning",
+    confirmButtonText: "Logout",
+    cancelButtonText: "Cancel",
+    showCancelButton: true,
+    reverseButtons: true
+  }).then(result => {
+    if (result.isConfirmed) {
+      firebase.auth().signOut()
+        .then(() => Swal.fire({
+          title: "Logged out",
+          icon: "success",
+          timer: 1200,
+          showConfirmButton: false
+        }))
+        .then(() => location.reload())
+        .catch(err => Swal.fire("Error", err.message, "error"));
+    }
+  });
+});
+  // --- 6) Start 15-Day Free Trial Handler ---
+  btnTrial.addEventListener("click", e => {
+    e.preventDefault();
+
+    if (auth.currentUser) {
+      // ถ้าล็อกอินแล้ว → ไป Dashboard
+      window.location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
+    } else {
+      // ยังไม่ล็อกอิน → แจ้งให้ล็อกอิน แล้วเปิด Login ในแท็บใหม่
+      Swal.fire({
+        title: "Please sign in first",
+        text:  "You need an account to download the trial.",
+        icon:  "info",
+        confirmButtonText: "Go to Login",
+        showCancelButton:  true,
+        cancelButtonText:  "Cancel"
+      }).then(result => {
+        if (result.isConfirmed) {
+          window.open(navLogin.href, navLogin.target);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
