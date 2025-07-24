@@ -315,8 +315,7 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-  <script>
-  // ✅ Logic navbar ที่รวมทุก listener ไว้แล้ว
+<script>
   document.addEventListener("DOMContentLoaded", () => {
     const auth = firebase.auth();
     const nav = {
@@ -327,20 +326,33 @@
       trial: document.getElementById("trial-btn")
     };
 
-    // ✅ Toggle visibility
+    let isLoggedIn = false;
+
+    // ✅ Toggle visibility เมื่อ Firebase รู้สถานะ
     auth.onAuthStateChanged(user => {
+      isLoggedIn = !!user;
       nav.signup.style.display = user ? "none" : "inline-block";
       nav.login.style.display = user ? "none" : "inline-block";
       nav.dashboard.style.display = user ? "inline-block" : "none";
       nav.logout.style.display = user ? "inline-block" : "none";
     });
 
-    // ✅ Signup button
+    // ✅ Sign Up button
     if (nav.signup) {
       nav.signup.addEventListener("click", e => {
         e.preventDefault();
-        Swal.fire({ title: "Sign up", text: "...", icon: "info", ... })
-          .then(r => r.isConfirmed && window.open(nav.signup.href, nav.signup.target));
+        Swal.fire({
+          title: "Sign up for MomentumXLab",
+          text: "You will be redirected to the signup page.",
+          icon: "info",
+          confirmButtonText: "Proceed",
+          cancelButtonText: "Cancel",
+          showCancelButton: true
+        }).then(result => {
+          if (result.isConfirmed) {
+            window.open(nav.signup.href, nav.signup.target);
+          }
+        });
       });
     }
 
@@ -348,52 +360,58 @@
     if (nav.login) {
       nav.login.addEventListener("click", e => {
         e.preventDefault();
-        Swal.fire({ title: "Log in", text: "...", icon: "info", ... })
-          .then(r => r.isConfirmed && window.open(nav.login.href, nav.login.target));
+        Swal.fire({
+          title: "Log in to MomentumXLab",
+          text: "You will be redirected to the login page.",
+          icon: "info",
+          confirmButtonText: "Proceed",
+          cancelButtonText: "Cancel",
+          showCancelButton: true
+        }).then(result => {
+          if (result.isConfirmed) {
+            window.open(nav.login.href, nav.login.target);
+          }
+        });
       });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-  const auth = firebase.auth();
-  const nav = {
-    trial: document.getElementById("trial-btn")
-  };
-
-  let isLoggedIn = false;
-
-  // ✅ preload สถานะผู้ใช้ล่วงหน้า
-  auth.onAuthStateChanged(user => {
-    isLoggedIn = !!user; // true if logged in
-  });
-
-  // ✅ ใช้สถานะที่ preload ไว้ใน listener ปุ่ม Trial
-  if (nav.trial) {
-    nav.trial.addEventListener("click", e => {
-      e.preventDefault();
-      if (isLoggedIn) {
-        // ล็อกอินแล้ว → ไปหน้า dashboard
-        location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
-      } else {
-        // ยังไม่ได้ล็อกอิน → ไปหน้า login พร้อม redirect
-        location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=confirm-order.html";
-      }
-    });
-  }
-});
+    // ✅ Trial button
+    if (nav.trial) {
+      nav.trial.addEventListener("click", e => {
+        e.preventDefault();
+        if (isLoggedIn) {
+          location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
+        } else {
+          location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=confirm-order.html";
+        }
+      });
+    }
 
     // ✅ Logout button
     if (nav.logout) {
       nav.logout.addEventListener("click", e => {
         e.preventDefault();
-        Swal.fire({ title: "Are you sure?", text: "...", icon: "warning", ... })
-          .then(result => {
-            if (result.isConfirmed) {
-              auth.signOut()
-                .then(() => Swal.fire({ title: "Logged out", icon: "success", ... }))
-                .then(() => location.reload())
-                .catch(err => Swal.fire("Error", err.message, "error"));
-            }
-          });
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You will be signed out of your account.",
+          icon: "warning",
+          confirmButtonText: "Logout",
+          cancelButtonText: "Cancel",
+          showCancelButton: true,
+          reverseButtons: true
+        }).then(result => {
+          if (result.isConfirmed) {
+            auth.signOut()
+              .then(() => Swal.fire({
+                title: "Logged out",
+                icon: "success",
+                timer: 1200,
+                showConfirmButton: false
+              }))
+              .then(() => location.reload())
+              .catch(err => Swal.fire("Error", err.message, "error"));
+          }
+        });
       });
     }
 
@@ -404,9 +422,8 @@
       }
     });
   });
-
-
 </script>
+
 
 </body>
 </html>
