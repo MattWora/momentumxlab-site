@@ -342,38 +342,26 @@
       nav.signup.addEventListener("click", e => {
         e.preventDefault();
         Swal.fire({
-          title: "Sign up for MomentumXLab",
-          text: "You will be redirected to the signup page.",
-          icon: "info",
-          confirmButtonText: "Proceed",
-          cancelButtonText: "Cancel",
-          showCancelButton: true
-        }).then(result => {
-          if (result.isConfirmed) {
-            window.open(nav.signup.href, nav.signup.target);
-          }
-        });
-      });
-    }
-
+  title: "Create a MomentumXLab Account",
+  text: "You'll be redirected to our secure signup page. Make sure to use a valid email address.",
+  icon: "info",
+  confirmButtonText: "Proceed",
+  cancelButtonText: "Cancel",
+  showCancelButton: true
+});
     // ✅ Login button
     if (nav.login) {
       nav.login.addEventListener("click", e => {
         e.preventDefault();
         Swal.fire({
-          title: "Log in to MomentumXLab",
-          text: "You will be redirected to the login page.",
-          icon: "info",
-          confirmButtonText: "Proceed",
-          cancelButtonText: "Cancel",
-          showCancelButton: true
-        }).then(result => {
-          if (result.isConfirmed) {
-            window.open(nav.login.href, nav.login.target);
-          }
-        });
-      });
-    }
+  title: "Log In to MomentumXLab",
+  text: "You'll be redirected to the login page. After logging in, you'll return to your dashboard.",
+  icon: "info",
+  confirmButtonText: "Proceed",
+  cancelButtonText: "Cancel",
+  showCancelButton: true
+});
+
 
     // ✅ Trial button
     if (nav.trial) {
@@ -392,28 +380,22 @@
       nav.logout.addEventListener("click", e => {
         e.preventDefault();
         Swal.fire({
-          title: "Are you sure?",
-          text: "You will be signed out of your account.",
-          icon: "warning",
-          confirmButtonText: "Logout",
-          cancelButtonText: "Cancel",
-          showCancelButton: true,
-          reverseButtons: true
-        }).then(result => {
-          if (result.isConfirmed) {
-            auth.signOut()
-              .then(() => Swal.fire({
-                title: "Logged out",
-                icon: "success",
-                timer: 1200,
-                showConfirmButton: false
-              }))
-              .then(() => location.reload())
-              .catch(err => Swal.fire("Error", err.message, "error"));
-          }
-        });
-      });
-    }
+  title: "Are you sure?",
+  text: "Logging out will end your current session and return you to the homepage.",
+  icon: "warning",
+  confirmButtonText: "Logout",
+  cancelButtonText: "Cancel",
+  showCancelButton: true,
+  reverseButtons: true
+});
+Swal.fire({
+  title: "You've been logged out",
+  text: "Your session has ended. Returning to homepage...",
+  icon: "success",
+  timer: 1200,
+  showConfirmButton: false
+});
+
 
     // ✅ Handle postMessage จาก login.html
     window.addEventListener("message", event => {
