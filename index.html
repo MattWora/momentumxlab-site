@@ -369,13 +369,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (nav.trial) {
     nav.trial.addEventListener("click", e => {
-      e.preventDefault();
-      if (isLoggedIn) {
-        location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
-      } else {
-        location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=dashboard.html";
-      }
-    });
+  e.preventDefault();
+  if (isLoggedIn) {
+    // ✅ เปิด dashboard ในแท็บใหม่
+    window.open("https://mattwora.github.io/momentumxlab-auth-system/dashboard.html", "_blank");
+  } else {
+    // ✅ เปิด login ในแท็บใหม่ พร้อม redirect
+    window.open("https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=dashboard.html", "_blank");
+  }
+});
+
   }
 
   if (nav.logout) {
