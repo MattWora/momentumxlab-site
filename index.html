@@ -306,110 +306,112 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-  // --- 1) Initialize Firebase & Auth ---
-  const firebaseConfig = {
-    apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
-    authDomain: "momentumxlab-37ce2.firebaseapp.com",
-    projectId: "momentumxlab-37ce2",
+// Firebase config & init
+const firebaseConfig = {
+  apiKey: "AIzaSyDeUaFNrqo5DKQWuWz1kiru1MVOSuRHDmk",
+  authDomain: "momentumxlab-37ce2.firebaseapp.com",
+  projectId: "momentumxlab-37ce2",
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+// ✅ Logic ทั้งหมด
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = {
+    signup: document.getElementById("nav-signup"),
+    login: document.getElementById("nav-login"),
+    dashboard: document.getElementById("nav-dashboard"),
+    logout: document.getElementById("nav-logout"),
+    trial: document.getElementById("trial-btn")
   };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const auth = firebase.auth();
-    const nav = {
-      signup: document.getElementById("nav-signup"),
-      login: document.getElementById("nav-login"),
-      dashboard: document.getElementById("nav-dashboard"),
-      logout: document.getElementById("nav-logout"),
-      trial: document.getElementById("trial-btn")
-    };
+  let isLoggedIn = false;
 
-    let isLoggedIn = false;
-
-    // ✅ Toggle visibility เมื่อ Firebase รู้สถานะ
-    auth.onAuthStateChanged(user => {
-      isLoggedIn = !!user;
-      nav.signup.style.display = user ? "none" : "inline-block";
-      nav.login.style.display = user ? "none" : "inline-block";
-      nav.dashboard.style.display = user ? "inline-block" : "none";
-      nav.logout.style.display = user ? "inline-block" : "none";
-    });
-
-    // ✅ Sign Up button
-    if (nav.signup) {
-      nav.signup.addEventListener("click", e => {
-        e.preventDefault();
-        Swal.fire({
-  title: "Create a MomentumXLab Account",
-  text: "You'll be redirected to our secure signup page. Make sure to use a valid email address.",
-  icon: "info",
-  confirmButtonText: "Proceed",
-  cancelButtonText: "Cancel",
-  showCancelButton: true
-});
-    // ✅ Login button
-    if (nav.login) {
-      nav.login.addEventListener("click", e => {
-        e.preventDefault();
-        Swal.fire({
-  title: "Log In to MomentumXLab",
-  text: "You'll be redirected to the login page. After logging in, you'll return to your dashboard.",
-  icon: "info",
-  confirmButtonText: "Proceed",
-  cancelButtonText: "Cancel",
-  showCancelButton: true
-});
-
-
-    // ✅ Trial button
-    if (nav.trial) {
-      nav.trial.addEventListener("click", e => {
-        e.preventDefault();
-        if (isLoggedIn) {
-          location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
-        } else {
-          location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=confirm-order.html";
-        }
-      });
-    }
-
-    // ✅ Logout button
-    if (nav.logout) {
-      nav.logout.addEventListener("click", e => {
-  e.preventDefault();
-  Swal.fire({
-    title: "Are you sure?",
-    text: "Logging out will end your current session and return you to the homepage.",
-    icon: "warning",
-    confirmButtonText: "Logout",
-    cancelButtonText: "Cancel",
-    showCancelButton: true,
-    reverseButtons: true
-  }).then(result => {
-    if (result.isConfirmed) {
-      auth.signOut()
-        .then(() => Swal.fire({
-          title: "You've been logged out",
-          text: "Your session has ended. Returning to homepage...",
-          icon: "success",
-          timer: 1200,
-          showConfirmButton: false
-        }))
-        .then(() => location.reload())
-        .catch(err => Swal.fire("Error", err.message, "error"));
-    }
+  auth.onAuthStateChanged(user => {
+    isLoggedIn = !!user;
+    nav.signup.style.display = user ? "none" : "inline-block";
+    nav.login.style.display = user ? "none" : "inline-block";
+    nav.dashboard.style.display = user ? "inline-block" : "none";
+    nav.logout.style.display = user ? "inline-block" : "none";
   });
-});
 
-    // ✅ Handle postMessage จาก login.html
-    window.addEventListener("message", event => {
-      if (event.origin === "https://mattwora.github.io" && event.data === "login-success") {
-        location.reload();
+  if (nav.signup) {
+    nav.signup.addEventListener("click", e => {
+      e.preventDefault();
+      Swal.fire({
+        title: "Create a MomentumXLab Account",
+        text: "You'll be redirected to our secure signup page.",
+        icon: "info",
+        confirmButtonText: "Proceed",
+        cancelButtonText: "Cancel",
+        showCancelButton: true
+      }).then(result => {
+        if (result.isConfirmed) window.open(nav.signup.href, nav.signup.target);
+      });
+    });
+  }
+
+  if (nav.login) {
+    nav.login.addEventListener("click", e => {
+      e.preventDefault();
+      Swal.fire({
+        title: "Log In to MomentumXLab",
+        text: "You'll be redirected to the login page.",
+        icon: "info",
+        confirmButtonText: "Proceed",
+        cancelButtonText: "Cancel",
+        showCancelButton: true
+      }).then(result => {
+        if (result.isConfirmed) window.open(nav.login.href, nav.login.target);
+      });
+    });
+  }
+
+  if (nav.trial) {
+    nav.trial.addEventListener("click", e => {
+      e.preventDefault();
+      if (isLoggedIn) {
+        location.href = "https://mattwora.github.io/momentumxlab-auth-system/dashboard.html";
+      } else {
+        location.href = "https://mattwora.github.io/momentumxlab-auth-system/login.html?redirect=confirm-order.html";
       }
     });
+  }
+
+  if (nav.logout) {
+    nav.logout.addEventListener("click", e => {
+      e.preventDefault();
+      Swal.fire({
+        title: "Are you sure?",
+        text: "Logging out will end your current session and return you to the homepage.",
+        icon: "warning",
+        confirmButtonText: "Logout",
+        cancelButtonText: "Cancel",
+        showCancelButton: true,
+        reverseButtons: true
+      }).then(result => {
+        if (result.isConfirmed) {
+          auth.signOut()
+            .then(() => Swal.fire({
+              title: "You've been logged out",
+              text: "Your session has ended. Returning to homepage...",
+              icon: "success",
+              timer: 1200,
+              showConfirmButton: false
+            }))
+            .then(() => location.reload())
+            .catch(err => Swal.fire("Error", err.message, "error"));
+        }
+      });
+    });
+  }
+
+  window.addEventListener("message", event => {
+    if (event.origin === "https://mattwora.github.io" && event.data === "login-success") {
+      location.reload();
+    }
   });
+});
 </script>
 
 
