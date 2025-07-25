@@ -34,7 +34,7 @@ exports.createStripeSession = functions.https.onRequest((req, res) => {
         mode: "payment",
         line_items: [{
           price_data: {
-            currency: "thb",
+            currency: "usd",
             product_data: { name: `${plan.toUpperCase()} – ${pkg}` },
             unit_amount: unitAmount
           },
