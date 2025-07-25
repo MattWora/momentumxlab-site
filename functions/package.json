@@ -1,0 +1,23 @@
+{
+  "name": "momentum-functions",
+  "description": "Firebase Functions for MomentumXLab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "start": "firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "^4.9.0",
+    "stripe": "^12.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  },
+  "private": true
+}
