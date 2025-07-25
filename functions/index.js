@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const stripe = require("stripe")("sk_test_xxx_YOUR_SECRET_KEY"); // 🔑 ใช้ secret key จริงจาก Stripe dashboard
+const stripe = require("stripe")("pk_test_51RmdQFFN9S7UG3y8i70joQpqj2tKpfKlwEnABZ7HLJnJ1mdP05CEvH4EgOf6upF3Uerntndt7qffCRluU0Od7vrm00LmoYYkdB"); // 🔑 ใช้ secret key จริงจาก Stripe dashboard
 
 exports.createCheckoutSession = functions.https.onRequest(async (req, res) => {
   const { plan, package: pkg } = req.body;
