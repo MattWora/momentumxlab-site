@@ -2,8 +2,8 @@ const functions = require("firebase-functions");
 const Stripe     = require("stripe");
 const cors       = require("cors")({ origin: true });
 
-// ดึง Secret Key จาก Firebase Functions config
-// รันก่อน deploy: firebase functions:config:set stripe.secret="sk_live_xxx"
+// รันก่อน deploy:
+// firebase functions:config:set stripe.secret="sk_live_xxx_ของคุณ"
 const stripe = Stripe(functions.config().stripe.secret);
 
 exports.createStripeSession = functions.https.onRequest((req, res) => {
@@ -16,7 +16,7 @@ exports.createStripeSession = functions.https.onRequest((req, res) => {
     try {
       const { plan, package: pkg } = req.body || {};
 
-      // แผนผังราคา (หน่วยเป็นสตางค์)  
+      // แผนผังราคา (หน่วยเป็นสตางค์ THB)
       const priceMap = {
         pro4:  { monthly: 1999, "6m": 10699,  "12m": 19399 },
         pro5:  { monthly: 3999, "6m": 21399,  "12m": 38829 },
@@ -44,7 +44,7 @@ exports.createStripeSession = functions.https.onRequest((req, res) => {
         cancel_url:  `https://mattwora.github.io/momentumxlab-auth-system/payment.html?plan=${plan}&package=${pkg}`
       });
 
-      // คืนค่า sessionId ตามที่ Frontend คาดหวัง
+      // คืนค่า sessionId ตามที่ frontend คาดหวัง
       return res.json({ sessionId: session.id });
     } catch (error) {
       console.error("createStripeSession Error:", error);
