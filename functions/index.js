@@ -20,7 +20,7 @@ exports.createStripeSession = functions.https.onRequest((req, res) => {
       const priceMap = {
         pro4:  { monthly: 1999, "6m": 10699,  "12m": 19399 },
         pro5:  { monthly: 3999, "6m": 21399,  "12m": 38829 },
-        corex: { monthly: 4999, "6m": 26749,  "12m": 48542 }
+        corex: { monthly: 5999, "6m": 32109,  "12m": 58207 }
       };
 
       const unitAmount = priceMap[plan]?.[pkg];
